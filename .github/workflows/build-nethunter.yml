@@ -22,7 +22,9 @@ jobs:
       - name: Install Build Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential bc bison flex libssl-dev libelf-dev libncurses-dev git ccache curl wget zip python3 clang lld llvm libarchive-tools
+          sudo apt-get install -y build-essential bc bison flex libssl-dev libelf-dev \
+            libncurses-dev git ccache curl wget zip python3 clang lld llvm \
+            libarchive-tools cpio dwarves kmod rsync
 
       - name: Setup Toolchain (AOSP Clang r522817)
         run: |
@@ -31,6 +33,8 @@ jobs:
           wget -q https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r522817.tar.gz
           tar -zxf clang-r522817.tar.gz
           rm -f clang-r522817.tar.gz
+          mkdir -p $GITHUB_WORKSPACE/toolchains
+          ln -sfn $GITHUB_WORKSPACE/toolchain $GITHUB_WORKSPACE/toolchains/clang
 
       - name: Clone Clean Kernel Source (konoha-kernel-gki)
         run: |
@@ -40,12 +44,16 @@ jobs:
       - name: Sanitize Dangerous Hooks & Exploits
         run: |
           cd $GITHUB_WORKSPACE/kernel-source
-          echo "[-] Removing Baseband-guard partition write interception..."
-          rm -rf Baseband-guard security/baseband_guard
-          sed -i '/Baseband-guard/d' Makefile || true
-          sed -i '/baseband_guard/d' security/Makefile || true
+          echo "[-] Neutralizing Baseband-guard hook completely..."
+          mkdir -p Baseband-guard
+          cat << 'EOF' > Baseband-guard/setup.sh
+          #!/bin/sh
+          exit 0
+          EOF
+          chmod +x Baseband-guard/setup.sh
+          sed -i 's|.*Baseband-guard.*setup.sh.*||g' build.sh || true
 
-          echo "[-] Neutralizing dangerous GPU / Live Patch exploits..."
+          echo "[-] Disabling dangerous GPU and Live Patch exploits..."
           sed -i 's/CONFIG_KGSL_EXPLOIT=y/# CONFIG_KGSL_EXPLOIT is not set/g' arch/arm64/configs/konoha_defconfig || true
 
       - name: Apply Kali NetHunter Packet Injection & Wireless Configs
@@ -81,21 +89,24 @@ jobs:
       - name: Add Out-Of-Tree RTL8821AU Driver (Archer T2U Plus)
         run: |
           cd $GITHUB_WORKSPACE/kernel-source
-          echo "[-] Cloning morrownr/8821au for Archer T2U Plus..."
-          git clone --depth=1 -b v5.12.5.2 https://github.com/morrownr/8821au.git drivers/net/wireless/realtek/rtl8821au || true
+          echo "[-] Cloning official morrownr/8821au-20210708 for Archer T2U Plus..."
+          git clone --depth=1 https://github.com/morrownr/8821au-20210708.git drivers/net/wireless/realtek/rtl8821au
           if [ -d "drivers/net/wireless/realtek/rtl8821au" ]; then
-            echo "obj-\$(CONFIG_8821AU) += rtl8821au/" >> drivers/net/wireless/realtek/Makefile
+            echo "obj-\$(CONFIG_RTL8821AU) += rtl8821au/" >> drivers/net/wireless/realtek/Makefile
             echo 'source "drivers/net/wireless/realtek/rtl8821au/Kconfig"' >> drivers/net/wireless/realtek/Kconfig
-            echo "CONFIG_8821AU=m" >> arch/arm64/configs/konoha_defconfig
+            echo "CONFIG_RTL8821AU=m" >> arch/arm64/configs/konoha_defconfig
           fi
 
       - name: Compile NetHunter Kernel via Native build.sh
         run: |
           cd $GITHUB_WORKSPACE/kernel-source
           export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
+          export CLANG_PATH="$GITHUB_WORKSPACE/toolchain"
           export CLANG_DIR="$GITHUB_WORKSPACE/toolchain"
 
           chmod +x build.sh
+          chmod +x ksu_susfs_fixup.sh 2>/dev/null || true
+
           ./build.sh \
             hz=250 \
             variant=susfs \
@@ -103,18 +114,26 @@ jobs:
             hardened=off \
             bypasscharging=off \
             droidspaces=off \
-            lto=thin
+            lto=thin \
+            kgsl_exploit=off \
+            wifi_exploit=off \
+            data_exploit=off \
+            kernel_name="-NetHunter-Rohit-Edition"
 
       - name: Package AnyKernel3 - Rohit Sharma NetHunter Edition
         run: |
           cd $GITHUB_WORKSPACE
-          # Find the built zip from build.sh
-          BUILT_ZIP=$(find $GITHUB_WORKSPACE/kernel-source -name "*.zip" | head -n 1)
+          BUILT_ZIP="${ZIP_PATH:-$(find $GITHUB_WORKSPACE/kernel-source -maxdepth 1 -name '*.zip' | head -n 1)}"
           echo "Built ZIP: $BUILT_ZIP"
 
           mkdir -p repack
           cd repack
           unzip -q "$BUILT_ZIP"
+
+          # Harvest built wireless modules
+          mkdir -p modules
+          find "$GITHUB_WORKSPACE/kernel-source/out" -name "*.ko" -exec cp -v {} modules/ \; 2>/dev/null || true
+          $GITHUB_WORKSPACE/toolchain/bin/llvm-strip --strip-debug modules/*.ko 2>/dev/null || true
 
           # Download and bundle required WiFi Firmware
           mkdir -p firmware/rtlwifi
