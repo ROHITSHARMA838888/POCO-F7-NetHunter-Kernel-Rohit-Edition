@@ -1,0 +1,9 @@
+﻿2026-10-25T17:18:11.7346524Z ##[group]Run cd $GITHUB_WORKSPACE/kernel-source
+2026-10-25T17:18:11.7346932Z [36;1mcd $GITHUB_WORKSPACE/kernel-source[0m
+2026-10-25T17:18:11.7347271Z [36;1mecho "[-] Setting up KernelSU-Next..."[0m
+2026-10-25T17:18:11.7347857Z [36;1mcurl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -s next[0m
+2026-10-25T17:18:11.7411886Z shell: /usr/bin/bash -e {0}
+2026-10-25T17:18:11.7412171Z ##[endgroup]
+2026-10-25T17:18:11.7494142Z [-] Setting up KernelSU-Next...
+2026-10-25T17:18:11.8517353Z bash: line 1: 404:: command not found
+2026-10-25T17:18:11.8529113Z ##[error]Process completed with exit code 127.

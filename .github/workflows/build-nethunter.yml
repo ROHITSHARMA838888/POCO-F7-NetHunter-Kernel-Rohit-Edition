@@ -93,8 +93,9 @@ jobs:
       - name: Setup KernelSU-Next & SUSFS
         run: |
           cd $GITHUB_WORKSPACE/kernel-source
-          echo "[-] Setting up KernelSU-Next..."
-          curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh" | bash -s next
+          echo "[-] Setting up official KernelSU-Next..."
+          curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s next
+          echo "CONFIG_KSU=y" >> arch/arm64/configs/konoha_defconfig
 
       - name: Compile NetHunter Kernel (GKI 6.6)
         run: |
