@@ -1,0 +1,5 @@
+﻿2026-10-25T17:54:13.7947343Z ##[group]Run sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+2026-10-25T17:54:13.7948707Z [36;1msudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL[0m
+2026-10-25T17:54:13.7949602Z [36;1msudo apt-get clean[0m
+2026-10-25T17:54:13.8214783Z shell: /usr/bin/bash -e {0}
+2026-10-25T17:54:13.8215588Z ##[endgroup]

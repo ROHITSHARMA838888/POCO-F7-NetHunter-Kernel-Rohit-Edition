@@ -22,7 +22,7 @@ jobs:
       - name: Install Build Dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential bc bison flex libssl-dev libelf-dev libncurses-dev git ccache curl wget zip python3 clang lld llvm
+          sudo apt-get install -y build-essential bc bison flex libssl-dev libelf-dev libncurses-dev git ccache curl wget zip python3 clang lld llvm libarchive-tools
 
       - name: Setup Toolchain (AOSP Clang r522817)
         run: |
@@ -89,44 +89,32 @@ jobs:
             echo "CONFIG_8821AU=m" >> arch/arm64/configs/konoha_defconfig
           fi
 
-      - name: Setup KernelSU-Next & SUSFS
-        run: |
-          cd $GITHUB_WORKSPACE/kernel-source
-          echo "[-] Setting up official KernelSU-Next..."
-          curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s next
-          echo "CONFIG_KSU=y" >> arch/arm64/configs/konoha_defconfig
-
-      - name: Compile NetHunter Kernel (GKI 6.6)
+      - name: Compile NetHunter Kernel via Native build.sh
         run: |
           cd $GITHUB_WORKSPACE/kernel-source
           export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
-          export ARCH=arm64
-          export SUBARCH=arm64
-          export CC="clang"
-          export LD="ld.lld"
-          export LLVM=1
-          export LLVM_IAS=1
-          export CLANG_TRIPLE="aarch64-linux-gnu-"
-          export CROSS_COMPILE="aarch64-linux-gnu-"
-          export KERNEL_KCFLAGS="-w -Wno-error"
+          export CLANG_DIR="$GITHUB_WORKSPACE/toolchain"
 
-          mkdir -p out
-          make O=out CC=clang LLVM=1 LLVM_IAS=1 KCFLAGS="$KERNEL_KCFLAGS" konoha_defconfig
-          make -j$(nproc --all) O=out CC=clang LLVM=1 LLVM_IAS=1 KCFLAGS="$KERNEL_KCFLAGS" Image modules
+          chmod +x build.sh
+          ./build.sh \
+            hz=250 \
+            variant=susfs \
+            root=ksu-next \
+            hardened=off \
+            bypasscharging=off \
+            droidspaces=off \
+            lto=thin
 
       - name: Package AnyKernel3 - Rohit Sharma NetHunter Edition
         run: |
           cd $GITHUB_WORKSPACE
-          git clone --depth=1 https://github.com/osm0sis/AnyKernel3.git anykernel
-          cd anykernel
-          rm -rf .git
-          
-          # Copy compiled Image
-          cp $GITHUB_WORKSPACE/kernel-source/out/arch/arm64/boot/Image .
+          # Find the built zip from build.sh
+          BUILT_ZIP=$(find $GITHUB_WORKSPACE/kernel-source -name "*.zip" | head -n 1)
+          echo "Built ZIP: $BUILT_ZIP"
 
-          # Copy compiled WiFi modules
-          mkdir -p modules/vendor/lib/modules
-          find $GITHUB_WORKSPACE/kernel-source/out -name "*.ko" -exec cp {} modules/vendor/lib/modules/ \;
+          mkdir -p repack
+          cd repack
+          unzip -q "$BUILT_ZIP"
 
           # Download and bundle required WiFi Firmware
           mkdir -p firmware/rtlwifi
@@ -178,9 +166,9 @@ jobs:
           ui_print "-> Flash Complete by Rohit Sharma!";
           EOF
 
-          ZIP_NAME="NetHunter-Kernel-POCO-F7-Onyx-Rohit-Edition.zip"
-          zip -r9 "$ZIP_NAME" * -x "*.zip"
-          mv "$ZIP_NAME" $GITHUB_WORKSPACE/
+          FINAL_ZIP="NetHunter-Kernel-POCO-F7-Onyx-Rohit-Edition.zip"
+          zip -r9 "$FINAL_ZIP" * -x "*.zip"
+          mv "$FINAL_ZIP" $GITHUB_WORKSPACE/
 
       - name: Upload Flashable NetHunter Kernel Release
         uses: actions/upload-artifact@v4

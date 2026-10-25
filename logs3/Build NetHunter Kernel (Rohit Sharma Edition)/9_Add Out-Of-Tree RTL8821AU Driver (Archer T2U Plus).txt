@@ -1,0 +1,14 @@
+﻿2026-10-25T18:00:42.4409100Z ##[group]Run cd $GITHUB_WORKSPACE/kernel-source
+2026-10-25T18:00:42.4409521Z [36;1mcd $GITHUB_WORKSPACE/kernel-source[0m
+2026-10-25T18:00:42.4409904Z [36;1mecho "[-] Cloning morrownr/8821au for Archer T2U Plus..."[0m
+2026-10-25T18:00:42.4410572Z [36;1mgit clone --depth=1 -b v5.12.5.2 https://github.com/morrownr/8821au.git drivers/net/wireless/realtek/rtl8821au || true[0m
+2026-10-25T18:00:42.4411227Z [36;1mif [ -d "drivers/net/wireless/realtek/rtl8821au" ]; then[0m
+2026-10-25T18:00:42.4411728Z [36;1m  echo "obj-\$(CONFIG_8821AU) += rtl8821au/" >> drivers/net/wireless/realtek/Makefile[0m
+2026-10-25T18:00:42.4412422Z [36;1m  echo 'source "drivers/net/wireless/realtek/rtl8821au/Kconfig"' >> drivers/net/wireless/realtek/Kconfig[0m
+2026-10-25T18:00:42.4413471Z [36;1m  echo "CONFIG_8821AU=m" >> arch/arm64/configs/konoha_defconfig[0m
+2026-10-25T18:00:42.4413831Z [36;1mfi[0m
+2026-10-25T18:00:42.4480484Z shell: /usr/bin/bash -e {0}
+2026-10-25T18:00:42.4480781Z ##[endgroup]
+2026-10-25T18:00:42.4570956Z [-] Cloning morrownr/8821au for Archer T2U Plus...
+2026-10-25T18:00:42.4585107Z Cloning into 'drivers/net/wireless/realtek/rtl8821au'...
+2026-10-25T18:00:42.5261302Z fatal: could not read Username for 'https://github.com': No such device or address

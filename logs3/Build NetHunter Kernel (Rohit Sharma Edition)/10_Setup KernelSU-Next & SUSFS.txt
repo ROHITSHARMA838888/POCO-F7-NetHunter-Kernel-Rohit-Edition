@@ -1,0 +1,21 @@
+﻿2026-10-25T18:00:42.5325709Z ##[group]Run cd $GITHUB_WORKSPACE/kernel-source
+2026-10-25T18:00:42.5326182Z [36;1mcd $GITHUB_WORKSPACE/kernel-source[0m
+2026-10-25T18:00:42.5326543Z [36;1mecho "[-] Setting up official KernelSU-Next..."[0m
+2026-10-25T18:00:42.5327200Z [36;1mcurl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s next[0m
+2026-10-25T18:00:42.5327868Z [36;1mecho "CONFIG_KSU=y" >> arch/arm64/configs/konoha_defconfig[0m
+2026-10-25T18:00:42.5398697Z shell: /usr/bin/bash -e {0}
+2026-10-25T18:00:42.5399036Z ##[endgroup]
+2026-10-25T18:00:42.5494463Z [-] Setting up official KernelSU-Next...
+2026-10-25T18:00:42.6305228Z [+] Setting up KernelSU-Next...
+2026-10-25T18:00:42.6320048Z Cloning into 'KernelSU-Next'...
+2026-10-25T18:00:43.7674463Z [+] Repository cloned.
+2026-10-25T18:00:43.8024170Z No local changes to save
+2026-10-25T18:00:43.8027432Z [-] Stashed current changes.
+2026-10-25T18:00:43.9498231Z Already up to date.
+2026-10-25T18:00:43.9503804Z [+] Repository updated.
+2026-10-25T18:00:43.9520472Z error: pathspec 'next' did not match any file(s) known to git
+2026-10-25T18:00:43.9525687Z [-] Checkout default branch
+2026-10-25T18:00:43.9555240Z [+] Symlink created.
+2026-10-25T18:00:43.9569160Z [+] Modified Makefile.
+2026-10-25T18:00:43.9582912Z [+] Modified Kconfig.
+2026-10-25T18:00:43.9583425Z [+] Done.

@@ -1,0 +1,2110 @@
+﻿2026-10-25T17:54:12.5985185Z Current runner version: '2.338.0'
+2026-10-25T17:54:12.6012471Z ##[group]Runner Image Provisioner
+2026-10-25T17:54:12.6013987Z Hosted Compute Agent
+2026-10-25T17:54:12.6014640Z Version: 20261021.618
+2026-10-25T17:54:12.6015324Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-25T17:54:12.6016078Z Build Date: 2026-10-21T00:45:21Z
+2026-10-25T17:54:12.6016764Z Worker ID: {70bf2613-ea00-4dce-bae3-66a1d7f707cd}
+2026-10-25T17:54:12.6017944Z Region: eastus
+2026-10-25T17:54:12.6018542Z Cloud: Azure
+2026-10-25T17:54:12.6019098Z ##[endgroup]
+2026-10-25T17:54:12.6022084Z ##[group]Operating System
+2026-10-25T17:54:12.6023133Z Ubuntu
+2026-10-25T17:54:12.6023824Z 24.04.5
+2026-10-25T17:54:12.6024392Z LTS
+2026-10-25T17:54:12.6024942Z ##[endgroup]
+2026-10-25T17:54:12.6025513Z ##[group]Runner Image
+2026-10-25T17:54:12.6026124Z Image: ubuntu-24.04
+2026-10-25T17:54:12.6027037Z Version: 20261012.334.1
+2026-10-25T17:54:12.6028400Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-25T17:54:12.6030069Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-25T17:54:12.6031036Z ##[endgroup]
+2026-10-25T17:54:12.6032485Z ##[group]GITHUB_TOKEN Permissions
+2026-10-25T17:54:12.6035116Z Contents: read
+2026-10-25T17:54:12.6035856Z Metadata: read
+2026-10-25T17:54:12.6036463Z Packages: read
+2026-10-25T17:54:12.6037101Z ##[endgroup]
+2026-10-25T17:54:12.6040006Z Secret source: Actions
+2026-10-25T17:54:12.6041030Z Cache mode: write
+2026-10-25T17:54:12.6042097Z Prepare workflow directory
+2026-10-25T17:54:12.6403985Z Prepare all required actions
+2026-10-25T17:54:12.6458408Z Getting action download info
+2026-10-25T17:54:12.8671763Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-25T17:54:12.9613250Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-25T17:54:13.1874065Z Complete job name: Build NetHunter Kernel (Rohit Sharma Edition)
+2026-10-25T17:54:13.2700764Z ##[group]Run actions/checkout@v4
+2026-10-25T17:54:13.2701650Z with:
+2026-10-25T17:54:13.2702287Z   repository: ROHITSHARMA838888/POCO-F7-NetHunter-Kernel-Rohit-Edition
+2026-10-25T17:54:13.2706924Z   token: ***
+2026-10-25T17:54:13.2707365Z   ssh-strict: true
+2026-10-25T17:54:13.2707791Z   ssh-user: git
+2026-10-25T17:54:13.2708226Z   persist-credentials: true
+2026-10-25T17:54:13.2708708Z   clean: true
+2026-10-25T17:54:13.2709148Z   sparse-checkout-cone-mode: true
+2026-10-25T17:54:13.2709658Z   fetch-depth: 1
+2026-10-25T17:54:13.2710085Z   fetch-tags: false
+2026-10-25T17:54:13.2710520Z   show-progress: true
+2026-10-25T17:54:13.2710961Z   lfs: false
+2026-10-25T17:54:13.2711359Z   submodules: false
+2026-10-25T17:54:13.2711800Z   set-safe-directory: true
+2026-10-25T17:54:13.2712307Z   allow-unsafe-pr-checkout: false
+2026-10-25T17:54:13.2713325Z ##[endgroup]
+2026-10-25T17:54:13.3730657Z Syncing repository: ROHITSHARMA838888/POCO-F7-NetHunter-Kernel-Rohit-Edition
+2026-10-25T17:54:13.3734154Z ##[group]Getting Git version info
+2026-10-25T17:54:13.3735976Z Working directory is '/home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition'
+2026-10-25T17:54:13.3738273Z [command]/usr/bin/git version
+2026-10-25T17:54:13.3812829Z git version 2.55.0
+2026-10-25T17:54:13.3839236Z ##[endgroup]
+2026-10-25T17:54:13.3855068Z Temporarily overriding HOME='/home/runner/work/_temp/951a37c3-d3bd-4b2e-89b4-e041981b749f' before making global git config changes
+2026-10-25T17:54:13.3857665Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-25T17:54:13.3862161Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition
+2026-10-25T17:54:13.3918498Z Deleting the contents of '/home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition'
+2026-10-25T17:54:13.3926602Z ##[group]Initializing the repository
+2026-10-25T17:54:13.3944617Z [command]/usr/bin/git init /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition
+2026-10-25T17:54:13.4047430Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-25T17:54:13.4049139Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-25T17:54:13.4050827Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-25T17:54:13.4052156Z hint: call:
+2026-10-25T17:54:13.4053097Z hint:
+2026-10-25T17:54:13.4054075Z hint: 	git config --global init.defaultBranch <name>
+2026-10-25T17:54:13.4055210Z hint:
+2026-10-25T17:54:13.4056218Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-25T17:54:13.4057913Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-25T17:54:13.4059250Z hint:
+2026-10-25T17:54:13.4059996Z hint: 	git branch -m <name>
+2026-10-25T17:54:13.4060778Z hint:
+2026-10-25T17:54:13.4062046Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-25T17:54:13.4064909Z Initialized empty Git repository in /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/.git/
+2026-10-25T17:54:13.4072252Z [command]/usr/bin/git remote add origin https://github.com/ROHITSHARMA838888/POCO-F7-NetHunter-Kernel-Rohit-Edition
+2026-10-25T17:54:13.4126092Z ##[endgroup]
+2026-10-25T17:54:13.4131997Z ##[group]Disabling automatic garbage collection
+2026-10-25T17:54:13.4133055Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-25T17:54:13.4173626Z ##[endgroup]
+2026-10-25T17:54:13.4174906Z ##[group]Setting up auth
+2026-10-25T17:54:13.4182244Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-25T17:54:13.4217929Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-25T17:54:13.4591219Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-25T17:54:13.4631059Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-25T17:54:13.4863894Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-25T17:54:13.4903895Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-25T17:54:13.5130787Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-25T17:54:13.5175072Z ##[endgroup]
+2026-10-25T17:54:13.5176357Z ##[group]Fetching the repository
+2026-10-25T17:54:13.5185147Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +1c460a2ec96d7d559529ba4a914549e296d335a8:refs/remotes/origin/main
+2026-10-25T17:54:13.7407380Z From https://github.com/ROHITSHARMA838888/POCO-F7-NetHunter-Kernel-Rohit-Edition
+2026-10-25T17:54:13.7409604Z  * [new ref]         1c460a2ec96d7d559529ba4a914549e296d335a8 -> origin/main
+2026-10-25T17:54:13.7413002Z ##[endgroup]
+2026-10-25T17:54:13.7414459Z ##[group]Determining the checkout info
+2026-10-25T17:54:13.7416038Z ##[endgroup]
+2026-10-25T17:54:13.7420251Z [command]/usr/bin/git sparse-checkout disable
+2026-10-25T17:54:13.7477994Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-25T17:54:13.7511242Z ##[group]Checking out the ref
+2026-10-25T17:54:13.7516131Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-25T17:54:13.7619726Z Switched to a new branch 'main'
+2026-10-25T17:54:13.7625299Z branch 'main' set up to track 'origin/main'.
+2026-10-25T17:54:13.7632378Z ##[endgroup]
+2026-10-25T17:54:13.7682143Z [command]/usr/bin/git log -1 --format=%H
+2026-10-25T17:54:13.7710373Z 1c460a2ec96d7d559529ba4a914549e296d335a8
+2026-10-25T17:54:13.7947373Z ##[group]Run sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+2026-10-25T17:54:13.7948713Z [36;1msudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL[0m
+2026-10-25T17:54:13.7949606Z [36;1msudo apt-get clean[0m
+2026-10-25T17:54:13.8214826Z shell: /usr/bin/bash -e {0}
+2026-10-25T17:54:13.8215592Z ##[endgroup]
+2026-10-25T17:55:02.8449547Z ##[group]Run sudo apt-get update
+2026-10-25T17:55:02.8449953Z [36;1msudo apt-get update[0m
+2026-10-25T17:55:02.8450638Z [36;1msudo apt-get install -y build-essential bc bison flex libssl-dev libelf-dev libncurses-dev git ccache curl wget zip python3 clang lld llvm[0m
+2026-10-25T17:55:02.8517292Z shell: /usr/bin/bash -e {0}
+2026-10-25T17:55:02.8517669Z ##[endgroup]
+2026-10-25T17:55:02.9339329Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-25T17:55:02.9637055Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-10-25T17:55:02.9639180Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-10-25T17:55:02.9655752Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-10-25T17:55:02.9694132Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-10-25T17:55:02.9746046Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-10-25T17:55:03.0921725Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [598 kB]
+2026-10-25T17:55:03.1098444Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [660 kB]
+2026-10-25T17:55:03.1148638Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [12.4 kB]
+2026-10-25T17:55:03.1473773Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1400 kB]
+2026-10-25T17:55:03.1574735Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [310 kB]
+2026-10-25T17:55:03.1584315Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1706 kB]
+2026-10-25T17:55:03.1649995Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [342 kB]
+2026-10-25T17:55:03.1674495Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1805 kB]
+2026-10-25T17:55:03.1758923Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [411 kB]
+2026-10-25T17:55:03.2894455Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1146 kB]
+2026-10-25T17:55:03.2957048Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [231 kB]
+2026-10-25T17:55:03.2984408Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1222 kB]
+2026-10-25T17:55:03.3055517Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [246 kB]
+2026-10-25T17:55:03.3565632Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1713 kB]
+2026-10-25T17:55:03.3654984Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [392 kB]
+2026-10-25T17:55:06.6275928Z Fetched 12.6 MB in 1s (9841 kB/s)
+2026-10-25T17:55:07.6955545Z Reading package lists...
+2026-10-25T17:55:07.7273676Z Reading package lists...
+2026-10-25T17:55:07.9781381Z Building dependency tree...
+2026-10-25T17:55:07.9789372Z Reading state information...
+2026-10-25T17:55:08.1447968Z bc is already the newest version (1.07.1-3ubuntu4).
+2026-10-25T17:55:08.1448948Z bc set to manually installed.
+2026-10-25T17:55:08.1449836Z bison is already the newest version (2:3.8.2+dfsg-1ubuntu0.24.04.1).
+2026-10-25T17:55:08.1450778Z flex is already the newest version (2.6.4-8.2build1).
+2026-10-25T17:55:08.1451637Z libssl-dev is already the newest version (3.0.13-0ubuntu3.16).
+2026-10-25T17:55:08.1452621Z libncurses-dev is already the newest version (6.4+20240113-1ubuntu2.2).
+2026-10-25T17:55:08.1454709Z libncurses-dev set to manually installed.
+2026-10-25T17:55:08.1455703Z git is already the newest version (1:2.55.0-0ppa1~ubuntu24.04.2).
+2026-10-25T17:55:08.1456548Z git set to manually installed.
+2026-10-25T17:55:08.1457286Z wget is already the newest version (1.21.4-1ubuntu4.5).
+2026-10-25T17:55:08.1457963Z zip is already the newest version (3.0-13ubuntu0.2).
+2026-10-25T17:55:08.1459225Z python3 is already the newest version (3.12.3-0ubuntu2.1).
+2026-10-25T17:55:08.1459826Z The following additional packages will be installed:
+2026-10-25T17:55:08.1460388Z   libcurl3t64-gnutls libcurl4t64 libhiredis1.1.0 llvm-runtime
+2026-10-25T17:55:08.1460745Z Suggested packages:
+2026-10-25T17:55:08.1460965Z   distcc | icecc
+2026-10-25T17:55:08.1644312Z The following NEW packages will be installed:
+2026-10-25T17:55:08.1649235Z   build-essential ccache clang libelf-dev libhiredis1.1.0 lld llvm
+2026-10-25T17:55:08.1652151Z   llvm-runtime
+2026-10-25T17:55:08.1656670Z The following packages will be upgraded:
+2026-10-25T17:55:08.1664346Z   curl libcurl3t64-gnutls libcurl4t64
+2026-10-25T17:55:08.1834049Z 3 upgraded, 8 newly installed, 0 to remove and 97 not upgraded.
+2026-10-25T17:55:08.1834645Z Need to get 1635 kB of archives.
+2026-10-25T17:55:08.1835019Z After this operation, 2332 kB of additional disk space will be used.
+2026-10-25T17:55:08.1835478Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-25T17:55:08.2134262Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 build-essential amd64 12.10ubuntu1 [4928 B]
+2026-10-25T17:55:08.2280670Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libhiredis1.1.0 amd64 1.2.0-6ubuntu3 [41.4 kB]
+2026-10-25T17:55:08.2428400Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 ccache amd64 4.9.1-1 [592 kB]
+2026-10-25T17:55:08.2612530Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 clang amd64 1:18.0-59~exp2 [5846 B]
+2026-10-25T17:55:08.2757755Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 curl amd64 8.5.0-2ubuntu10.16 [226 kB]
+2026-10-25T17:55:08.2917189Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl4t64 amd64 8.5.0-2ubuntu10.16 [344 kB]
+2026-10-25T17:55:08.3084080Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl3t64-gnutls amd64 8.5.0-2ubuntu10.16 [337 kB]
+2026-10-25T17:55:08.3250041Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libelf-dev amd64 0.190-1.1ubuntu0.1 [68.5 kB]
+2026-10-25T17:55:08.3394818Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 lld amd64 1:18.0-59~exp2 [5494 B]
+2026-10-25T17:55:08.3536652Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 llvm-runtime amd64 1:18.0-59~exp2 [5496 B]
+2026-10-25T17:55:08.3679048Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 llvm amd64 1:18.0-59~exp2 [4146 B]
+2026-10-25T17:55:08.6346878Z Fetched 1635 kB in 0s (8372 kB/s)
+2026-10-25T17:55:08.6565648Z Selecting previously unselected package build-essential.
+2026-10-25T17:55:08.6868061Z (Reading database ... 
+2026-10-25T17:55:08.6873729Z (Reading database ... 5%
+2026-10-25T17:55:08.6874187Z (Reading database ... 10%
+2026-10-25T17:55:08.6874881Z (Reading database ... 15%
+2026-10-25T17:55:08.6875443Z (Reading database ... 20%
+2026-10-25T17:55:08.6875956Z (Reading database ... 25%
+2026-10-25T17:55:08.6876333Z (Reading database ... 30%
+2026-10-25T17:55:08.6876687Z (Reading database ... 35%
+2026-10-25T17:55:08.6877011Z (Reading database ... 40%
+2026-10-25T17:55:08.6877331Z (Reading database ... 45%
+2026-10-25T17:55:08.6877646Z (Reading database ... 50%
+2026-10-25T17:55:08.6917819Z (Reading database ... 55%
+2026-10-25T17:55:08.7941829Z (Reading database ... 60%
+2026-10-25T17:55:08.9984992Z (Reading database ... 65%
+2026-10-25T17:55:09.2030030Z (Reading database ... 70%
+2026-10-25T17:55:09.3852036Z (Reading database ... 75%
+2026-10-25T17:55:09.5074110Z (Reading database ... 80%
+2026-10-25T17:55:09.6838979Z (Reading database ... 85%
+2026-10-25T17:55:09.8248479Z (Reading database ... 90%
+2026-10-25T17:55:09.9583051Z (Reading database ... 95%
+2026-10-25T17:55:09.9583631Z (Reading database ... 100%
+2026-10-25T17:55:09.9584360Z (Reading database ... 203540 files and directories currently installed.)
+2026-10-25T17:55:09.9636076Z Preparing to unpack .../00-build-essential_12.10ubuntu1_amd64.deb ...
+2026-10-25T17:55:10.2484825Z Unpacking build-essential (12.10ubuntu1) ...
+2026-10-25T17:55:10.2704676Z Selecting previously unselected package libhiredis1.1.0:amd64.
+2026-10-25T17:55:10.2837645Z Preparing to unpack .../01-libhiredis1.1.0_1.2.0-6ubuntu3_amd64.deb ...
+2026-10-25T17:55:10.2856720Z Unpacking libhiredis1.1.0:amd64 (1.2.0-6ubuntu3) ...
+2026-10-25T17:55:10.3080892Z Selecting previously unselected package ccache.
+2026-10-25T17:55:10.3213994Z Preparing to unpack .../02-ccache_4.9.1-1_amd64.deb ...
+2026-10-25T17:55:10.3224546Z Unpacking ccache (4.9.1-1) ...
+2026-10-25T17:55:10.3560193Z Selecting previously unselected package clang.
+2026-10-25T17:55:10.3693738Z Preparing to unpack .../03-clang_1%3a18.0-59~exp2_amd64.deb ...
+2026-10-25T17:55:10.3702949Z Unpacking clang (1:18.0-59~exp2) ...
+2026-10-25T17:55:10.4046341Z Preparing to unpack .../04-curl_8.5.0-2ubuntu10.16_amd64.deb ...
+2026-10-25T17:55:10.4067376Z Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+2026-10-25T17:55:10.4466377Z Preparing to unpack .../05-libcurl4t64_8.5.0-2ubuntu10.16_amd64.deb ...
+2026-10-25T17:55:10.4488581Z Unpacking libcurl4t64:amd64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+2026-10-25T17:55:10.4872333Z Preparing to unpack .../06-libcurl3t64-gnutls_8.5.0-2ubuntu10.16_amd64.deb ...
+2026-10-25T17:55:10.4893445Z Unpacking libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+2026-10-25T17:55:10.5147103Z Selecting previously unselected package libelf-dev:amd64.
+2026-10-25T17:55:10.5283492Z Preparing to unpack .../07-libelf-dev_0.190-1.1ubuntu0.1_amd64.deb ...
+2026-10-25T17:55:10.5290401Z Unpacking libelf-dev:amd64 (0.190-1.1ubuntu0.1) ...
+2026-10-25T17:55:10.5545595Z Selecting previously unselected package lld:amd64.
+2026-10-25T17:55:10.5677047Z Preparing to unpack .../08-lld_1%3a18.0-59~exp2_amd64.deb ...
+2026-10-25T17:55:10.5685500Z Unpacking lld:amd64 (1:18.0-59~exp2) ...
+2026-10-25T17:55:10.5889026Z Selecting previously unselected package llvm-runtime:amd64.
+2026-10-25T17:55:10.6019215Z Preparing to unpack .../09-llvm-runtime_1%3a18.0-59~exp2_amd64.deb ...
+2026-10-25T17:55:10.6027002Z Unpacking llvm-runtime:amd64 (1:18.0-59~exp2) ...
+2026-10-25T17:55:10.6237791Z Selecting previously unselected package llvm.
+2026-10-25T17:55:10.6370523Z Preparing to unpack .../10-llvm_1%3a18.0-59~exp2_amd64.deb ...
+2026-10-25T17:55:10.6403027Z Unpacking llvm (1:18.0-59~exp2) ...
+2026-10-25T17:55:10.6921191Z Setting up libcurl4t64:amd64 (8.5.0-2ubuntu10.16) ...
+2026-10-25T17:55:10.6941188Z Setting up lld:amd64 (1:18.0-59~exp2) ...
+2026-10-25T17:55:10.6957626Z Setting up libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.16) ...
+2026-10-25T17:55:10.6974682Z Setting up clang (1:18.0-59~exp2) ...
+2026-10-25T17:55:10.7174902Z Setting up llvm-runtime:amd64 (1:18.0-59~exp2) ...
+2026-10-25T17:55:10.7192842Z Setting up libelf-dev:amd64 (0.190-1.1ubuntu0.1) ...
+2026-10-25T17:55:10.7211134Z Setting up llvm (1:18.0-59~exp2) ...
+2026-10-25T17:55:10.7227527Z Setting up build-essential (12.10ubuntu1) ...
+2026-10-25T17:55:10.7242969Z Setting up curl (8.5.0-2ubuntu10.16) ...
+2026-10-25T17:55:10.7259722Z Setting up libhiredis1.1.0:amd64 (1.2.0-6ubuntu3) ...
+2026-10-25T17:55:10.7276507Z Setting up ccache (4.9.1-1) ...
+2026-10-25T17:55:10.7298061Z Updating symlinks in /usr/lib/ccache ...
+2026-10-25T17:55:10.7435656Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+2026-10-25T17:55:10.7747883Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-10-25T17:55:10.7768750Z Not building database; man-db/auto-update is not 'true'.
+2026-10-25T17:55:11.4035540Z 
+2026-10-25T17:55:11.4036119Z Running kernel seems to be up-to-date.
+2026-10-25T17:55:11.4036872Z 
+2026-10-25T17:55:11.4037036Z Restarting services...
+2026-10-25T17:55:11.4214655Z  systemctl restart packagekit.service php8.3-fpm.service
+2026-10-25T17:55:11.5373835Z 
+2026-10-25T17:55:11.5374684Z No containers need to be restarted.
+2026-10-25T17:55:11.5375201Z 
+2026-10-25T17:55:11.5375680Z No user sessions are running outdated binaries.
+2026-10-25T17:55:11.5376236Z 
+2026-10-25T17:55:11.5376756Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-10-25T17:55:12.6616065Z ##[group]Run mkdir -p $GITHUB_WORKSPACE/toolchain
+2026-10-25T17:55:12.6616470Z [36;1mmkdir -p $GITHUB_WORKSPACE/toolchain[0m
+2026-10-25T17:55:12.6616781Z [36;1mcd $GITHUB_WORKSPACE/toolchain[0m
+2026-10-25T17:55:12.6617415Z [36;1mwget -q https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r522817.tar.gz[0m
+2026-10-25T17:55:12.6618058Z [36;1mtar -zxf clang-r522817.tar.gz[0m
+2026-10-25T17:55:12.6618346Z [36;1mrm -f clang-r522817.tar.gz[0m
+2026-10-25T17:55:12.6691163Z shell: /usr/bin/bash -e {0}
+2026-10-25T17:55:12.6691433Z ##[endgroup]
+2026-10-25T17:59:52.8742480Z ##[group]Run cd $GITHUB_WORKSPACE
+2026-10-25T17:59:52.8743014Z [36;1mcd $GITHUB_WORKSPACE[0m
+2026-10-25T17:59:52.8743446Z [36;1mgit clone --depth=1 https://github.com/onyx-oss/konoha-kernel-gki.git kernel-source[0m
+2026-10-25T17:59:52.8813700Z shell: /usr/bin/bash -e {0}
+2026-10-25T17:59:52.8814007Z ##[endgroup]
+2026-10-25T17:59:52.8918093Z Cloning into 'kernel-source'...
+2026-10-25T18:00:36.4381159Z Updating files:  19% (14998/78088)
+2026-10-25T18:00:36.4833461Z Updating files:  20% (15618/78088)
+2026-10-25T18:00:36.5389141Z Updating files:  21% (16399/78088)
+2026-10-25T18:00:36.5830385Z Updating files:  22% (17180/78088)
+2026-10-25T18:00:36.6265655Z Updating files:  23% (17961/78088)
+2026-10-25T18:00:36.6719260Z Updating files:  24% (18742/78088)
+2026-10-25T18:00:36.7206592Z Updating files:  25% (19522/78088)
+2026-10-25T18:00:36.7813913Z Updating files:  26% (20303/78088)
+2026-10-25T18:00:36.8358026Z Updating files:  27% (21084/78088)
+2026-10-25T18:00:36.9098262Z Updating files:  28% (21865/78088)
+2026-10-25T18:00:36.9837821Z Updating files:  29% (22646/78088)
+2026-10-25T18:00:37.0395585Z Updating files:  30% (23427/78088)
+2026-10-25T18:00:37.1089144Z Updating files:  31% (24208/78088)
+2026-10-25T18:00:37.1704226Z Updating files:  32% (24989/78088)
+2026-10-25T18:00:37.2371157Z Updating files:  33% (25770/78088)
+2026-10-25T18:00:37.3107105Z Updating files:  34% (26550/78088)
+2026-10-25T18:00:37.3815445Z Updating files:  35% (27331/78088)
+2026-10-25T18:00:37.4064416Z Updating files:  36% (28112/78088)
+2026-10-25T18:00:38.1218829Z Updating files:  36% (28277/78088)
+2026-10-25T18:00:38.1913708Z Updating files:  37% (28893/78088)
+2026-10-25T18:00:38.2518786Z Updating files:  38% (29674/78088)
+2026-10-25T18:00:38.3048366Z Updating files:  39% (30455/78088)
+2026-10-25T18:00:38.3504606Z Updating files:  40% (31236/78088)
+2026-10-25T18:00:38.4039415Z Updating files:  41% (32017/78088)
+2026-10-25T18:00:38.4200880Z Updating files:  41% (32584/78088)
+2026-10-25T18:00:38.4882278Z Updating files:  42% (32797/78088)
+2026-10-25T18:00:38.5530448Z Updating files:  43% (33578/78088)
+2026-10-25T18:00:38.6286033Z Updating files:  44% (34359/78088)
+2026-10-25T18:00:38.6953625Z Updating files:  45% (35140/78088)
+2026-10-25T18:00:38.7636238Z Updating files:  46% (35921/78088)
+2026-10-25T18:00:38.8382499Z Updating files:  47% (36702/78088)
+2026-10-25T18:00:38.8988760Z Updating files:  48% (37483/78088)
+2026-10-25T18:00:38.9564071Z Updating files:  49% (38264/78088)
+2026-10-25T18:00:39.0258391Z Updating files:  50% (39044/78088)
+2026-10-25T18:00:39.0976402Z Updating files:  51% (39825/78088)
+2026-10-25T18:00:39.1870896Z Updating files:  52% (40606/78088)
+2026-10-25T18:00:39.2790656Z Updating files:  53% (41387/78088)
+2026-10-25T18:00:39.3573348Z Updating files:  54% (42168/78088)
+2026-10-25T18:00:39.4039013Z Updating files:  55% (42949/78088)
+2026-10-25T18:00:39.4483356Z Updating files:  55% (43367/78088)
+2026-10-25T18:00:39.5304675Z Updating files:  56% (43730/78088)
+2026-10-25T18:00:39.6203873Z Updating files:  57% (44511/78088)
+2026-10-25T18:00:39.6920680Z Updating files:  58% (45292/78088)
+2026-10-25T18:00:39.7691626Z Updating files:  59% (46072/78088)
+2026-10-25T18:00:39.8364814Z Updating files:  60% (46853/78088)
+2026-10-25T18:00:39.9169992Z Updating files:  61% (47634/78088)
+2026-10-25T18:00:39.9822111Z Updating files:  62% (48415/78088)
+2026-10-25T18:00:40.0625517Z Updating files:  63% (49196/78088)
+2026-10-25T18:00:40.1653198Z Updating files:  64% (49977/78088)
+2026-10-25T18:00:40.2298899Z Updating files:  65% (50758/78088)
+2026-10-25T18:00:40.2804786Z Updating files:  66% (51539/78088)
+2026-10-25T18:00:40.3425273Z Updating files:  67% (52319/78088)
+2026-10-25T18:00:40.4039022Z Updating files:  68% (53100/78088)
+2026-10-25T18:00:40.4281618Z Updating files:  68% (53655/78088)
+2026-10-25T18:00:40.4973944Z Updating files:  69% (53881/78088)
+2026-10-25T18:00:40.5633690Z Updating files:  70% (54662/78088)
+2026-10-25T18:00:40.6467254Z Updating files:  71% (55443/78088)
+2026-10-25T18:00:40.7276449Z Updating files:  72% (56224/78088)
+2026-10-25T18:00:40.7991537Z Updating files:  73% (57005/78088)
+2026-10-25T18:00:40.8432952Z Updating files:  74% (57786/78088)
+2026-10-25T18:00:40.8858908Z Updating files:  75% (58566/78088)
+2026-10-25T18:00:40.9377183Z Updating files:  76% (59347/78088)
+2026-10-25T18:00:40.9914240Z Updating files:  77% (60128/78088)
+2026-10-25T18:00:41.0419845Z Updating files:  78% (60909/78088)
+2026-10-25T18:00:41.0965888Z Updating files:  79% (61690/78088)
+2026-10-25T18:00:41.1459149Z Updating files:  80% (62471/78088)
+2026-10-25T18:00:41.1966096Z Updating files:  81% (63252/78088)
+2026-10-25T18:00:41.2876349Z Updating files:  82% (64033/78088)
+2026-10-25T18:00:41.3591556Z Updating files:  83% (64814/78088)
+2026-10-25T18:00:41.4039352Z Updating files:  84% (65594/78088)
+2026-10-25T18:00:41.4358999Z Updating files:  84% (66051/78088)
+2026-10-25T18:00:41.5060163Z Updating files:  85% (66375/78088)
+2026-10-25T18:00:41.5652238Z Updating files:  86% (67156/78088)
+2026-10-25T18:00:41.6187541Z Updating files:  87% (67937/78088)
+2026-10-25T18:00:41.6889069Z Updating files:  88% (68718/78088)
+2026-10-25T18:00:41.7744404Z Updating files:  89% (69499/78088)
+2026-10-25T18:00:41.8342066Z Updating files:  90% (70280/78088)
+2026-10-25T18:00:41.9043279Z Updating files:  91% (71061/78088)
+2026-10-25T18:00:41.9615186Z Updating files:  92% (71841/78088)
+2026-10-25T18:00:42.0210600Z Updating files:  93% (72622/78088)
+2026-10-25T18:00:42.0747175Z Updating files:  94% (73403/78088)
+2026-10-25T18:00:42.1209955Z Updating files:  95% (74184/78088)
+2026-10-25T18:00:42.1629649Z Updating files:  96% (74965/78088)
+2026-10-25T18:00:42.2078227Z Updating files:  97% (75746/78088)
+2026-10-25T18:00:42.2523848Z Updating files:  98% (76527/78088)
+2026-10-25T18:00:42.2945120Z Updating files:  99% (77308/78088)
+2026-10-25T18:00:42.2945870Z Updating files: 100% (78088/78088)
+2026-10-25T18:00:42.2946479Z Updating files: 100% (78088/78088), done.
+2026-10-25T18:00:42.3799119Z ##[group]Run cd $GITHUB_WORKSPACE/kernel-source
+2026-10-25T18:00:42.3799778Z [36;1mcd $GITHUB_WORKSPACE/kernel-source[0m
+2026-10-25T18:00:42.3800484Z [36;1mecho "[-] Removing Baseband-guard partition write interception..."[0m
+2026-10-25T18:00:42.3801253Z [36;1mrm -rf Baseband-guard security/baseband_guard[0m
+2026-10-25T18:00:42.3801875Z [36;1msed -i '/Baseband-guard/d' Makefile || true[0m
+2026-10-25T18:00:42.3802514Z [36;1msed -i '/baseband_guard/d' security/Makefile || true[0m
+2026-10-25T18:00:42.3803279Z [36;1m[0m
+2026-10-25T18:00:42.3803785Z [36;1mecho "[-] Neutralizing dangerous GPU / Live Patch exploits..."[0m
+2026-10-25T18:00:42.3804860Z [36;1msed -i 's/CONFIG_KGSL_EXPLOIT=y/# CONFIG_KGSL_EXPLOIT is not set/g' arch/arm64/configs/konoha_defconfig || true[0m
+2026-10-25T18:00:42.3892007Z shell: /usr/bin/bash -e {0}
+2026-10-25T18:00:42.3892439Z ##[endgroup]
+2026-10-25T18:00:42.4022571Z [-] Removing Baseband-guard partition write interception...
+2026-10-25T18:00:42.4073861Z [-] Neutralizing dangerous GPU / Live Patch exploits...
+2026-10-25T18:00:42.4146655Z ##[group]Run cd $GITHUB_WORKSPACE/kernel-source
+2026-10-25T18:00:42.4147319Z [36;1mcd $GITHUB_WORKSPACE/kernel-source[0m
+2026-10-25T18:00:42.4148087Z [36;1mecho "[-] Enabling NetHunter USB HID & Wireless injection in konoha_defconfig..."[0m
+2026-10-25T18:00:42.4148833Z [36;1m[0m
+2026-10-25T18:00:42.4149251Z [36;1mcat << 'EOF' >> arch/arm64/configs/konoha_defconfig[0m
+2026-10-25T18:00:42.4149956Z [36;1m# Kali NetHunter - Rohit Sharma Edition Configurations[0m
+2026-10-25T18:00:42.4150554Z [36;1mCONFIG_CFG80211=m[0m
+2026-10-25T18:00:42.4150958Z [36;1mCONFIG_MAC80211=m[0m
+2026-10-25T18:00:42.4151381Z [36;1mCONFIG_MAC80211_RC_MINSTREL=y[0m
+2026-10-25T18:00:42.4151885Z [36;1mCONFIG_MAC80211_RC_DEFAULT_MINSTREL=y[0m
+2026-10-25T18:00:42.4152407Z [36;1mCONFIG_WLAN_VENDOR_REALTEK=y[0m
+2026-10-25T18:00:42.4153089Z [36;1mCONFIG_RTL8XXXU=m[0m
+2026-10-25T18:00:42.4153511Z [36;1mCONFIG_RTL8XXXU_UNTESTED=y[0m
+2026-10-25T18:00:42.4154026Z [36;1mCONFIG_WLAN_VENDOR_ATH=y[0m
+2026-10-25T18:00:42.4154462Z [36;1mCONFIG_ATH9K_HW=m[0m
+2026-10-25T18:00:42.4154866Z [36;1mCONFIG_ATH9K_COMMON=m[0m
+2026-10-25T18:00:42.4155282Z [36;1mCONFIG_ATH9K_HTC=m[0m
+2026-10-25T18:00:42.4155724Z [36;1mCONFIG_ATH9K_HTC_DEBUGFS=y[0m
+2026-10-25T18:00:42.4156183Z [36;1mCONFIG_WLAN_VENDOR_RALINK=y[0m
+2026-10-25T18:00:42.4156627Z [36;1mCONFIG_RT2X00=m[0m
+2026-10-25T18:00:42.4157018Z [36;1mCONFIG_RT2800USB=m[0m
+2026-10-25T18:00:42.4157436Z [36;1mCONFIG_RT2800USB_RT3573=y[0m
+2026-10-25T18:00:42.4157883Z [36;1mCONFIG_RT2800USB_RT53XX=y[0m
+2026-10-25T18:00:42.4158320Z [36;1mCONFIG_RT2800USB_RT55XX=y[0m
+2026-10-25T18:00:42.4158765Z [36;1mCONFIG_RT2800USB_UNKNOWN=y[0m
+2026-10-25T18:00:42.4159212Z [36;1mCONFIG_USB_CONFIGFS_F_HID=y[0m
+2026-10-25T18:00:42.4159659Z [36;1mCONFIG_USB_F_HID=y[0m
+2026-10-25T18:00:42.4160043Z [36;1mEOF[0m
+2026-10-25T18:00:42.4248710Z shell: /usr/bin/bash -e {0}
+2026-10-25T18:00:42.4249157Z ##[endgroup]
+2026-10-25T18:00:42.4357676Z [-] Enabling NetHunter USB HID & Wireless injection in konoha_defconfig...
+2026-10-25T18:00:42.4409113Z ##[group]Run cd $GITHUB_WORKSPACE/kernel-source
+2026-10-25T18:00:42.4409524Z [36;1mcd $GITHUB_WORKSPACE/kernel-source[0m
+2026-10-25T18:00:42.4409907Z [36;1mecho "[-] Cloning morrownr/8821au for Archer T2U Plus..."[0m
+2026-10-25T18:00:42.4410575Z [36;1mgit clone --depth=1 -b v5.12.5.2 https://github.com/morrownr/8821au.git drivers/net/wireless/realtek/rtl8821au || true[0m
+2026-10-25T18:00:42.4411229Z [36;1mif [ -d "drivers/net/wireless/realtek/rtl8821au" ]; then[0m
+2026-10-25T18:00:42.4411730Z [36;1m  echo "obj-\$(CONFIG_8821AU) += rtl8821au/" >> drivers/net/wireless/realtek/Makefile[0m
+2026-10-25T18:00:42.4412424Z [36;1m  echo 'source "drivers/net/wireless/realtek/rtl8821au/Kconfig"' >> drivers/net/wireless/realtek/Kconfig[0m
+2026-10-25T18:00:42.4413475Z [36;1m  echo "CONFIG_8821AU=m" >> arch/arm64/configs/konoha_defconfig[0m
+2026-10-25T18:00:42.4413833Z [36;1mfi[0m
+2026-10-25T18:00:42.4480493Z shell: /usr/bin/bash -e {0}
+2026-10-25T18:00:42.4480785Z ##[endgroup]
+2026-10-25T18:00:42.4571013Z [-] Cloning morrownr/8821au for Archer T2U Plus...
+2026-10-25T18:00:42.4585122Z Cloning into 'drivers/net/wireless/realtek/rtl8821au'...
+2026-10-25T18:00:42.5261362Z fatal: could not read Username for 'https://github.com': No such device or address
+2026-10-25T18:00:42.5325724Z ##[group]Run cd $GITHUB_WORKSPACE/kernel-source
+2026-10-25T18:00:42.5326185Z [36;1mcd $GITHUB_WORKSPACE/kernel-source[0m
+2026-10-25T18:00:42.5326545Z [36;1mecho "[-] Setting up official KernelSU-Next..."[0m
+2026-10-25T18:00:42.5327203Z [36;1mcurl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash -s next[0m
+2026-10-25T18:00:42.5327870Z [36;1mecho "CONFIG_KSU=y" >> arch/arm64/configs/konoha_defconfig[0m
+2026-10-25T18:00:42.5398712Z shell: /usr/bin/bash -e {0}
+2026-10-25T18:00:42.5399039Z ##[endgroup]
+2026-10-25T18:00:42.5494485Z [-] Setting up official KernelSU-Next...
+2026-10-25T18:00:42.6305271Z [+] Setting up KernelSU-Next...
+2026-10-25T18:00:42.6320066Z Cloning into 'KernelSU-Next'...
+2026-10-25T18:00:43.7674508Z [+] Repository cloned.
+2026-10-25T18:00:43.8024215Z No local changes to save
+2026-10-25T18:00:43.8027449Z [-] Stashed current changes.
+2026-10-25T18:00:43.9498288Z Already up to date.
+2026-10-25T18:00:43.9503891Z [+] Repository updated.
+2026-10-25T18:00:43.9520488Z error: pathspec 'next' did not match any file(s) known to git
+2026-10-25T18:00:43.9525702Z [-] Checkout default branch
+2026-10-25T18:00:43.9555255Z [+] Symlink created.
+2026-10-25T18:00:43.9569172Z [+] Modified Makefile.
+2026-10-25T18:00:43.9582924Z [+] Modified Kconfig.
+2026-10-25T18:00:43.9583430Z [+] Done.
+2026-10-25T18:00:43.9630967Z ##[group]Run cd $GITHUB_WORKSPACE/kernel-source
+2026-10-25T18:00:43.9631365Z [36;1mcd $GITHUB_WORKSPACE/kernel-source[0m
+2026-10-25T18:00:43.9631722Z [36;1mexport PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"[0m
+2026-10-25T18:00:43.9632055Z [36;1mexport ARCH=arm64[0m
+2026-10-25T18:00:43.9632311Z [36;1mexport SUBARCH=arm64[0m
+2026-10-25T18:00:43.9632545Z [36;1mexport CC="clang"[0m
+2026-10-25T18:00:43.9633077Z [36;1mexport LD="ld.lld"[0m
+2026-10-25T18:00:43.9633303Z [36;1mexport LLVM=1[0m
+2026-10-25T18:00:43.9633517Z [36;1mexport LLVM_IAS=1[0m
+2026-10-25T18:00:43.9633772Z [36;1mexport CLANG_TRIPLE="aarch64-linux-gnu-"[0m
+2026-10-25T18:00:43.9634096Z [36;1mexport CROSS_COMPILE="aarch64-linux-gnu-"[0m
+2026-10-25T18:00:43.9634427Z [36;1mexport KERNEL_KCFLAGS="-w -Wno-error"[0m
+2026-10-25T18:00:43.9634702Z [36;1m[0m
+2026-10-25T18:00:43.9634887Z [36;1mmkdir -p out[0m
+2026-10-25T18:00:43.9635273Z [36;1mmake O=out CC=clang LLVM=1 LLVM_IAS=1 KCFLAGS="$KERNEL_KCFLAGS" konoha_defconfig[0m
+2026-10-25T18:00:43.9635867Z [36;1mmake -j$(nproc --all) O=out CC=clang LLVM=1 LLVM_IAS=1 KCFLAGS="$KERNEL_KCFLAGS" Image modules[0m
+2026-10-25T18:00:43.9702386Z shell: /usr/bin/bash -e {0}
+2026-10-25T18:00:43.9702968Z ##[endgroup]
+2026-10-25T18:00:43.9862482Z make[1]: Entering directory '/home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/out'
+2026-10-25T18:00:44.0983741Z   GEN     Makefile
+2026-10-25T18:00:44.1148240Z   HOSTCC  scripts/basic/fixdep
+2026-10-25T18:00:44.2364897Z   HOSTCC  scripts/kconfig/conf.o
+2026-10-25T18:00:44.3489712Z   HOSTCC  scripts/kconfig/confdata.o
+2026-10-25T18:00:44.4879554Z   HOSTCC  scripts/kconfig/expr.o
+2026-10-25T18:00:44.6117830Z   LEX     scripts/kconfig/lexer.lex.c
+2026-10-25T18:00:44.6216153Z   YACC    scripts/kconfig/parser.tab.[ch]
+2026-10-25T18:00:44.7871821Z   HOSTCC  scripts/kconfig/lexer.lex.o
+2026-10-25T18:00:44.9895003Z   HOSTCC  scripts/kconfig/menu.o
+2026-10-25T18:00:45.1023700Z   HOSTCC  scripts/kconfig/parser.tab.o
+2026-10-25T18:00:45.2242077Z   HOSTCC  scripts/kconfig/preprocess.o
+2026-10-25T18:00:45.3093361Z   HOSTCC  scripts/kconfig/symbol.o
+2026-10-25T18:00:45.4916978Z   HOSTCC  scripts/kconfig/util.o
+2026-10-25T18:00:45.5288019Z   HOSTLD  scripts/kconfig/conf
+2026-10-25T18:00:47.0440306Z arch/arm64/configs/konoha_defconfig:7966:warning: override: reassigning to symbol CFG80211
+2026-10-25T18:00:47.0441492Z arch/arm64/configs/konoha_defconfig:7970:warning: override: reassigning to symbol WLAN_VENDOR_REALTEK
+2026-10-25T18:00:47.0443002Z arch/arm64/configs/konoha_defconfig:7973:warning: override: reassigning to symbol WLAN_VENDOR_ATH
+2026-10-25T18:00:47.0444191Z arch/arm64/configs/konoha_defconfig:7978:warning: override: reassigning to symbol WLAN_VENDOR_RALINK
+2026-10-25T18:00:47.0445374Z arch/arm64/configs/konoha_defconfig:7985:warning: override: reassigning to symbol USB_CONFIGFS_F_HID
+2026-10-25T18:00:47.0446520Z arch/arm64/configs/konoha_defconfig:7986:warning: override: reassigning to symbol USB_F_HID
+2026-10-25T18:00:47.1372295Z #
+2026-10-25T18:00:47.1403602Z # configuration written to .config
+2026-10-25T18:00:47.1404258Z #
+2026-10-25T18:00:47.1405125Z make[1]: Leaving directory '/home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/out'
+2026-10-25T18:00:47.1476927Z make[1]: Entering directory '/home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/out'
+2026-10-25T18:00:47.6358020Z /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/Makefile:1507: warning: overriding recipe for target 'dtbs'
+2026-10-25T18:00:47.6359966Z /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/Makefile:1199: warning: ignoring old recipe for target 'dtbs'
+2026-10-25T18:00:47.6362366Z /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/Makefile:1525: warning: overriding recipe for target 'dtbs_install'
+2026-10-25T18:00:47.6364653Z /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/Makefile:1209: warning: ignoring old recipe for target 'dtbs_install'
+2026-10-25T18:00:47.6366596Z /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/Makefile:1535: warning: overriding recipe for target 'scripts_dtc'
+2026-10-25T18:00:47.6368415Z /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/Makefile:1219: warning: ignoring old recipe for target 'scripts_dtc'
+2026-10-25T18:00:47.6370062Z /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/Makefile:1543: warning: overriding recipe for target 'dt_binding_check'
+2026-10-25T18:00:47.6371722Z /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/Makefile:1227: warning: ignoring old recipe for target 'dt_binding_check'
+2026-10-25T18:00:47.7108377Z   GEN     Makefile
+2026-10-25T18:00:47.7142875Z   HOSTCC  arch/arm64/tools/gen-hyprel
+2026-10-25T18:00:47.7245941Z   WRAP    arch/arm64/include/generated/uapi/asm/kvm_para.h
+2026-10-25T18:00:47.7266755Z   WRAP    arch/arm64/include/generated/uapi/asm/errno.h
+2026-10-25T18:00:47.7278969Z   WRAP    arch/arm64/include/generated/uapi/asm/ioctl.h
+2026-10-25T18:00:47.7295408Z   WRAP    arch/arm64/include/generated/uapi/asm/ioctls.h
+2026-10-25T18:00:47.7350518Z   WRAP    arch/arm64/include/generated/uapi/asm/ipcbuf.h
+2026-10-25T18:00:47.7357864Z   HOSTCC  scripts/dtc/dtc.o
+2026-10-25T18:00:47.7381532Z   WRAP    arch/arm64/include/generated/uapi/asm/msgbuf.h
+2026-10-25T18:00:47.7397471Z   WRAP    arch/arm64/include/generated/uapi/asm/poll.h
+2026-10-25T18:00:47.7411881Z   WRAP    arch/arm64/include/generated/uapi/asm/resource.h
+2026-10-25T18:00:47.7423932Z   WRAP    arch/arm64/include/generated/uapi/asm/sembuf.h
+2026-10-25T18:00:47.7480877Z   WRAP    arch/arm64/include/generated/uapi/asm/shmbuf.h
+2026-10-25T18:00:47.7504148Z   WRAP    arch/arm64/include/generated/uapi/asm/siginfo.h
+2026-10-25T18:00:47.7534054Z   WRAP    arch/arm64/include/generated/uapi/asm/socket.h
+2026-10-25T18:00:47.7564256Z   WRAP    arch/arm64/include/generated/uapi/asm/sockios.h
+2026-10-25T18:00:47.7565461Z   WRAP    arch/arm64/include/generated/uapi/asm/stat.h
+2026-10-25T18:00:47.7594032Z   WRAP    arch/arm64/include/generated/uapi/asm/swab.h
+2026-10-25T18:00:47.7624284Z   WRAP    arch/arm64/include/generated/uapi/asm/termbits.h
+2026-10-25T18:00:47.7654067Z   WRAP    arch/arm64/include/generated/uapi/asm/termios.h
+2026-10-25T18:00:47.7655239Z   WRAP    arch/arm64/include/generated/uapi/asm/types.h
+2026-10-25T18:00:47.7663895Z   HOSTCC  scripts/dtc/flattree.o
+2026-10-25T18:00:47.8172105Z   UPD     include/config/kernel.release
+2026-10-25T18:00:47.8284640Z   HOSTCC  scripts/dtc/fstree.o
+2026-10-25T18:00:47.8473945Z   WRAP    arch/arm64/include/generated/asm/early_ioremap.h
+2026-10-25T18:00:47.8526177Z   WRAP    arch/arm64/include/generated/asm/mcs_spinlock.h
+2026-10-25T18:00:47.8576666Z   WRAP    arch/arm64/include/generated/asm/qrwlock.h
+2026-10-25T18:00:47.8604419Z   WRAP    arch/arm64/include/generated/asm/qspinlock.h
+2026-10-25T18:00:47.8635747Z   UPD     include/generated/uapi/linux/version.h
+2026-10-25T18:00:47.8699709Z   WRAP    arch/arm64/include/generated/asm/parport.h
+2026-10-25T18:00:47.8720106Z   WRAP    arch/arm64/include/generated/asm/user.h
+2026-10-25T18:00:47.8738518Z   WRAP    arch/arm64/include/generated/asm/bugs.h
+2026-10-25T18:00:47.8750382Z   WRAP    arch/arm64/include/generated/asm/delay.h
+2026-10-25T18:00:47.8766325Z   WRAP    arch/arm64/include/generated/asm/div64.h
+2026-10-25T18:00:47.8769898Z   WRAP    arch/arm64/include/generated/asm/dma-mapping.h
+2026-10-25T18:00:47.8770831Z   WRAP    arch/arm64/include/generated/asm/dma.h
+2026-10-25T18:00:47.8772195Z   WRAP    arch/arm64/include/generated/asm/emergency-restart.h
+2026-10-25T18:00:47.8795628Z   WRAP    arch/arm64/include/generated/asm/hw_irq.h
+2026-10-25T18:00:47.8806237Z   UPD     include/generated/utsrelease.h
+2026-10-25T18:00:47.8818757Z   WRAP    arch/arm64/include/generated/asm/irq_regs.h
+2026-10-25T18:00:47.8830961Z   WRAP    arch/arm64/include/generated/asm/kdebug.h
+2026-10-25T18:00:47.8843474Z   WRAP    arch/arm64/include/generated/asm/kmap_size.h
+2026-10-25T18:00:47.8855253Z   WRAP    arch/arm64/include/generated/asm/local.h
+2026-10-25T18:00:47.8889794Z   WRAP    arch/arm64/include/generated/asm/local64.h
+2026-10-25T18:00:47.8894084Z   HOSTCC  scripts/dtc/data.o
+2026-10-25T18:00:47.8911902Z   WRAP    arch/arm64/include/generated/asm/mmiowb.h
+2026-10-25T18:00:47.8953864Z   WRAP    arch/arm64/include/generated/asm/msi.h
+2026-10-25T18:00:47.8983550Z   WRAP    arch/arm64/include/generated/asm/serial.h
+2026-10-25T18:00:47.9013826Z   WRAP    arch/arm64/include/generated/asm/softirq_stack.h
+2026-10-25T18:00:47.9043906Z   WRAP    arch/arm64/include/generated/asm/switch_to.h
+2026-10-25T18:00:47.9073614Z   WRAP    arch/arm64/include/generated/asm/trace_clock.h
+2026-10-25T18:00:47.9093715Z   WRAP    arch/arm64/include/generated/asm/unaligned.h
+2026-10-25T18:00:47.9114463Z   WRAP    arch/arm64/include/generated/asm/vga.h
+2026-10-25T18:00:47.9119923Z   HOSTCC  scripts/dtc/livetree.o
+2026-10-25T18:00:47.9404193Z   UPD     include/generated/compile.h
+2026-10-25T18:00:47.9563778Z   HOSTCC  scripts/dtc/treesource.o
+2026-10-25T18:00:48.0493954Z   HOSTCC  scripts/dtc/srcpos.o
+2026-10-25T18:00:48.0673797Z   HOSTCC  scripts/unifdef
+2026-10-25T18:00:48.1237303Z   HOSTCC  scripts/dtc/checks.o
+2026-10-25T18:00:48.1729362Z   HOSTCC  scripts/dtc/util.o
+2026-10-25T18:00:48.2517745Z   LEX     scripts/dtc/dtc-lexer.lex.c
+2026-10-25T18:00:48.2585612Z   YACC    scripts/dtc/dtc-parser.tab.[ch]
+2026-10-25T18:00:48.3403034Z   HOSTCC  scripts/dtc/libfdt/fdt.o
+2026-10-25T18:00:48.3738704Z   HOSTCC  scripts/dtc/libfdt/fdt_ro.o
+2026-10-25T18:00:48.4050340Z   HOSTCC  scripts/dtc/libfdt/fdt_wip.o
+2026-10-25T18:00:48.4496257Z   HOSTCC  scripts/dtc/libfdt/fdt_sw.o
+2026-10-25T18:00:48.5307073Z   HOSTCC  scripts/dtc/libfdt/fdt_rw.o
+2026-10-25T18:00:48.5524008Z   HOSTCC  scripts/dtc/libfdt/fdt_strerror.o
+2026-10-25T18:00:48.5804092Z   HOSTCC  scripts/dtc/libfdt/fdt_empty_tree.o
+2026-10-25T18:00:48.5949832Z   HOSTCC  scripts/dtc/libfdt/fdt_addresses.o
+2026-10-25T18:00:48.6057251Z   HOSTCC  scripts/dtc/libfdt/fdt_overlay.o
+2026-10-25T18:00:48.6481963Z   HDRINST usr/include/asm-generic/mman.h
+2026-10-25T18:00:48.6517056Z   HDRINST usr/include/asm-generic/sembuf.h
+2026-10-25T18:00:48.6623172Z   HDRINST usr/include/asm-generic/ipcbuf.h
+2026-10-25T18:00:48.6663925Z   HDRINST usr/include/asm-generic/posix_types.h
+2026-10-25T18:00:48.6751585Z   HDRINST usr/include/asm-generic/bitsperlong.h
+2026-10-25T18:00:48.6764364Z   HDRINST usr/include/asm-generic/types.h
+2026-10-25T18:00:48.6809731Z   HDRINST usr/include/asm-generic/termios.h
+2026-10-25T18:00:48.6880956Z   HOSTCC  scripts/dtc/fdtoverlay.o
+2026-10-25T18:00:48.6891712Z   HDRINST usr/include/asm-generic/errno-base.h
+2026-10-25T18:00:48.6984026Z   HDRINST usr/include/asm-generic/termbits.h
+2026-10-25T18:00:48.7043788Z   HDRINST usr/include/asm-generic/stat.h
+2026-10-25T18:00:48.7133972Z   HDRINST usr/include/asm-generic/socket.h
+2026-10-25T18:00:48.7149102Z   HDRINST usr/include/asm-generic/kvm_para.h
+2026-10-25T18:00:48.7203991Z   HDRINST usr/include/asm-generic/errno.h
+2026-10-25T18:00:48.7253647Z   HDRINST usr/include/asm-generic/fcntl.h
+2026-10-25T18:00:48.7283424Z   HDRINST usr/include/asm-generic/swab.h
+2026-10-25T18:00:48.7332374Z   HOSTCC  scripts/dtc/dtc-lexer.lex.o
+2026-10-25T18:00:48.7398494Z   HDRINST usr/include/asm-generic/ioctls.h
+2026-10-25T18:00:48.7401400Z   HDRINST usr/include/asm-generic/ioctl.h
+2026-10-25T18:00:48.7570313Z   HOSTCC  scripts/dtc/dtc-parser.tab.o
+2026-10-25T18:00:48.7572995Z   HDRINST usr/include/asm-generic/setup.h
+2026-10-25T18:00:48.7649773Z   HDRINST usr/include/asm-generic/statfs.h
+2026-10-25T18:00:48.7698515Z   HOSTLD  scripts/dtc/fdtoverlay
+2026-10-25T18:00:48.7816943Z   HDRINST usr/include/asm-generic/mman-common.h
+2026-10-25T18:00:48.7937319Z   HDRINST usr/include/asm-generic/unistd.h
+2026-10-25T18:00:48.7983654Z   HDRINST usr/include/asm-generic/auxvec.h
+2026-10-25T18:00:48.8126565Z   HDRINST usr/include/asm-generic/signal.h
+2026-10-25T18:00:48.8194351Z   HDRINST usr/include/asm-generic/int-ll64.h
+2026-10-25T18:00:48.8243738Z   HDRINST usr/include/asm-generic/resource.h
+2026-10-25T18:00:48.8303841Z   HDRINST usr/include/asm-generic/termbits-common.h
+2026-10-25T18:00:48.8353647Z   HDRINST usr/include/asm-generic/int-l64.h
+2026-10-25T18:00:48.8443662Z   HDRINST usr/include/asm-generic/shmbuf.h
+2026-10-25T18:00:48.8473883Z   HDRINST usr/include/asm-generic/signal-defs.h
+2026-10-25T18:00:48.8563732Z   HDRINST usr/include/asm-generic/hugetlb_encode.h
+2026-10-25T18:00:48.8583696Z   HDRINST usr/include/asm-generic/bpf_perf_event.h
+2026-10-25T18:00:48.8673951Z   HDRINST usr/include/asm-generic/param.h
+2026-10-25T18:00:48.8683597Z   HDRINST usr/include/asm-generic/msgbuf.h
+2026-10-25T18:00:48.8773782Z   HDRINST usr/include/asm-generic/poll.h
+2026-10-25T18:00:48.8803790Z   HDRINST usr/include/asm-generic/ucontext.h
+2026-10-25T18:00:48.8893706Z   HDRINST usr/include/asm-generic/siginfo.h
+2026-10-25T18:00:48.8923449Z   HDRINST usr/include/asm-generic/sockios.h
+2026-10-25T18:00:48.9055309Z   HDRINST usr/include/drm/vc4_drm.h
+2026-10-25T18:00:48.9096294Z   HDRINST usr/include/drm/msm_drm.h
+2026-10-25T18:00:48.9184269Z   HDRINST usr/include/drm/drm_mode.h
+2026-10-25T18:00:48.9261042Z   HDRINST usr/include/drm/tegra_drm.h
+2026-10-25T18:00:48.9454034Z   HDRINST usr/include/drm/armada_drm.h
+2026-10-25T18:00:48.9471506Z   HDRINST usr/include/drm/drm_sarea.h
+2026-10-25T18:00:48.9533157Z   HDRINST usr/include/drm/lima_drm.h
+2026-10-25T18:00:48.9660504Z   HDRINST usr/include/drm/nouveau_drm.h
+2026-10-25T18:00:48.9661501Z   HDRINST usr/include/drm/etnaviv_drm.h
+2026-10-25T18:00:48.9723165Z   HDRINST usr/include/drm/drm.h
+2026-10-25T18:00:48.9828277Z   HDRINST usr/include/drm/amdgpu_drm.h
+2026-10-25T18:00:48.9853443Z   HDRINST usr/include/drm/vmwgfx_drm.h
+2026-10-25T18:00:48.9854400Z   HOSTLD  scripts/dtc/dtc
+2026-10-25T18:00:49.0086384Z   HDRINST usr/include/drm/panfrost_drm.h
+2026-10-25T18:00:49.0151017Z   HDRINST usr/include/drm/radeon_drm.h
+2026-10-25T18:00:49.0173692Z   HDRINST usr/include/drm/omap_drm.h
+2026-10-25T18:00:49.0230662Z   HDRINST usr/include/drm/qaic_accel.h
+2026-10-25T18:00:49.0305730Z   HOSTCC  scripts/genksyms/genksyms.o
+2026-10-25T18:00:49.0333566Z   HDRINST usr/include/drm/vgem_drm.h
+2026-10-25T18:00:49.0436683Z   YACC    scripts/genksyms/parse.tab.[ch]
+2026-10-25T18:00:49.0453842Z   HDRINST usr/include/drm/i915_drm.h
+2026-10-25T18:00:49.0698919Z   HOSTCC  scripts/selinux/genheaders/genheaders
+2026-10-25T18:00:49.1129693Z   HDRINST usr/include/drm/v3d_drm.h
+2026-10-25T18:00:49.1334227Z   HDRINST usr/include/drm/drm_fourcc.h
+2026-10-25T18:00:49.1623977Z   HDRINST usr/include/drm/exynos_drm.h
+2026-10-25T18:00:49.1784197Z   HDRINST usr/include/drm/ivpu_accel.h
+2026-10-25T18:00:49.1917137Z   HDRINST usr/include/drm/habanalabs_accel.h
+2026-10-25T18:00:49.2054871Z   HOSTCC  scripts/selinux/mdp/mdp
+2026-10-25T18:00:49.2251117Z   HDRINST usr/include/drm/virtgpu_drm.h
+2026-10-25T18:00:49.2271319Z   LEX     scripts/genksyms/lex.lex.c
+2026-10-25T18:00:49.2358379Z   HOSTCC  scripts/kallsyms
+2026-10-25T18:00:49.2383834Z   HOSTCC  scripts/genksyms/parse.tab.o
+2026-10-25T18:00:49.2403696Z   HDRINST usr/include/drm/qxl_drm.h
+2026-10-25T18:00:49.2700246Z   HDRINST usr/include/linux/mman.h
+2026-10-25T18:00:49.2882506Z   HDRINST usr/include/linux/tty.h
+2026-10-25T18:00:49.3145072Z   HDRINST usr/include/linux/netfilter_arp.h
+2026-10-25T18:00:49.3272576Z   HDRINST usr/include/linux/in.h
+2026-10-25T18:00:49.3304041Z   HDRINST usr/include/linux/pcitest.h
+2026-10-25T18:00:49.3433903Z   HOSTCC  scripts/genksyms/lex.lex.o
+2026-10-25T18:00:49.3513993Z   HDRINST usr/include/linux/virtio_ids.h
+2026-10-25T18:00:49.3734765Z   HDRINST usr/include/linux/nfs2.h
+2026-10-25T18:00:49.3806113Z   HDRINST usr/include/linux/uhid.h
+2026-10-25T18:00:49.3897562Z   HOSTCC  scripts/sorttable
+2026-10-25T18:00:49.4063844Z   HDRINST usr/include/linux/if_vlan.h
+2026-10-25T18:00:49.4227947Z   HDRINST usr/include/linux/kernel-page-flags.h
+2026-10-25T18:00:49.4373958Z   HDRINST usr/include/linux/quota.h
+2026-10-25T18:00:49.4503738Z   HDRINST usr/include/linux/netfilter.h
+2026-10-25T18:00:49.4633938Z   HDRINST usr/include/linux/tps6594_pfsm.h
+2026-10-25T18:00:49.4752650Z   HDRINST usr/include/linux/timerfd.h
+2026-10-25T18:00:49.4853307Z   HDRINST usr/include/linux/bpf.h
+2026-10-25T18:00:49.5020870Z   HOSTCC  scripts/asn1_compiler
+2026-10-25T18:00:49.6023784Z   HDRINST usr/include/linux/kexec.h
+2026-10-25T18:00:49.6223782Z   HDRINST usr/include/linux/nfs3.h
+2026-10-25T18:00:49.6343777Z   HDRINST usr/include/linux/hdlc.h
+2026-10-25T18:00:49.6564315Z   HDRINST usr/include/linux/slatecom_interface.h
+2026-10-25T18:00:49.6691967Z   HDRINST usr/include/linux/lp.h
+2026-10-25T18:00:49.6826111Z   HDRINST usr/include/linux/vfio_zdev.h
+2026-10-25T18:00:49.6915516Z   HOSTLD  scripts/genksyms/genksyms
+2026-10-25T18:00:49.7006688Z   HDRINST usr/include/linux/sem.h
+2026-10-25T18:00:49.7034762Z   HOSTCC  scripts/sign-file
+2026-10-25T18:00:49.7143967Z   HDRINST usr/include/linux/blkzoned.h
+2026-10-25T18:00:49.7254136Z   HDRINST usr/include/linux/netfilter_bridge/ebt_mark_m.h
+2026-10-25T18:00:49.7272929Z   HDRINST usr/include/linux/netfilter_bridge/ebt_ip.h
+2026-10-25T18:00:49.7369583Z   HDRINST usr/include/linux/netfilter_bridge/ebt_redirect.h
+2026-10-25T18:00:49.7476007Z   HDRINST usr/include/linux/netfilter_bridge/ebt_arpreply.h
+2026-10-25T18:00:49.7553925Z   HDRINST usr/include/linux/netfilter_bridge/ebt_arp.h
+2026-10-25T18:00:49.7595129Z   HDRINST usr/include/linux/netfilter_bridge/ebt_among.h
+2026-10-25T18:00:49.7653867Z   HDRINST usr/include/linux/netfilter_bridge/ebt_log.h
+2026-10-25T18:00:49.7698817Z   HDRINST usr/include/linux/netfilter_bridge/ebt_pkttype.h
+2026-10-25T18:00:49.7715663Z   HDRINST usr/include/linux/netfilter_bridge/ebt_vlan.h
+2026-10-25T18:00:49.7758773Z   HDRINST usr/include/linux/netfilter_bridge/ebt_nflog.h
+2026-10-25T18:00:49.7810169Z   HDRINST usr/include/linux/netfilter_bridge/ebt_stp.h
+2026-10-25T18:00:49.7813912Z   HDRINST usr/include/linux/netfilter_bridge/ebt_mark_t.h
+2026-10-25T18:00:49.7863502Z   HDRINST usr/include/linux/netfilter_bridge/ebtables.h
+2026-10-25T18:00:49.7913201Z   HDRINST usr/include/linux/netfilter_bridge/ebt_ip6.h
+2026-10-25T18:00:49.7914543Z   HDRINST usr/include/linux/netfilter_bridge/ebt_limit.h
+2026-10-25T18:00:49.8011579Z   HDRINST usr/include/linux/netfilter_bridge/ebt_802_3.h
+2026-10-25T18:00:49.8043748Z   HDRINST usr/include/linux/netfilter_bridge/ebt_nat.h
+2026-10-25T18:00:49.8049147Z   HDRINST usr/include/linux/in6.h
+2026-10-25T18:00:49.8127315Z   HDRINST usr/include/linux/blkpg.h
+2026-10-25T18:00:49.8140289Z   HDRINST usr/include/linux/mmtimer.h
+2026-10-25T18:00:49.8179009Z   HDRINST usr/include/linux/nilfs2_ondisk.h
+2026-10-25T18:00:49.8228496Z   HDRINST usr/include/linux/sync_file.h
+2026-10-25T18:00:49.8233079Z   HDRINST usr/include/linux/virtio_net.h
+2026-10-25T18:00:49.8316711Z   HDRINST usr/include/linux/if_bridge.h
+2026-10-25T18:00:49.8340222Z   HDRINST usr/include/linux/membarrier.h
+2026-10-25T18:00:49.8365612Z   HDRINST usr/include/linux/cachefiles.h
+2026-10-25T18:00:49.8466327Z   HDRINST usr/include/linux/udmabuf.h
+2026-10-25T18:00:49.8506417Z   HDRINST usr/include/linux/virtio_i2c.h
+2026-10-25T18:00:49.8536256Z   HDRINST usr/include/linux/am437x-vpfe.h
+2026-10-25T18:00:49.8604383Z   HDRINST usr/include/linux/cryptouser.h
+2026-10-25T18:00:49.8618189Z   HDRINST usr/include/linux/virtio_crypto.h
+2026-10-25T18:00:49.8684879Z   HDRINST usr/include/linux/qseecom.h
+2026-10-25T18:00:49.8719444Z   HDRINST usr/include/linux/pr.h
+2026-10-25T18:00:49.8781318Z   HDRINST usr/include/linux/atmsap.h
+2026-10-25T18:00:49.8823333Z   HDRINST usr/include/linux/cgroupstats.h
+2026-10-25T18:00:49.8837402Z   HDRINST usr/include/linux/adfs_fs.h
+2026-10-25T18:00:49.8914375Z   HDRINST usr/include/linux/posix_types.h
+2026-10-25T18:00:49.8948855Z   HDRINST usr/include/linux/pfkeyv2.h
+2026-10-25T18:00:49.8949914Z   HDRINST usr/include/linux/openat2.h
+2026-10-25T18:00:49.9065627Z   HDRINST usr/include/linux/mctp.h
+2026-10-25T18:00:49.9088628Z   HDRINST usr/include/linux/aspeed-video.h
+2026-10-25T18:00:49.9107941Z   HDRINST usr/include/linux/ethtool_netlink.h
+2026-10-25T18:00:49.9178610Z   HDRINST usr/include/linux/if_pppol2tp.h
+2026-10-25T18:00:49.9182259Z   HDRINST usr/include/linux/ipv6_route.h
+2026-10-25T18:00:49.9265888Z   HDRINST usr/include/linux/cycx_cfm.h
+2026-10-25T18:00:49.9287236Z   HDRINST usr/include/linux/types.h
+2026-10-25T18:00:49.9303743Z   HDRINST usr/include/linux/vbox_err.h
+2026-10-25T18:00:49.9387339Z   HDRINST usr/include/linux/qbg.h
+2026-10-25T18:00:49.9429858Z   HDRINST usr/include/linux/if_ether.h
+2026-10-25T18:00:49.9430684Z   HDRINST usr/include/linux/edd.h
+2026-10-25T18:00:49.9556075Z   HDRINST usr/include/linux/media.h
+2026-10-25T18:00:49.9558860Z   HDRINST usr/include/linux/fuse.h
+2026-10-25T18:00:49.9615791Z   HDRINST usr/include/linux/mroute6.h
+2026-10-25T18:00:49.9708710Z   HDRINST usr/include/linux/ppp-ioctl.h
+2026-10-25T18:00:49.9745710Z   HDRINST usr/include/linux/ivtv.h
+2026-10-25T18:00:49.9749072Z   HDRINST usr/include/linux/pps.h
+2026-10-25T18:00:49.9830014Z   HDRINST usr/include/linux/atmarp.h
+2026-10-25T18:00:49.9864155Z   HDRINST usr/include/linux/counter.h
+2026-10-25T18:00:49.9867180Z   HDRINST usr/include/linux/futex.h
+2026-10-25T18:00:49.9967535Z   HDRINST usr/include/linux/pktcdvd.h
+2026-10-25T18:00:49.9993403Z   HDRINST usr/include/linux/if.h
+2026-10-25T18:00:50.0013881Z   HDRINST usr/include/linux/termios.h
+2026-10-25T18:00:50.0076054Z   HDRINST usr/include/linux/qg.h
+2026-10-25T18:00:50.0109522Z   HDRINST usr/include/linux/tipc_config.h
+2026-10-25T18:00:50.0126345Z   HDRINST usr/include/linux/ipmi_ssif_bmc.h
+2026-10-25T18:00:50.0176166Z   HDRINST usr/include/linux/nexthop.h
+2026-10-25T18:00:50.0223515Z   HDRINST usr/include/linux/suspend_ioctls.h
+2026-10-25T18:00:50.0248677Z   HDRINST usr/include/linux/misc/bcm_vk.h
+2026-10-25T18:00:50.0286286Z   HDRINST usr/include/linux/cn_proc.h
+2026-10-25T18:00:50.0327641Z   HDRINST usr/include/linux/input.h
+2026-10-25T18:00:50.0373612Z   HDRINST usr/include/linux/nfc.h
+2026-10-25T18:00:50.0465325Z   HDRINST usr/include/linux/nfs_idmap.h
+2026-10-25T18:00:50.0516169Z   HDRINST usr/include/linux/rpl_iptunnel.h
+2026-10-25T18:00:50.0540423Z   HDRINST usr/include/linux/timex.h
+2026-10-25T18:00:50.0593970Z   HDRINST usr/include/linux/netdev.h
+2026-10-25T18:00:50.0616357Z   HDRINST usr/include/linux/vt.h
+2026-10-25T18:00:50.0656361Z   HDRINST usr/include/linux/veth.h
+2026-10-25T18:00:50.0713184Z   HDRINST usr/include/linux/phantom.h
+2026-10-25T18:00:50.0745224Z   HDRINST usr/include/linux/netfilter_bridge.h
+2026-10-25T18:00:50.0783870Z   HDRINST usr/include/linux/qrtr.h
+2026-10-25T18:00:50.0844029Z   HDRINST usr/include/linux/genwqe/genwqe_card.h
+2026-10-25T18:00:50.0868564Z   HDRINST usr/include/linux/ipsec.h
+2026-10-25T18:00:50.0885436Z   HDRINST usr/include/linux/can/error.h
+2026-10-25T18:00:50.0970610Z   HDRINST usr/include/linux/can/raw.h
+2026-10-25T18:00:50.0997304Z   HDRINST usr/include/linux/can/isotp.h
+2026-10-25T18:00:50.1109889Z   HDRINST usr/include/linux/can/netlink.h
+2026-10-25T18:00:50.1144211Z   HDRINST usr/include/linux/can/bcm.h
+2026-10-25T18:00:50.1197951Z   HDRINST usr/include/linux/can/gw.h
+2026-10-25T18:00:50.1298514Z   HDRINST usr/include/linux/can/vxcan.h
+2026-10-25T18:00:50.1299486Z   HDRINST usr/include/linux/can/j1939.h
+2026-10-25T18:00:50.1339515Z   HDRINST usr/include/linux/atm_nicstar.h
+2026-10-25T18:00:50.1432600Z   HDRINST usr/include/linux/firewire-cdev.h
+2026-10-25T18:00:50.1449481Z   HDRINST usr/include/linux/rseq.h
+2026-10-25T18:00:50.1494459Z   HDRINST usr/include/linux/openvswitch.h
+2026-10-25T18:00:50.1591121Z   HDRINST usr/include/linux/netdevice.h
+2026-10-25T18:00:50.1669609Z   HDRINST usr/include/linux/hw_breakpoint.h
+2026-10-25T18:00:50.1699613Z   HDRINST usr/include/linux/lwtunnel.h
+2026-10-25T18:00:50.1707229Z   HDRINST usr/include/linux/auto_dev-ioctl.h
+2026-10-25T18:00:50.1782218Z   HDRINST usr/include/linux/keyboard.h
+2026-10-25T18:00:50.1816833Z   HDRINST usr/include/linux/unix_diag.h
+2026-10-25T18:00:50.1821105Z   HDRINST usr/include/linux/v4l2-controls.h
+2026-10-25T18:00:50.1913373Z   HDRINST usr/include/linux/sched.h
+2026-10-25T18:00:50.1942487Z   HDRINST usr/include/linux/dma-heap.h
+2026-10-25T18:00:50.2070949Z   HDRINST usr/include/linux/atm_idt77105.h
+2026-10-25T18:00:50.2093127Z   HDRINST usr/include/linux/hdlcdrv.h
+2026-10-25T18:00:50.2213504Z   HDRINST usr/include/linux/nbd-netlink.h
+2026-10-25T18:00:50.2244539Z   HDRINST usr/include/linux/vboxguest.h
+2026-10-25T18:00:50.2292460Z   HDRINST usr/include/linux/omap3isp.h
+2026-10-25T18:00:50.2320572Z   HDRINST usr/include/linux/ipc.h
+2026-10-25T18:00:50.2374219Z   HDRINST usr/include/linux/max2175.h
+2026-10-25T18:00:50.2452471Z   HDRINST usr/include/linux/virtio_gpio.h
+2026-10-25T18:00:50.2453688Z   HDRINST usr/include/linux/usbip.h
+2026-10-25T18:00:50.2517703Z   HDRINST usr/include/linux/atm.h
+2026-10-25T18:00:50.2604534Z   HDRINST usr/include/linux/vduse.h
+2026-10-25T18:00:50.2605754Z   HDRINST usr/include/linux/if_packet.h
+2026-10-25T18:00:50.2665771Z   HDRINST usr/include/linux/ndctl.h
+2026-10-25T18:00:50.2729216Z   HDRINST usr/include/linux/libc-compat.h
+2026-10-25T18:00:50.2739974Z   HDRINST usr/include/linux/capability.h
+2026-10-25T18:00:50.2769518Z   HDRINST usr/include/linux/rtc.h
+2026-10-25T18:00:50.2877042Z   HDRINST usr/include/linux/tls.h
+2026-10-25T18:00:50.2904387Z   HDRINST usr/include/linux/random.h
+2026-10-25T18:00:50.2907185Z   HDRINST usr/include/linux/mmc/ioctl.h
+2026-10-25T18:00:50.3034913Z   HDRINST usr/include/linux/wireless.h
+2026-10-25T18:00:50.3035913Z   HDRINST usr/include/linux/if_fddi.h
+2026-10-25T18:00:50.3049491Z   HDRINST usr/include/linux/elf-fdpic.h
+2026-10-25T18:00:50.3165076Z   HDRINST usr/include/linux/landlock.h
+2026-10-25T18:00:50.3168292Z   HDRINST usr/include/linux/map_to_7segment.h
+2026-10-25T18:00:50.3215074Z   HDRINST usr/include/linux/stat.h
+2026-10-25T18:00:50.3280691Z   HDRINST usr/include/linux/rpl.h
+2026-10-25T18:00:50.3297419Z   HDRINST usr/include/linux/rpmsg_types.h
+2026-10-25T18:00:50.3384750Z   HDRINST usr/include/linux/if_ltalk.h
+2026-10-25T18:00:50.3408345Z   HDRINST usr/include/linux/devlink.h
+2026-10-25T18:00:50.3494478Z   HDRINST usr/include/linux/socket.h
+2026-10-25T18:00:50.3519732Z   HDRINST usr/include/linux/hsr_netlink.h
+2026-10-25T18:00:50.3554208Z   HDRINST usr/include/linux/genetlink.h
+2026-10-25T18:00:50.3635680Z   HDRINST usr/include/linux/screen_info.h
+2026-10-25T18:00:50.3684909Z   HDRINST usr/include/linux/ila.h
+2026-10-25T18:00:50.3733278Z   HDRINST usr/include/linux/smiapp.h
+2026-10-25T18:00:50.3786325Z   HDRINST usr/include/linux/snmp.h
+2026-10-25T18:00:50.3838562Z   HDRINST usr/include/linux/elf-em.h
+2026-10-25T18:00:50.3871905Z   HDRINST usr/include/linux/atmbr2684.h
+2026-10-25T18:00:50.3961495Z   HDRINST usr/include/linux/in_route.h
+2026-10-25T18:00:50.3963005Z   HDRINST usr/include/linux/gtp.h
+2026-10-25T18:00:50.4044039Z   HDRINST usr/include/linux/atmdev.h
+2026-10-25T18:00:50.4112281Z   HDRINST usr/include/linux/userio.h
+2026-10-25T18:00:50.4184051Z   HDRINST usr/include/linux/ppp-comp.h
+2026-10-25T18:00:50.4216264Z   HDRINST usr/include/linux/smc.h
+2026-10-25T18:00:50.4281178Z   HDRINST usr/include/linux/nfsacl.h
+2026-10-25T18:00:50.4365025Z   HDRINST usr/include/linux/cifs/cifs_mount.h
+2026-10-25T18:00:50.4385970Z   HDRINST usr/include/linux/cifs/cifs_netlink.h
+2026-10-25T18:00:50.4427200Z   HDRINST usr/include/linux/v4l2-mediabus.h
+2026-10-25T18:00:50.4455500Z   HDRINST usr/include/linux/isst_if.h
+2026-10-25T18:00:50.4491543Z   HDRINST usr/include/linux/uio.h
+2026-10-25T18:00:50.4570222Z   HDRINST usr/include/linux/rfkill.h
+2026-10-25T18:00:50.4674634Z   HDRINST usr/include/linux/blktrace_api.h
+2026-10-25T18:00:50.4689017Z   HDRINST usr/include/linux/i2c.h
+2026-10-25T18:00:50.4735405Z   HDRINST usr/include/linux/pidfd.h
+2026-10-25T18:00:50.4768780Z   GEN     arch/arm64/include/generated/asm/cpucaps.h
+2026-10-25T18:00:50.4837073Z   HDRINST usr/include/linux/f2fs.h
+2026-10-25T18:00:50.4840334Z   GEN     arch/arm64/include/generated/asm/sysreg-defs.h
+2026-10-25T18:00:50.4850030Z   HDRINST usr/include/linux/limits.h
+2026-10-25T18:00:50.4955950Z   HDRINST usr/include/linux/close_range.h
+2026-10-25T18:00:50.4995830Z   HDRINST usr/include/linux/um_timetravel.h
+2026-10-25T18:00:50.5070918Z   HDRINST usr/include/linux/cramfs_fs.h
+2026-10-25T18:00:50.5168700Z   HDRINST usr/include/linux/kcmp.h
+2026-10-25T18:00:50.5193705Z   HDRINST usr/include/linux/sev-guest.h
+2026-10-25T18:00:50.5264091Z   HDRINST usr/include/linux/ioprio.h
+2026-10-25T18:00:50.5277121Z   HDRINST usr/include/linux/sonypi.h
+2026-10-25T18:00:50.5291092Z   HDRINST usr/include/linux/i2c-dev.h
+2026-10-25T18:00:50.5314012Z   HDRINST usr/include/linux/reiserfs_fs.h
+2026-10-25T18:00:50.5446417Z   HDRINST usr/include/linux/tcp.h
+2026-10-25T18:00:50.5463558Z   HDRINST usr/include/linux/vdpa.h
+2026-10-25T18:00:50.5481025Z   HDRINST usr/include/linux/netfilter_ipv6/ip6t_frag.h
+2026-10-25T18:00:50.5589272Z   CC      scripts/mod/empty.o
+2026-10-25T18:00:50.5618210Z   HOSTCC  scripts/mod/mk_elfconfig
+2026-10-25T18:00:50.5632172Z   HDRINST usr/include/linux/netfilter_ipv6/ip6t_hl.h
+2026-10-25T18:00:50.5642210Z   HDRINST usr/include/linux/netfilter_ipv6/ip6t_REJECT.h
+2026-10-25T18:00:50.5760876Z   CC      scripts/mod/devicetable-offsets.s
+2026-10-25T18:00:50.5767545Z   HDRINST usr/include/linux/netfilter_ipv6/ip6t_ipv6header.h
+2026-10-25T18:00:50.5939440Z   HDRINST usr/include/linux/netfilter_ipv6/ip6t_NPT.h
+2026-10-25T18:00:50.5982608Z   HDRINST usr/include/linux/netfilter_ipv6/ip6t_opts.h
+2026-10-25T18:00:50.6101219Z   HDRINST usr/include/linux/netfilter_ipv6/ip6t_mh.h
+2026-10-25T18:00:50.6198289Z   HDRINST usr/include/linux/netfilter_ipv6/ip6t_srh.h
+2026-10-25T18:00:50.6206417Z   HDRINST usr/include/linux/netfilter_ipv6/ip6_tables.h
+2026-10-25T18:00:50.6297954Z   HDRINST usr/include/linux/netfilter_ipv6/ip6t_LOG.h
+2026-10-25T18:00:50.6340937Z   HDRINST usr/include/linux/netfilter_ipv6/ip6t_rt.h
+2026-10-25T18:00:50.6363151Z   HDRINST usr/include/linux/netfilter_ipv6/ip6t_ah.h
+2026-10-25T18:00:50.6463970Z   HDRINST usr/include/linux/netfilter_ipv6/ip6t_HL.h
+2026-10-25T18:00:50.6521845Z   UPD     scripts/mod/devicetable-offsets.h
+2026-10-25T18:00:50.6545133Z   HDRINST usr/include/linux/kcm.h
+2026-10-25T18:00:50.6584125Z   HDRINST usr/include/linux/switchtec_ioctl.h
+2026-10-25T18:00:50.6605115Z   HDRINST usr/include/linux/amt.h
+2026-10-25T18:00:50.6714239Z   HDRINST usr/include/linux/dw100.h
+2026-10-25T18:00:50.6730364Z   HDRINST usr/include/linux/reiserfs_xattr.h
+2026-10-25T18:00:50.6738165Z   MKELF   scripts/mod/elfconfig.h
+2026-10-25T18:00:50.6746149Z   HDRINST usr/include/linux/dns_resolver.h
+2026-10-25T18:00:50.6760789Z   HOSTCC  scripts/mod/modpost.o
+2026-10-25T18:00:50.6835111Z   HDRINST usr/include/linux/nfsd/cld.h
+2026-10-25T18:00:50.6878590Z   HOSTCC  scripts/mod/file2alias.o
+2026-10-25T18:00:50.6891516Z   HDRINST usr/include/linux/nfsd/debug.h
+2026-10-25T18:00:50.7013538Z   HDRINST usr/include/linux/nfsd/stats.h
+2026-10-25T18:00:50.7033808Z   HDRINST usr/include/linux/nfsd/export.h
+2026-10-25T18:00:50.7113324Z   HDRINST usr/include/linux/selinux_netlink.h
+2026-10-25T18:00:50.7234760Z   HOSTCC  scripts/mod/sumversion.o
+2026-10-25T18:00:50.7519285Z   HDRINST usr/include/linux/ptp_clock.h
+2026-10-25T18:00:50.7661223Z   HDRINST usr/include/linux/kfd_sysfs.h
+2026-10-25T18:00:50.7844178Z   HDRINST usr/include/linux/x25.h
+2026-10-25T18:00:50.8033934Z   HDRINST usr/include/linux/bcm933xx_hcs.h
+2026-10-25T18:00:50.8219762Z   HDRINST usr/include/linux/loop.h
+2026-10-25T18:00:50.8397978Z   HDRINST usr/include/linux/nfs.h
+2026-10-25T18:00:50.8574103Z   HDRINST usr/include/linux/arm_sdei.h
+2026-10-25T18:00:50.8724917Z   HDRINST usr/include/linux/acct.h
+2026-10-25T18:00:50.8852165Z   HDRINST usr/include/linux/hyperv.h
+2026-10-25T18:00:50.9030435Z   HDRINST usr/include/linux/nl80211.h
+2026-10-25T18:00:50.9044205Z   HOSTCC  scripts/mod/symsearch.o
+2026-10-25T18:00:50.9934108Z   HDRINST usr/include/linux/if_x25.h
+2026-10-25T18:00:50.9969942Z   HDRINST usr/include/linux/utime.h
+2026-10-25T18:00:51.0084426Z   HDRINST usr/include/linux/kvm_para.h
+2026-10-25T18:00:51.0091205Z   HDRINST usr/include/linux/ext4.h
+2026-10-25T18:00:51.0221548Z   HDRINST usr/include/linux/kernelcapi.h
+2026-10-25T18:00:51.0242346Z   HDRINST usr/include/linux/auto_fs4.h
+2026-10-25T18:00:51.0357040Z   HDRINST usr/include/linux/ife.h
+2026-10-25T18:00:51.0379056Z   HDRINST usr/include/linux/if_team.h
+2026-10-25T18:00:51.0514041Z   HDRINST usr/include/linux/virtio_pci.h
+2026-10-25T18:00:51.0515614Z   HDRINST usr/include/linux/eventpoll.h
+2026-10-25T18:00:51.0644032Z   HDRINST usr/include/linux/tdx-guest.h
+2026-10-25T18:00:51.0656583Z   HDRINST usr/include/linux/fdreg.h
+2026-10-25T18:00:51.0771551Z   HDRINST usr/include/linux/tc_act/tc_gate.h
+2026-10-25T18:00:51.0806757Z   HDRINST usr/include/linux/tc_act/tc_sample.h
+2026-10-25T18:00:51.0893906Z   HDRINST usr/include/linux/tc_act/tc_tunnel_key.h
+2026-10-25T18:00:51.0905472Z   HDRINST usr/include/linux/tc_act/tc_ife.h
+2026-10-25T18:00:51.0931582Z   HDRINST usr/include/linux/tc_act/tc_skbedit.h
+2026-10-25T18:00:51.1019911Z   HDRINST usr/include/linux/tc_act/tc_mirred.h
+2026-10-25T18:00:51.1035085Z   HDRINST usr/include/linux/tc_act/tc_mpls.h
+2026-10-25T18:00:51.1062998Z   HDRINST usr/include/linux/tc_act/tc_pedit.h
+2026-10-25T18:00:51.1149700Z   HDRINST usr/include/linux/tc_act/tc_csum.h
+2026-10-25T18:00:51.1151053Z   HDRINST usr/include/linux/tc_act/tc_defact.h
+2026-10-25T18:00:51.1172983Z   HDRINST usr/include/linux/tc_act/tc_ipt.h
+2026-10-25T18:00:51.1266604Z   HDRINST usr/include/linux/tc_act/tc_vlan.h
+2026-10-25T18:00:51.1267843Z   HDRINST usr/include/linux/tc_act/tc_ctinfo.h
+2026-10-25T18:00:51.1311326Z   HDRINST usr/include/linux/tc_act/tc_gact.h
+2026-10-25T18:00:51.1373105Z   HDRINST usr/include/linux/tc_act/tc_nat.h
+2026-10-25T18:00:51.1375938Z   HDRINST usr/include/linux/tc_act/tc_ct.h
+2026-10-25T18:00:51.1431455Z   HDRINST usr/include/linux/tc_act/tc_skbmod.h
+2026-10-25T18:00:51.1482292Z   HDRINST usr/include/linux/tc_act/tc_bpf.h
+2026-10-25T18:00:51.1508129Z   HDRINST usr/include/linux/tc_act/tc_connmark.h
+2026-10-25T18:00:51.1558476Z   HDRINST usr/include/linux/if_cablemodem.h
+2026-10-25T18:00:51.1624027Z   HDRINST usr/include/linux/memfd.h
+2026-10-25T18:00:51.1625288Z   HDRINST usr/include/linux/kd.h
+2026-10-25T18:00:51.1682084Z   HDRINST usr/include/linux/pkt_cls.h
+2026-10-25T18:00:51.1736576Z   HDRINST usr/include/linux/virtio_pmem.h
+2026-10-25T18:00:51.1773743Z   HDRINST usr/include/linux/scc.h
+2026-10-25T18:00:51.1841084Z   HDRINST usr/include/linux/kdev_t.h
+2026-10-25T18:00:51.1877898Z   HDRINST usr/include/linux/xdp_diag.h
+2026-10-25T18:00:51.1899435Z   HOSTLD  scripts/mod/modpost
+2026-10-25T18:00:51.1905608Z   HDRINST usr/include/linux/dlm.h
+2026-10-25T18:00:51.1957288Z   HDRINST usr/include/linux/fs.h
+2026-10-25T18:00:51.2025469Z   HDRINST usr/include/linux/uinput.h
+2026-10-25T18:00:51.2033845Z   HDRINST usr/include/linux/netlink.h
+2026-10-25T18:00:51.2122129Z   HDRINST usr/include/linux/errqueue.h
+2026-10-25T18:00:51.2164277Z   HDRINST usr/include/linux/tiocl.h
+2026-10-25T18:00:51.2165115Z   HDRINST usr/include/linux/wait.h
+2026-10-25T18:00:51.2268049Z   HDRINST usr/include/linux/if_arp.h
+2026-10-25T18:00:51.2269426Z   HDRINST usr/include/linux/atmlec.h
+2026-10-25T18:00:51.2270181Z   HDRINST usr/include/linux/xfrm.h
+2026-10-25T18:00:51.2346577Z   UPD     include/generated/timeconst.h
+2026-10-25T18:00:51.2404173Z   HDRINST usr/include/linux/nl80211-vnd-intel.h
+2026-10-25T18:00:51.2404772Z   CC      kernel/bounds.s
+2026-10-25T18:00:51.2405205Z   HDRINST usr/include/linux/virtio_iommu.h
+2026-10-25T18:00:51.2464278Z   CHKSHA1 ../include/linux/atomic/atomic-arch-fallback.h
+2026-10-25T18:00:51.2518216Z   CHKSHA1 ../include/linux/atomic/atomic-instrumented.h
+2026-10-25T18:00:51.2520312Z   HDRINST usr/include/linux/if_ppp.h
+2026-10-25T18:00:51.2600186Z   CHKSHA1 ../include/linux/atomic/atomic-long.h
+2026-10-25T18:00:51.2605852Z   HDRINST usr/include/linux/if_addrlabel.h
+2026-10-25T18:00:51.2644937Z   HDRINST usr/include/linux/ppdev.h
+2026-10-25T18:00:51.2694021Z   HDRINST usr/include/linux/cec-funcs.h
+2026-10-25T18:00:51.2748388Z   HDRINST usr/include/linux/ioam6_genl.h
+2026-10-25T18:00:51.2769015Z   HDRINST usr/include/linux/i8k.h
+2026-10-25T18:00:51.2865354Z   HDRINST usr/include/linux/joystick.h
+2026-10-25T18:00:51.2890666Z   HDRINST usr/include/linux/personality.h
+2026-10-25T18:00:51.3013951Z   HDRINST usr/include/linux/mrp_bridge.h
+2026-10-25T18:00:51.3015361Z   HDRINST usr/include/linux/mdio.h
+2026-10-25T18:00:51.3026111Z   HDRINST usr/include/linux/if_slip.h
+2026-10-25T18:00:51.3125901Z   HDRINST usr/include/linux/qnxtypes.h
+2026-10-25T18:00:51.3137701Z   HDRINST usr/include/linux/hsi/hsi_char.h
+2026-10-25T18:00:51.3184485Z   HDRINST usr/include/linux/hsi/cs-protocol.h
+2026-10-25T18:00:51.3217711Z   HDRINST usr/include/linux/vm_sockets.h
+2026-10-25T18:00:51.3253149Z   HDRINST usr/include/linux/atalk.h
+2026-10-25T18:00:51.3301062Z   HDRINST usr/include/linux/netfilter_ipv4.h
+2026-10-25T18:00:51.3367788Z   HDRINST usr/include/linux/virtio_mmio.h
+2026-10-25T18:00:51.3396134Z   HDRINST usr/include/linux/v4l2-subdev.h
+2026-10-25T18:00:51.3436974Z   HDRINST usr/include/linux/thermal.h
+2026-10-25T18:00:51.3487893Z   HDRINST usr/include/linux/ccs.h
+2026-10-25T18:00:51.3511427Z   UPD     include/generated/bounds.h
+2026-10-25T18:00:51.3541370Z   HDRINST usr/include/linux/wireguard.h
+2026-10-25T18:00:51.3575671Z   HDRINST usr/include/linux/sound.h
+2026-10-25T18:00:51.3598336Z   CC      arch/arm64/kernel/asm-offsets.s
+2026-10-25T18:00:51.3599271Z   HDRINST usr/include/linux/if_hippi.h
+2026-10-25T18:00:51.3657845Z   HDRINST usr/include/linux/netfilter_arp/arpt_mangle.h
+2026-10-25T18:00:51.3688944Z   HDRINST usr/include/linux/netfilter_arp/arp_tables.h
+2026-10-25T18:00:51.3746180Z   HDRINST usr/include/linux/kernel.h
+2026-10-25T18:00:51.3786221Z   HDRINST usr/include/linux/errno.h
+2026-10-25T18:00:51.3830139Z   HDRINST usr/include/linux/ioam6_iptunnel.h
+2026-10-25T18:00:51.3863930Z   HDRINST usr/include/linux/fd.h
+2026-10-25T18:00:51.3897385Z   HDRINST usr/include/linux/msg.h
+2026-10-25T18:00:51.3944325Z   HDRINST usr/include/linux/mptcp.h
+2026-10-25T18:00:51.4034096Z   HDRINST usr/include/linux/icmp.h
+2026-10-25T18:00:51.4035323Z   HDRINST usr/include/linux/fcntl.h
+2026-10-25T18:00:51.4087722Z   HDRINST usr/include/linux/dlmconstants.h
+2026-10-25T18:00:51.4138960Z   HDRINST usr/include/linux/icmpv6.h
+2026-10-25T18:00:51.4156431Z   HDRINST usr/include/linux/atm_zatm.h
+2026-10-25T18:00:51.4238055Z   HDRINST usr/include/linux/if_alg.h
+2026-10-25T18:00:51.4260227Z   HDRINST usr/include/linux/gameport.h
+2026-10-25T18:00:51.4283653Z   HDRINST usr/include/linux/vmcore.h
+2026-10-25T18:00:51.4370688Z   HDRINST usr/include/linux/swab.h
+2026-10-25T18:00:51.4372210Z   HDRINST usr/include/linux/exfat.h
+2026-10-25T18:00:51.4393553Z   HDRINST usr/include/linux/if_bonding.h
+2026-10-25T18:00:51.4511784Z   HDRINST usr/include/linux/wrapfd.h
+2026-10-25T18:00:51.4513227Z   HDRINST usr/include/linux/usb/ch9.h
+2026-10-25T18:00:51.4515629Z   HDRINST usr/include/linux/usb/ch11.h
+2026-10-25T18:00:51.4654979Z   HDRINST usr/include/linux/usb/audio.h
+2026-10-25T18:00:51.4668196Z   HDRINST usr/include/linux/usb/video.h
+2026-10-25T18:00:51.4763498Z   HDRINST usr/include/linux/usb/charger.h
+2026-10-25T18:00:51.4817223Z   HDRINST usr/include/linux/usb/android_accessory.h
+2026-10-25T18:00:51.4834928Z   HDRINST usr/include/linux/usb/midi.h
+2026-10-25T18:00:51.4904004Z   HDRINST usr/include/linux/usb/cdc-wdm.h
+2026-10-25T18:00:51.4934175Z   HDRINST usr/include/linux/usb/g_printer.h
+2026-10-25T18:00:51.4989268Z   HDRINST usr/include/linux/usb/gadgetfs.h
+2026-10-25T18:00:51.5036256Z   HDRINST usr/include/linux/usb/cdc.h
+2026-10-25T18:00:51.5054191Z   HDRINST usr/include/linux/usb/g_uvc.h
+2026-10-25T18:00:51.5113496Z   HDRINST usr/include/linux/usb/tmc.h
+2026-10-25T18:00:51.5162182Z   HDRINST usr/include/linux/usb/usb_ctrl_qti.h
+2026-10-25T18:00:51.5186655Z   HDRINST usr/include/linux/usb/raw_gadget.h
+2026-10-25T18:00:51.5240862Z   HDRINST usr/include/linux/usb/functionfs.h
+2026-10-25T18:00:51.5307639Z   HDRINST usr/include/linux/fscrypt.h
+2026-10-25T18:00:51.5351524Z   HDRINST usr/include/linux/sched/types.h
+2026-10-25T18:00:51.5371101Z   HDRINST usr/include/linux/ioctl.h
+2026-10-25T18:00:51.5456798Z   HDRINST usr/include/linux/stm.h
+2026-10-25T18:00:51.5479801Z   HDRINST usr/include/linux/fou.h
+2026-10-25T18:00:51.5488260Z   HDRINST usr/include/linux/iommufd.h
+2026-10-25T18:00:51.5573832Z   HDRINST usr/include/linux/uleds.h
+2026-10-25T18:00:51.5626807Z   HDRINST usr/include/linux/xilinx-v4l2-controls.h
+2026-10-25T18:00:51.5654966Z   HDRINST usr/include/linux/pci.h
+2026-10-25T18:00:51.5687982Z   HDRINST usr/include/linux/serial.h
+2026-10-25T18:00:51.5763077Z   HDRINST usr/include/linux/gzvm.h
+2026-10-25T18:00:51.5779956Z   HDRINST usr/include/linux/atmioc.h
+2026-10-25T18:00:51.5833590Z   HDRINST usr/include/linux/virtio_pcidev.h
+2026-10-25T18:00:51.5921312Z   HDRINST usr/include/linux/ipmi.h
+2026-10-25T18:00:51.5922560Z   HDRINST usr/include/linux/igmp.h
+2026-10-25T18:00:51.5960405Z   HDRINST usr/include/linux/rds.h
+2026-10-25T18:00:51.6055577Z   HDRINST usr/include/linux/magic.h
+2026-10-25T18:00:51.6074947Z   HDRINST usr/include/linux/v4l2-common.h
+2026-10-25T18:00:51.6127033Z   HDRINST usr/include/linux/kcov.h
+2026-10-25T18:00:51.6223784Z   HDRINST usr/include/linux/ptrace.h
+2026-10-25T18:00:51.6224511Z   HDRINST usr/include/linux/aspeed-p2a-ctrl.h
+2026-10-25T18:00:51.6239033Z   HDRINST usr/include/linux/rose.h
+2026-10-25T18:00:51.6323005Z   HDRINST usr/include/linux/nfs_mount.h
+2026-10-25T18:00:51.6353840Z   HDRINST usr/include/linux/agpgart.h
+2026-10-25T18:00:51.6373414Z   HDRINST usr/include/linux/netlink_diag.h
+2026-10-25T18:00:51.6443217Z   HDRINST usr/include/linux/fsl_mc.h
+2026-10-25T18:00:51.6484894Z   HDRINST usr/include/linux/sysctl.h
+2026-10-25T18:00:51.6486148Z   HDRINST usr/include/linux/msdos_fs.h
+2026-10-25T18:00:51.6563216Z   HDRINST usr/include/linux/dlm_plock.h
+2026-10-25T18:00:51.6612410Z   HDRINST usr/include/linux/if_macsec.h
+2026-10-25T18:00:51.6663190Z   HDRINST usr/include/linux/if_eql.h
+2026-10-25T18:00:51.6723512Z   HDRINST usr/include/linux/mei_uuid.h
+2026-10-25T18:00:51.6783208Z   HDRINST usr/include/linux/aio_abi.h
+2026-10-25T18:00:51.6784868Z   HDRINST usr/include/linux/map_to_14segment.h
+2026-10-25T18:00:51.6830313Z   HDRINST usr/include/linux/virtio_snd.h
+2026-10-25T18:00:51.6916026Z   HDRINST usr/include/linux/minix_fs.h
+2026-10-25T18:00:51.6965207Z   HDRINST usr/include/linux/psample.h
+2026-10-25T18:00:51.6971596Z   HDRINST usr/include/linux/mpls_iptunnel.h
+2026-10-25T18:00:51.7068316Z   HDRINST usr/include/linux/nfs4_mount.h
+2026-10-25T18:00:51.7083772Z   HDRINST usr/include/linux/dm-user.h
+2026-10-25T18:00:51.7104167Z   HDRINST usr/include/linux/gen_stats.h
+2026-10-25T18:00:51.7204177Z   HDRINST usr/include/linux/loadpin.h
+2026-10-25T18:00:51.7213568Z   HDRINST usr/include/linux/fsl_hypervisor.h
+2026-10-25T18:00:51.7227213Z   HDRINST usr/include/linux/ip.h
+2026-10-25T18:00:51.7314625Z   HDRINST usr/include/linux/i2o-dev.h
+2026-10-25T18:00:51.7333892Z   HDRINST usr/include/linux/adb.h
+2026-10-25T18:00:51.7371797Z   HDRINST usr/include/linux/usbdevice_fs.h
+2026-10-25T18:00:51.7445091Z   HDRINST usr/include/linux/falloc.h
+2026-10-25T18:00:51.7468605Z   HDRINST usr/include/linux/fb.h
+2026-10-25T18:00:51.7498637Z   HDRINST usr/include/linux/handshake.h
+2026-10-25T18:00:51.7594172Z   HDRINST usr/include/linux/ipmi_msgdefs.h
+2026-10-25T18:00:51.7623776Z   HDRINST usr/include/linux/net_namespace.h
+2026-10-25T18:00:51.7646875Z   HDRINST usr/include/linux/tee.h
+2026-10-25T18:00:51.7724570Z   HDRINST usr/include/linux/baycom.h
+2026-10-25T18:00:51.7744633Z   HDRINST usr/include/linux/psp-dbc.h
+2026-10-25T18:00:51.7787692Z   HDRINST usr/include/linux/qemu_fw_cfg.h
+2026-10-25T18:00:51.7833533Z   HDRINST usr/include/linux/qti_virtio_mem.h
+2026-10-25T18:00:51.7854085Z   HDRINST usr/include/linux/string.h
+2026-10-25T18:00:51.7914195Z   HDRINST usr/include/linux/target_core_user.h
+2026-10-25T18:00:51.7960874Z   HDRINST usr/include/linux/prctl.h
+2026-10-25T18:00:51.7989896Z   HDRINST usr/include/linux/major.h
+2026-10-25T18:00:51.8046059Z   HDRINST usr/include/linux/neighbour.h
+2026-10-25T18:00:51.8103914Z   HDRINST usr/include/linux/unistd.h
+2026-10-25T18:00:51.8114852Z   HDRINST usr/include/linux/vsockmon.h
+2026-10-25T18:00:51.8205875Z   HDRINST usr/include/linux/time_types.h
+2026-10-25T18:00:51.8219849Z   HDRINST usr/include/linux/if_arcnet.h
+2026-10-25T18:00:51.8252495Z   HDRINST usr/include/linux/netconf.h
+2026-10-25T18:00:51.8303867Z   HDRINST usr/include/linux/watchdog.h
+2026-10-25T18:00:51.8358303Z   HDRINST usr/include/linux/audit.h
+2026-10-25T18:00:51.8384549Z   HDRINST usr/include/linux/batadv_packet.h
+2026-10-25T18:00:51.8432907Z   HDRINST usr/include/linux/romfs_fs.h
+2026-10-25T18:00:51.8516973Z   HDRINST usr/include/linux/virtio_balloon.h
+2026-10-25T18:00:51.8542078Z   HDRINST usr/include/linux/bpfilter.h
+2026-10-25T18:00:51.8565915Z   HDRINST usr/include/linux/android/binderfs.h
+2026-10-25T18:00:51.8674814Z   HDRINST usr/include/linux/android/binder.h
+2026-10-25T18:00:51.8704152Z   HDRINST usr/include/linux/hdreg.h
+2026-10-25T18:00:51.8705035Z   HDRINST usr/include/linux/toshiba.h
+2026-10-25T18:00:51.8815103Z   HDRINST usr/include/linux/msm_geni_serial.h
+2026-10-25T18:00:51.8829817Z   HDRINST usr/include/linux/dm-log-userspace.h
+2026-10-25T18:00:51.8854076Z   HDRINST usr/include/linux/ion.h
+2026-10-25T18:00:51.8919841Z   HDRINST usr/include/linux/cuda.h
+2026-10-25T18:00:51.8980213Z   HDRINST usr/include/linux/mpls.h
+2026-10-25T18:00:51.9004123Z   HDRINST usr/include/linux/io_uring.h
+2026-10-25T18:00:51.9035677Z   HDRINST usr/include/linux/rio_mport_cdev.h
+2026-10-25T18:00:51.9105968Z   HDRINST usr/include/linux/virtio_console.h
+2026-10-25T18:00:51.9204362Z   HDRINST usr/include/linux/spi/spidev.h
+2026-10-25T18:00:51.9224326Z   HDRINST usr/include/linux/spi/spi.h
+2026-10-25T18:00:51.9270058Z   HDRINST usr/include/linux/nsfs.h
+2026-10-25T18:00:51.9300373Z   HDRINST usr/include/linux/ivtvfb.h
+2026-10-25T18:00:51.9314018Z   HDRINST usr/include/linux/cdrom.h
+2026-10-25T18:00:51.9319942Z   HDRINST usr/include/linux/trace_mmap.h
+2026-10-25T18:00:51.9424742Z   HDRINST usr/include/linux/tcp_metrics.h
+2026-10-25T18:00:51.9464322Z   HDRINST usr/include/linux/vfio_ccw.h
+2026-10-25T18:00:51.9523993Z   HDRINST usr/include/linux/auxvec.h
+2026-10-25T18:00:51.9553580Z   HDRINST usr/include/linux/signal.h
+2026-10-25T18:00:51.9576340Z   HDRINST usr/include/linux/surface_aggregator/cdev.h
+2026-10-25T18:00:51.9639094Z   HDRINST usr/include/linux/surface_aggregator/dtx.h
+2026-10-25T18:00:51.9654144Z   HDRINST usr/include/linux/hash_info.h
+2026-10-25T18:00:51.9695370Z   HDRINST usr/include/linux/msm_ion.h
+2026-10-25T18:00:51.9794609Z   HDRINST usr/include/linux/phonet.h
+2026-10-25T18:00:51.9795664Z   HDRINST usr/include/linux/shm.h
+2026-10-25T18:00:51.9819240Z   HDRINST usr/include/linux/ax25.h
+2026-10-25T18:00:51.9914162Z   HDRINST usr/include/linux/times.h
+2026-10-25T18:00:51.9920124Z   HDRINST usr/include/linux/fsverity.h
+2026-10-25T18:00:51.9973783Z   HDRINST usr/include/linux/remoteproc_cdev.h
+2026-10-25T18:00:52.0022163Z   HDRINST usr/include/linux/fsmap.h
+2026-10-25T18:00:52.0079931Z   HDRINST usr/include/linux/route.h
+2026-10-25T18:00:52.0081470Z   HDRINST usr/include/linux/virtio_vsock.h
+2026-10-25T18:00:52.0169683Z   HDRINST usr/include/linux/serial_core.h
+2026-10-25T18:00:52.0193587Z   HDRINST usr/include/linux/seg6.h
+2026-10-25T18:00:52.0200733Z   HDRINST usr/include/linux/bpqether.h
+2026-10-25T18:00:52.0291597Z   HDRINST usr/include/linux/sctp.h
+2026-10-25T18:00:52.0313434Z   HDRINST usr/include/linux/atm_tcp.h
+2026-10-25T18:00:52.0314314Z   HDRINST usr/include/linux/sock_diag.h
+2026-10-25T18:00:52.0413374Z   HDRINST usr/include/linux/pfrut.h
+2026-10-25T18:00:52.0434903Z   HDRINST usr/include/linux/perf_event.h
+2026-10-25T18:00:52.0531041Z   HDRINST usr/include/linux/resource.h
+2026-10-25T18:00:52.0545064Z   HDRINST usr/include/linux/iso_fs.h
+2026-10-25T18:00:52.0684403Z   HDRINST usr/include/linux/watch_queue.h
+2026-10-25T18:00:52.0696417Z   HDRINST usr/include/linux/vm_sockets_diag.h
+2026-10-25T18:00:52.0714081Z   HDRINST usr/include/linux/fiemap.h
+2026-10-25T18:00:52.0793917Z   HDRINST usr/include/linux/byteorder/big_endian.h
+2026-10-25T18:00:52.0796863Z   HDRINST usr/include/linux/byteorder/little_endian.h
+2026-10-25T18:00:52.0825160Z   HDRINST usr/include/linux/affs_hardblocks.h
+2026-10-25T18:00:52.0923982Z   HDRINST usr/include/linux/btf.h
+2026-10-25T18:00:52.0928157Z   HDRINST usr/include/linux/input-event-codes.h
+2026-10-25T18:00:52.0963568Z   HDRINST usr/include/linux/virtio_gpu.h
+2026-10-25T18:00:52.1084409Z   HDRINST usr/include/linux/smc_diag.h
+2026-10-25T18:00:52.1094520Z   HDRINST usr/include/linux/nitro_enclaves.h
+2026-10-25T18:00:52.1143507Z   HDRINST usr/include/linux/hidraw.h
+2026-10-25T18:00:52.1184260Z   HDRINST usr/include/linux/oom.h
+2026-10-25T18:00:52.1241764Z   HDRINST usr/include/linux/sed-opal.h
+2026-10-25T18:00:52.1256618Z   HDRINST usr/include/linux/kfd_ioctl.h
+2026-10-25T18:00:52.1319806Z   HDRINST usr/include/linux/atm_eni.h
+2026-10-25T18:00:52.1393889Z   HDRINST usr/include/linux/msm_rmnet.h
+2026-10-25T18:00:52.1440189Z   HDRINST usr/include/linux/fadvise.h
+2026-10-25T18:00:52.1519303Z   HDRINST usr/include/linux/videodev2.h
+2026-10-25T18:00:52.1543952Z   HDRINST usr/include/linux/if_tun.h
+2026-10-25T18:00:52.1544997Z   HDRINST usr/include/linux/nvram.h
+2026-10-25T18:00:52.1646830Z   HDRINST usr/include/linux/stddef.h
+2026-10-25T18:00:52.1673787Z   HDRINST usr/include/linux/isdn/capicmd.h
+2026-10-25T18:00:52.1758416Z   HDRINST usr/include/linux/gpio.h
+2026-10-25T18:00:52.1783890Z   HDRINST usr/include/linux/ppp_defs.h
+2026-10-25T18:00:52.1906931Z   HDRINST usr/include/linux/ip6_tunnel.h
+2026-10-25T18:00:52.1930102Z   HDRINST usr/include/linux/msm_sysstats.h
+2026-10-25T18:00:52.1943760Z   HDRINST usr/include/linux/ip_vs.h
+2026-10-25T18:00:52.2024881Z   UPD     include/generated/asm-offsets.h
+2026-10-25T18:00:52.2043519Z   HDRINST usr/include/linux/omapfb.h
+2026-10-25T18:00:52.2048714Z   CALL    ../scripts/checksyscalls.sh
+2026-10-25T18:00:52.2049468Z   HDRINST usr/include/linux/serial_reg.h
+2026-10-25T18:00:52.2126640Z   HDRINST usr/include/linux/netfilter_ipv4/ipt_TTL.h
+2026-10-25T18:00:52.2170427Z   HDRINST usr/include/linux/netfilter_ipv4/ip_tables.h
+2026-10-25T18:00:52.2245991Z   HDRINST usr/include/linux/netfilter_ipv4/ipt_LOG.h
+2026-10-25T18:00:52.2263890Z   HDRINST usr/include/linux/netfilter_ipv4/ipt_CLUSTERIP.h
+2026-10-25T18:00:52.2307695Z   HDRINST usr/include/linux/netfilter_ipv4/ipt_ah.h
+2026-10-25T18:00:52.2367469Z   HDRINST usr/include/linux/netfilter_ipv4/ipt_ecn.h
+2026-10-25T18:00:52.2369064Z   HDRINST usr/include/linux/netfilter_ipv4/ipt_ttl.h
+2026-10-25T18:00:52.2399946Z   HDRINST usr/include/linux/netfilter_ipv4/ipt_ECN.h
+2026-10-25T18:00:52.2472408Z   HDRINST usr/include/linux/netfilter_ipv4/ipt_REJECT.h
+2026-10-25T18:00:52.2517900Z   HDRINST usr/include/linux/taskstats.h
+2026-10-25T18:00:52.2518900Z   HDRINST usr/include/linux/patchkey.h
+2026-10-25T18:00:52.2519660Z   HDRINST usr/include/linux/bpf_common.h
+2026-10-25T18:00:52.2594536Z   HDRINST usr/include/linux/gunyah_deprecated.h
+2026-10-25T18:00:52.2643664Z   HDRINST usr/include/linux/caif/if_caif.h
+2026-10-25T18:00:52.2653737Z   HDRINST usr/include/linux/caif/caif_socket.h
+2026-10-25T18:00:52.2673535Z   LDS     arch/arm64/kernel/vdso/vdso.lds
+2026-10-25T18:00:52.2744884Z   CC      arch/arm64/kernel/vdso/vgettimeofday.o
+2026-10-25T18:00:52.2756197Z   HDRINST usr/include/linux/time.h
+2026-10-25T18:00:52.2756956Z   HDRINST usr/include/linux/nfs4.h
+2026-10-25T18:00:52.2893554Z   HDRINST usr/include/linux/cxl_mem.h
+2026-10-25T18:00:52.2896879Z   AS      arch/arm64/kernel/vdso/note.o
+2026-10-25T18:00:52.2909828Z   AS      arch/arm64/kernel/vdso/sigreturn.o
+2026-10-25T18:00:52.3010899Z   HDRINST usr/include/linux/sonet.h
+2026-10-25T18:00:52.3154819Z   HDRINST usr/include/linux/iommu.h
+2026-10-25T18:00:52.3293344Z   HDRINST usr/include/linux/psci.h
+2026-10-25T18:00:52.3436067Z   HDRINST usr/include/linux/virtio_input.h
+2026-10-25T18:00:52.3526949Z   HDRINST usr/include/linux/soundcard.h
+2026-10-25T18:00:52.3554058Z   HDRINST usr/include/linux/can.h
+2026-10-25T18:00:52.3571277Z   HDRINST usr/include/linux/media-bus-format.h
+2026-10-25T18:00:52.3704252Z   HDRINST usr/include/linux/mii.h
+2026-10-25T18:00:52.3713202Z   HDRINST usr/include/linux/netfilter_ipv6.h
+2026-10-25T18:00:52.3806629Z   HDRINST usr/include/linux/if_xdp.h
+2026-10-25T18:00:52.3814554Z   HDRINST usr/include/linux/rxrpc.h
+2026-10-25T18:00:52.3833911Z   HDRINST usr/include/linux/fpga-dfl.h
+2026-10-25T18:00:52.3934291Z   HDRINST usr/include/linux/power_state.h
+2026-10-25T18:00:52.3943755Z   HDRINST usr/include/linux/nvme_ioctl.h
+2026-10-25T18:00:52.3983547Z   HDRINST usr/include/linux/coda.h
+2026-10-25T18:00:52.4026944Z   HDRINST usr/include/linux/tipc_sockets_diag.h
+2026-10-25T18:00:52.4036837Z   HDRINST usr/include/linux/inotify.h
+2026-10-25T18:00:52.4139532Z   HDRINST usr/include/linux/v4l2-dv-timings.h
+2026-10-25T18:00:52.4163457Z   HDRINST usr/include/linux/module.h
+2026-10-25T18:00:52.4203585Z   HDRINST usr/include/linux/utsname.h
+2026-10-25T18:00:52.4204219Z   LD      arch/arm64/kernel/vdso/vdso.so.dbg
+2026-10-25T18:00:52.4248674Z   HDRINST usr/include/linux/rpmsg.h
+2026-10-25T18:00:52.4304049Z   HDRINST usr/include/linux/virtio_9p.h
+2026-10-25T18:00:52.4342347Z   VDSOSYM include/generated/vdso-offsets.h
+2026-10-25T18:00:52.4364683Z   HDRINST usr/include/linux/dccp.h
+2026-10-25T18:00:52.4378351Z   HDRINST usr/include/linux/seg6_hmac.h
+2026-10-25T18:00:52.4395280Z   OBJCOPY arch/arm64/kernel/vdso/vdso.so
+2026-10-25T18:00:52.4402312Z   HDRINST usr/include/linux/scif_ioctl.h
+2026-10-25T18:00:52.4503989Z   HDRINST usr/include/linux/cciss_ioctl.h
+2026-10-25T18:00:52.4509433Z   HDRINST usr/include/linux/vhost_types.h
+2026-10-25T18:00:52.4553918Z   HDRINST usr/include/linux/batman_adv.h
+2026-10-25T18:00:52.4614326Z   HDRINST usr/include/linux/nbd.h
+2026-10-25T18:00:52.4620221Z   HDRINST usr/include/linux/bt-bmc.h
+2026-10-25T18:00:52.4725223Z   HDRINST usr/include/linux/udf_fs_i.h
+2026-10-25T18:00:52.4753549Z   HDRINST usr/include/linux/if_phonet.h
+2026-10-25T18:00:52.4754503Z   HDRINST usr/include/linux/cyclades.h
+2026-10-25T18:00:52.4839585Z   HDRINST usr/include/linux/atmsvc.h
+2026-10-25T18:00:52.4840559Z   HDRINST usr/include/linux/tty_flags.h
+2026-10-25T18:00:52.4863505Z   HDRINST usr/include/linux/dvb/osd.h
+2026-10-25T18:00:52.4942104Z   HDRINST usr/include/linux/dvb/audio.h
+2026-10-25T18:00:52.4954426Z   HDRINST usr/include/linux/dvb/video.h
+2026-10-25T18:00:52.4988277Z   HDRINST usr/include/linux/dvb/dmx.h
+2026-10-25T18:00:52.5067850Z   HDRINST usr/include/linux/dvb/frontend.h
+2026-10-25T18:00:52.5103456Z   HDRINST usr/include/linux/dvb/ca.h
+2026-10-25T18:00:52.5120615Z   HDRINST usr/include/linux/dvb/net.h
+2026-10-25T18:00:52.5209537Z   HDRINST usr/include/linux/dvb/version.h
+2026-10-25T18:00:52.5246297Z   HDRINST usr/include/linux/atmppp.h
+2026-10-25T18:00:52.5259742Z   HDRINST usr/include/linux/matroxfb.h
+2026-10-25T18:00:52.5317291Z   HDRINST usr/include/linux/gh_virtio_backend.h
+2026-10-25T18:00:52.5362122Z   HDRINST usr/include/linux/virtio_types.h
+2026-10-25T18:00:52.5382490Z   HDRINST usr/include/linux/dm-ioctl.h
+2026-10-25T18:00:52.5442520Z   HDRINST usr/include/linux/eventfd.h
+2026-10-25T18:00:52.5482375Z   HDRINST usr/include/linux/tipc.h
+2026-10-25T18:00:52.5523212Z   HDRINST usr/include/linux/securebits.h
+2026-10-25T18:00:52.5551422Z   HDRINST usr/include/linux/zorro_ids.h
+2026-10-25T18:00:52.5627738Z   HDRINST usr/include/linux/wmi.h
+2026-10-25T18:00:52.5673648Z   HDRINST usr/include/linux/esoc_ctrl.h
+2026-10-25T18:00:52.5736915Z   HDRINST usr/include/linux/mem-buf.h
+2026-10-25T18:00:52.5763869Z   HDRINST usr/include/linux/bfs_fs.h
+2026-10-25T18:00:52.5803475Z   HDRINST usr/include/linux/posix_acl.h
+2026-10-25T18:00:52.5852588Z   HDRINST usr/include/linux/kvm.h
+2026-10-25T18:00:52.5874235Z   HDRINST usr/include/linux/dlm_device.h
+2026-10-25T18:00:52.5903369Z   HDRINST usr/include/linux/btrfs_tree.h
+2026-10-25T18:00:52.5992008Z   HDRINST usr/include/linux/gfs2_ondisk.h
+2026-10-25T18:00:52.6094126Z   HDRINST usr/include/linux/un.h
+2026-10-25T18:00:52.6142183Z   HDRINST usr/include/linux/parport.h
+2026-10-25T18:00:52.6186761Z   HDRINST usr/include/linux/ultrasound.h
+2026-10-25T18:00:52.6208510Z   HDRINST usr/include/linux/coresight-stm.h
+2026-10-25T18:00:52.6266397Z   HDRINST usr/include/linux/seccomp.h
+2026-10-25T18:00:52.6318233Z   HDRINST usr/include/linux/btrfs.h
+2026-10-25T18:00:52.6346595Z   LDS     arch/arm64/kernel/vdso32/vdso.lds
+2026-10-25T18:00:52.6347771Z   HDRINST usr/include/linux/pmu.h
+2026-10-25T18:00:52.6399509Z   HDRINST usr/include/linux/idxd.h
+2026-10-25T18:00:52.6480155Z   CC32    arch/arm64/kernel/vdso32/note.o
+2026-10-25T18:00:52.6539985Z   CC32    arch/arm64/kernel/vdso32/vgettimeofday.o
+2026-10-25T18:00:52.6542246Z   HDRINST usr/include/linux/fib_rules.h
+2026-10-25T18:00:52.6564612Z   HDRINST usr/include/linux/udp.h
+2026-10-25T18:00:52.6688414Z   HDRINST usr/include/linux/atmmpc.h
+2026-10-25T18:00:52.6689906Z   HOSTCC  arch/arm64/kernel/vdso32/../../../arm/vdso/vdsomunge
+2026-10-25T18:00:52.6800197Z   HDRINST usr/include/linux/fsi.h
+2026-10-25T18:00:52.6819593Z   HDRINST usr/include/linux/virtio_scmi.h
+2026-10-25T18:00:52.6935420Z   HDRINST usr/include/linux/virtio_rng.h
+2026-10-25T18:00:52.6963753Z   HDRINST usr/include/linux/rio_cm_cdev.h
+2026-10-25T18:00:52.7044896Z   HDRINST usr/include/linux/uvcvideo.h
+2026-10-25T18:00:52.7089838Z   HDRINST usr/include/linux/msm_ion_ids.h
+2026-10-25T18:00:52.7174773Z   HDRINST usr/include/linux/nfs_fs.h
+2026-10-25T18:00:52.7200731Z   HDRINST usr/include/linux/hiddev.h
+2026-10-25T18:00:52.7295654Z   HDRINST usr/include/linux/jffs2.h
+2026-10-25T18:00:52.7339134Z   HDRINST usr/include/linux/bpf_perf_event.h
+2026-10-25T18:00:52.7463825Z   HDRINST usr/include/linux/atm_he.h
+2026-10-25T18:00:52.7477821Z   HDRINST usr/include/linux/lirc.h
+2026-10-25T18:00:52.7548378Z   HDRINST usr/include/linux/ublk_cmd.h
+2026-10-25T18:00:52.7549480Z   HDRINST usr/include/linux/cfm_bridge.h
+2026-10-25T18:00:52.7590092Z   HDRINST usr/include/linux/ethtool.h
+2026-10-25T18:00:52.7664715Z   HDRINST usr/include/linux/psp-sev.h
+2026-10-25T18:00:52.7686434Z   HDRINST usr/include/linux/virtio_blk.h
+2026-10-25T18:00:52.7814104Z   HDRINST usr/include/linux/seg6_genl.h
+2026-10-25T18:00:52.7824390Z   HDRINST usr/include/linux/userfaultfd.h
+2026-10-25T18:00:52.7915322Z   HDRINST usr/include/linux/virtio_fs.h
+2026-10-25T18:00:52.7955333Z   HDRINST usr/include/linux/raid/md_p.h
+2026-10-25T18:00:52.7957432Z   HDRINST usr/include/linux/raid/md_u.h
+2026-10-25T18:00:52.8020543Z   HDRINST usr/include/linux/mroute.h
+2026-10-25T18:00:52.8080817Z   HDRINST usr/include/linux/mei.h
+2026-10-25T18:00:52.8110548Z   HDRINST usr/include/linux/param.h
+2026-10-25T18:00:52.8146822Z   HDRINST usr/include/linux/dma-buf.h
+2026-10-25T18:00:52.8206065Z   HDRINST usr/include/linux/keyctl.h
+2026-10-25T18:00:52.8254475Z   HDRINST usr/include/linux/tc_ematch/tc_em_cmp.h
+2026-10-25T18:00:52.8293718Z   HDRINST usr/include/linux/tc_ematch/tc_em_text.h
+2026-10-25T18:00:52.8310633Z   LD32    arch/arm64/kernel/vdso32/vdso.so.raw
+2026-10-25T18:00:52.8334224Z   HDRINST usr/include/linux/tc_ematch/tc_em_nbyte.h
+2026-10-25T18:00:52.8363751Z   HDRINST usr/include/linux/tc_ematch/tc_em_meta.h
+2026-10-25T18:00:52.8397965Z   HDRINST usr/include/linux/tc_ematch/tc_em_ipt.h
+2026-10-25T18:00:52.8439838Z   MUNGE   arch/arm64/kernel/vdso32/vdso.so.dbg
+2026-10-25T18:00:52.8459041Z   HDRINST usr/include/linux/if_link.h
+2026-10-25T18:00:52.8506156Z   HDRINST usr/include/linux/irqnr.h
+2026-10-25T18:00:52.8523225Z   HDRINST usr/include/linux/mqueue.h
+2026-10-25T18:00:52.8530396Z   VDSOSYM include/generated/vdso32-offsets.h
+2026-10-25T18:00:52.8573417Z   OBJCOPY arch/arm64/kernel/vdso32/vdso.so
+2026-10-25T18:00:52.8612115Z   HDRINST usr/include/linux/net_tstamp.h
+2026-10-25T18:00:52.8651844Z   HDRINST usr/include/linux/mtio.h
+2026-10-25T18:00:52.8658877Z   HDRINST usr/include/linux/ipmi_bmc.h
+2026-10-25T18:00:52.8673866Z   HDRINST usr/include/linux/arcfb.h
+2026-10-25T18:00:52.8764735Z   HDRINST usr/include/linux/ipv6.h
+2026-10-25T18:00:52.8783817Z   HDRINST usr/include/linux/tipc_netlink.h
+2026-10-25T18:00:52.8794805Z   HDRINST usr/include/linux/elf.h
+2026-10-25T18:00:52.8795689Z   HDRINST usr/include/linux/gsmmux.h
+2026-10-25T18:00:52.8889662Z   HDRINST usr/include/linux/dqblk_xfs.h
+2026-10-25T18:00:52.8895050Z   HDRINST usr/include/linux/hpet.h
+2026-10-25T18:00:52.8904794Z   HDRINST usr/include/linux/acrn.h
+2026-10-25T18:00:52.9030958Z   HDRINST usr/include/linux/ioam6.h
+2026-10-25T18:00:52.9033656Z   HDRINST usr/include/linux/sysinfo.h
+2026-10-25T18:00:52.9056480Z   HDRINST usr/include/linux/net.h
+2026-10-25T18:00:52.9057404Z   HDRINST usr/include/linux/if_plip.h
+2026-10-25T18:00:52.9115004Z   HDRINST usr/include/linux/signalfd.h
+2026-10-25T18:00:52.9119742Z   HDRINST usr/include/linux/pci_regs.h
+2026-10-25T18:00:52.9155241Z   HDRINST usr/include/linux/qnx4_fs.h
+2026-10-25T18:00:52.9177641Z   HDRINST usr/include/linux/synclink.h
+2026-10-25T18:00:52.9242453Z   HDRINST usr/include/linux/poll.h
+2026-10-25T18:00:52.9274227Z   HDRINST usr/include/linux/vbox_vmmdev_types.h
+2026-10-25T18:00:52.9307587Z   HDRINST usr/include/linux/net_dropmon.h
+2026-10-25T18:00:52.9343546Z   HDRINST usr/include/linux/rkisp1-config.h
+2026-10-25T18:00:52.9415796Z   HDRINST usr/include/linux/virtio_scsi.h
+2026-10-25T18:00:52.9430393Z   HDRINST usr/include/linux/mount.h
+2026-10-25T18:00:52.9453484Z   HDRINST usr/include/linux/ntsync.h
+2026-10-25T18:00:52.9538691Z   HDRINST usr/include/linux/if_fc.h
+2026-10-25T18:00:52.9553566Z   HDRINST usr/include/linux/pg.h
+2026-10-25T18:00:52.9554465Z   HDRINST usr/include/linux/nubus.h
+2026-10-25T18:00:52.9555254Z   HDRINST usr/include/linux/const.h
+2026-10-25T18:00:52.9683968Z   HDRINST usr/include/linux/connector.h
+2026-10-25T18:00:52.9686877Z   HDRINST usr/include/linux/if_infiniband.h
+2026-10-25T18:00:52.9687733Z   HDRINST usr/include/linux/vfio.h
+2026-10-25T18:00:52.9688456Z   HDRINST usr/include/linux/reboot.h
+2026-10-25T18:00:52.9772531Z   HDRINST usr/include/linux/mhi.h
+2026-10-25T18:00:52.9781141Z   HDRINST usr/include/linux/filter.h
+2026-10-25T18:00:52.9796665Z   HDRINST usr/include/linux/llc.h
+2026-10-25T18:00:52.9883023Z   HDRINST usr/include/linux/auto_fs.h
+2026-10-25T18:00:52.9904014Z   HDRINST usr/include/linux/qbg-profile.h
+2026-10-25T18:00:52.9919330Z   HDRINST usr/include/linux/virtio_config.h
+2026-10-25T18:00:52.9983815Z   HDRINST usr/include/linux/inet_diag.h
+2026-10-25T18:00:53.0021060Z   HDRINST usr/include/linux/atmclip.h
+2026-10-25T18:00:53.0026520Z   HDRINST usr/include/linux/cciss_defs.h
+2026-10-25T18:00:53.0042576Z   HDRINST usr/include/linux/if_tunnel.h
+2026-10-25T18:00:53.0110611Z   HDRINST usr/include/linux/if_addr.h
+2026-10-25T18:00:53.0127892Z   HDRINST usr/include/linux/efs_fs_sb.h
+2026-10-25T18:00:53.0144984Z   HDRINST usr/include/linux/incrementalfs.h
+2026-10-25T18:00:53.0195345Z   HDRINST usr/include/linux/aspeed-lpc-ctrl.h
+2026-10-25T18:00:53.0225534Z   HDRINST usr/include/linux/dcbnl.h
+2026-10-25T18:00:53.0253436Z   HDRINST usr/include/linux/comedi.h
+2026-10-25T18:00:53.0303708Z   HDRINST usr/include/linux/binfmts.h
+2026-10-25T18:00:53.0312896Z   HDRINST usr/include/linux/q2spi/q2spi.h
+2026-10-25T18:00:53.0403006Z   HDRINST usr/include/linux/capi.h
+2026-10-25T18:00:53.0414112Z   HDRINST usr/include/linux/netrom.h
+2026-10-25T18:00:53.0419879Z   HDRINST usr/include/linux/zorro.h
+2026-10-25T18:00:53.0499215Z   HDRINST usr/include/linux/user_events.h
+2026-10-25T18:00:53.0522186Z   HDRINST usr/include/linux/packet_diag.h
+2026-10-25T18:00:53.0530689Z   HDRINST usr/include/linux/chio.h
+2026-10-25T18:00:53.0562606Z   HDRINST usr/include/linux/sockios.h
+2026-10-25T18:00:53.0629444Z   HDRINST usr/include/linux/wwan.h
+2026-10-25T18:00:53.0654462Z   HDRINST usr/include/linux/pkt_sched.h
+2026-10-25T18:00:53.0668657Z   HDRINST usr/include/linux/serio.h
+2026-10-25T18:00:53.0699368Z   HDRINST usr/include/linux/virtio_mem.h
+2026-10-25T18:00:53.0739493Z   HDRINST usr/include/linux/coff.h
+2026-10-25T18:00:53.0762978Z   HDRINST usr/include/linux/hdlc/ioctl.h
+2026-10-25T18:00:53.0832142Z   HDRINST usr/include/linux/rtnetlink.h
+2026-10-25T18:00:53.0860298Z   HDRINST usr/include/linux/seg6_iptunnel.h
+2026-10-25T18:00:53.0877015Z   HDRINST usr/include/linux/qg-profile.h
+2026-10-25T18:00:53.0903576Z   HDRINST usr/include/linux/sunrpc/debug.h
+2026-10-25T18:00:53.0976419Z   HDRINST usr/include/linux/cec.h
+2026-10-25T18:00:53.1009183Z   HDRINST usr/include/linux/netfilter/xt_osf.h
+2026-10-25T18:00:53.1010372Z   HDRINST usr/include/linux/netfilter/xt_nfacct.h
+2026-10-25T18:00:53.1011472Z   HDRINST usr/include/linux/netfilter/nfnetlink_compat.h
+2026-10-25T18:00:53.1108298Z   HDRINST usr/include/linux/netfilter/xt_u32.h
+2026-10-25T18:00:53.1134665Z   HDRINST usr/include/linux/netfilter/xt_IDLETIMER.h
+2026-10-25T18:00:53.1169204Z   HDRINST usr/include/linux/netfilter/xt_AUDIT.h
+2026-10-25T18:00:53.1223905Z   HDRINST usr/include/linux/netfilter/xt_connlabel.h
+2026-10-25T18:00:53.1273908Z   HDRINST usr/include/linux/netfilter/xt_statistic.h
+2026-10-25T18:00:53.1293805Z   HDRINST usr/include/linux/netfilter/xt_HMARK.h
+2026-10-25T18:00:53.1329700Z   HDRINST usr/include/linux/netfilter/xt_owner.h
+2026-10-25T18:00:53.1347080Z   HDRINST usr/include/linux/netfilter/xt_l2tp.h
+2026-10-25T18:00:53.1371413Z   HDRINST usr/include/linux/netfilter/xt_mac.h
+2026-10-25T18:00:53.1420327Z   HDRINST usr/include/linux/netfilter/xt_limit.h
+2026-10-25T18:00:53.1443523Z   HDRINST usr/include/linux/netfilter/nfnetlink_hook.h
+2026-10-25T18:00:53.1463868Z   HDRINST usr/include/linux/netfilter/xt_quota.h
+2026-10-25T18:00:53.1478563Z   HDRINST usr/include/linux/netfilter/nf_conntrack_sctp.h
+2026-10-25T18:00:53.1538691Z   HDRINST usr/include/linux/netfilter/xt_realm.h
+2026-10-25T18:00:53.1559108Z   HDRINST usr/include/linux/netfilter/xt_hashlimit.h
+2026-10-25T18:00:53.1583566Z   HDRINST usr/include/linux/netfilter/xt_TCPMSS.h
+2026-10-25T18:00:53.1599644Z   HDRINST usr/include/linux/netfilter/xt_cgroup.h
+2026-10-25T18:00:53.1655391Z   HDRINST usr/include/linux/netfilter/xt_NFLOG.h
+2026-10-25T18:00:53.1685733Z   HDRINST usr/include/linux/netfilter/xt_ipvs.h
+2026-10-25T18:00:53.1704253Z   HDRINST usr/include/linux/netfilter/nf_tables_compat.h
+2026-10-25T18:00:53.1708799Z   HDRINST usr/include/linux/netfilter/xt_conntrack.h
+2026-10-25T18:00:53.1781669Z   HDRINST usr/include/linux/netfilter/xt_connmark.h
+2026-10-25T18:00:53.1801539Z   HDRINST usr/include/linux/netfilter/xt_set.h
+2026-10-25T18:00:53.1802569Z   HDRINST usr/include/linux/netfilter/nfnetlink_queue.h
+2026-10-25T18:00:53.1831023Z   HDRINST usr/include/linux/netfilter/xt_LED.h
+2026-10-25T18:00:53.1913462Z   HDRINST usr/include/linux/netfilter/xt_RATEEST.h
+2026-10-25T18:00:53.1934423Z   HDRINST usr/include/linux/netfilter/nf_conntrack_tuple_common.h
+2026-10-25T18:00:53.1941647Z   HDRINST usr/include/linux/netfilter/xt_connbytes.h
+2026-10-25T18:00:53.1942512Z   HDRINST usr/include/linux/netfilter/nf_log.h
+2026-10-25T18:00:53.2029198Z   HDRINST usr/include/linux/netfilter/xt_dccp.h
+2026-10-25T18:00:53.2030587Z   HDRINST usr/include/linux/netfilter/nfnetlink_conntrack.h
+2026-10-25T18:00:53.2038259Z   HDRINST usr/include/linux/netfilter/xt_pkttype.h
+2026-10-25T18:00:53.2053207Z   HDRINST usr/include/linux/netfilter/xt_policy.h
+2026-10-25T18:00:53.2139843Z   HDRINST usr/include/linux/netfilter/xt_CLASSIFY.h
+2026-10-25T18:00:53.2164361Z   HDRINST usr/include/linux/netfilter/nfnetlink_cttimeout.h
+2026-10-25T18:00:53.2165536Z   HDRINST usr/include/linux/netfilter/xt_ipcomp.h
+2026-10-25T18:00:53.2166318Z   HDRINST usr/include/linux/netfilter/xt_TEE.h
+2026-10-25T18:00:53.2253914Z   HDRINST usr/include/linux/netfilter/nf_nat.h
+2026-10-25T18:00:53.2270579Z   HDRINST usr/include/linux/netfilter/nfnetlink_acct.h
+2026-10-25T18:00:53.2294262Z   HDRINST usr/include/linux/netfilter/xt_comment.h
+2026-10-25T18:00:53.2297840Z   HDRINST usr/include/linux/netfilter/ipset/ip_set_bitmap.h
+2026-10-25T18:00:53.2367853Z   HDRINST usr/include/linux/netfilter/ipset/ip_set.h
+2026-10-25T18:00:53.2388899Z   HDRINST usr/include/linux/netfilter/ipset/ip_set_hash.h
+2026-10-25T18:00:53.2390286Z   HDRINST usr/include/linux/netfilter/ipset/ip_set_list.h
+2026-10-25T18:00:53.2408990Z   HDRINST usr/include/linux/netfilter/nf_conntrack_ftp.h
+2026-10-25T18:00:53.2500550Z   HDRINST usr/include/linux/netfilter/nfnetlink_osf.h
+2026-10-25T18:00:53.2514964Z   HDRINST usr/include/linux/netfilter/xt_sctp.h
+2026-10-25T18:00:53.2526262Z   HDRINST usr/include/linux/netfilter/nfnetlink_cthelper.h
+2026-10-25T18:00:53.2527248Z   HDRINST usr/include/linux/netfilter/nf_conntrack_tcp.h
+2026-10-25T18:00:53.2606902Z   HDRINST usr/include/linux/netfilter/xt_bpf.h
+2026-10-25T18:00:53.2637633Z   HDRINST usr/include/linux/netfilter/xt_TPROXY.h
+2026-10-25T18:00:53.2642949Z   HDRINST usr/include/linux/netfilter/xt_tcpudp.h
+2026-10-25T18:00:53.2658609Z   HDRINST usr/include/linux/netfilter/xt_LOG.h
+2026-10-25T18:00:53.2714153Z   HDRINST usr/include/linux/netfilter/xt_string.h
+2026-10-25T18:00:53.2743175Z   HDRINST usr/include/linux/netfilter/xt_ecn.h
+2026-10-25T18:00:53.2748539Z   HDRINST usr/include/linux/netfilter/xt_SECMARK.h
+2026-10-25T18:00:53.2775732Z   HDRINST usr/include/linux/netfilter/xt_rateest.h
+2026-10-25T18:00:53.2820335Z   HDRINST usr/include/linux/netfilter/nfnetlink_log.h
+2026-10-25T18:00:53.2848096Z   HDRINST usr/include/linux/netfilter/xt_time.h
+2026-10-25T18:00:53.2873394Z   HDRINST usr/include/linux/netfilter/xt_esp.h
+2026-10-25T18:00:53.2916640Z   HDRINST usr/include/linux/netfilter/xt_CONNSECMARK.h
+2026-10-25T18:00:53.2952292Z   HDRINST usr/include/linux/netfilter/xt_MARK.h
+2026-10-25T18:00:53.2973912Z   HDRINST usr/include/linux/netfilter/xt_SYNPROXY.h
+2026-10-25T18:00:53.3023796Z   HDRINST usr/include/linux/netfilter/xt_cluster.h
+2026-10-25T18:00:53.3031886Z   HDRINST usr/include/linux/netfilter/xt_CONNMARK.h
+2026-10-25T18:00:53.3063230Z   HDRINST usr/include/linux/netfilter/xt_physdev.h
+2026-10-25T18:00:53.3070509Z   HDRINST usr/include/linux/netfilter/xt_CHECKSUM.h
+2026-10-25T18:00:53.3096782Z   HDRINST usr/include/linux/netfilter/xt_devgroup.h
+2026-10-25T18:00:53.3120389Z   HDRINST usr/include/linux/netfilter/nf_tables.h
+2026-10-25T18:00:53.3190452Z   HDRINST usr/include/linux/netfilter/xt_NFQUEUE.h
+2026-10-25T18:00:53.3192370Z   HDRINST usr/include/linux/netfilter/xt_multiport.h
+2026-10-25T18:00:53.3213539Z   HDRINST usr/include/linux/netfilter/xt_recent.h
+2026-10-25T18:00:53.3291396Z   HDRINST usr/include/linux/netfilter/xt_CT.h
+2026-10-25T18:00:53.3295140Z   HDRINST usr/include/linux/netfilter/x_tables.h
+2026-10-25T18:00:53.3319865Z   HDRINST usr/include/linux/netfilter/xt_socket.h
+2026-10-25T18:00:53.3385815Z   HDRINST usr/include/linux/netfilter/xt_addrtype.h
+2026-10-25T18:00:53.3433428Z   HDRINST usr/include/linux/netfilter/nf_conntrack_common.h
+2026-10-25T18:00:53.3435455Z   HDRINST usr/include/linux/netfilter/xt_helper.h
+2026-10-25T18:00:53.3436054Z   HDRINST usr/include/linux/netfilter/xt_length.h
+2026-10-25T18:00:53.3508263Z   HDRINST usr/include/linux/netfilter/xt_DSCP.h
+2026-10-25T18:00:53.3542064Z   HDRINST usr/include/linux/netfilter/nfnetlink.h
+2026-10-25T18:00:53.3559709Z   HDRINST usr/include/linux/netfilter/xt_tcpmss.h
+2026-10-25T18:00:53.3573775Z   HDRINST usr/include/linux/netfilter/xt_cpu.h
+2026-10-25T18:00:53.3618686Z   HDRINST usr/include/linux/netfilter/xt_mark.h
+2026-10-25T18:00:53.3654341Z   HDRINST usr/include/linux/netfilter/xt_connlimit.h
+2026-10-25T18:00:53.3668208Z   HDRINST usr/include/linux/netfilter/xt_state.h
+2026-10-25T18:00:53.3669210Z   HDRINST usr/include/linux/netfilter/xt_TCPOPTSTRIP.h
+2026-10-25T18:00:53.3752277Z   HDRINST usr/include/linux/netfilter/xt_iprange.h
+2026-10-25T18:00:53.3760102Z   HDRINST usr/include/linux/netfilter/xt_dscp.h
+2026-10-25T18:00:53.3771635Z   HDRINST usr/include/linux/netfilter/nf_synproxy.h
+2026-10-25T18:00:53.3792234Z   HDRINST usr/include/linux/netfilter/xt_rpfilter.h
+2026-10-25T18:00:53.3866894Z   HDRINST usr/include/linux/virtio_bt.h
+2026-10-25T18:00:53.3873503Z   HDRINST usr/include/linux/atmapi.h
+2026-10-25T18:00:53.3881531Z   HDRINST usr/include/linux/bsg.h
+2026-10-25T18:00:53.3946735Z   HDRINST usr/include/linux/seg6_local.h
+2026-10-25T18:00:53.3984845Z   HDRINST usr/include/linux/erspan.h
+2026-10-25T18:00:53.3989655Z   HDRINST usr/include/linux/vtpm_proxy.h
+2026-10-25T18:00:53.4011622Z   HDRINST usr/include/linux/mempolicy.h
+2026-10-25T18:00:53.4041067Z   HDRINST usr/include/linux/if_pppox.h
+2026-10-25T18:00:53.4093630Z   HDRINST usr/include/linux/apm_bios.h
+2026-10-25T18:00:53.4101605Z   HDRINST usr/include/linux/firewire-constants.h
+2026-10-25T18:00:53.4144725Z   HDRINST usr/include/linux/hid.h
+2026-10-25T18:00:53.4177749Z   HDRINST usr/include/linux/fanotify.h
+2026-10-25T18:00:53.4204122Z   HDRINST usr/include/linux/vhost.h
+2026-10-25T18:00:53.4215283Z   HDRINST usr/include/linux/l2tp.h
+2026-10-25T18:00:53.4260391Z   HDRINST usr/include/linux/radeonfb.h
+2026-10-25T18:00:53.4322401Z   HDRINST usr/include/linux/uuid.h
+2026-10-25T18:00:53.4331136Z   HDRINST usr/include/linux/virtio_ring.h
+2026-10-25T18:00:53.4353611Z   HDRINST usr/include/linux/xattr.h
+2026-10-25T18:00:53.4384055Z   HDRINST usr/include/linux/ncsi.h
+2026-10-25T18:00:53.4428718Z   HDRINST usr/include/linux/gunyah.h
+2026-10-25T18:00:53.4461972Z   HDRINST usr/include/linux/posix_acl_xattr.h
+2026-10-25T18:00:53.4484009Z   HDRINST usr/include/linux/iio/types.h
+2026-10-25T18:00:53.4497331Z   HDRINST usr/include/linux/iio/buffer.h
+2026-10-25T18:00:53.4571828Z   HDRINST usr/include/linux/iio/events.h
+2026-10-25T18:00:53.4588443Z   HDRINST usr/include/linux/android_fuse.h
+2026-10-25T18:00:53.4601174Z   HDRINST usr/include/linux/nilfs2_api.h
+2026-10-25T18:00:53.4624862Z   HDRINST usr/include/misc/cxl.h
+2026-10-25T18:00:53.4695456Z   HDRINST usr/include/misc/pvpanic.h
+2026-10-25T18:00:53.4714627Z   HDRINST usr/include/misc/adsp_sleepmon.h
+2026-10-25T18:00:53.4739163Z   HDRINST usr/include/misc/xilinx_sdfec.h
+2026-10-25T18:00:53.4783505Z   HDRINST usr/include/misc/fastrpc.h
+2026-10-25T18:00:53.4823800Z   HDRINST usr/include/misc/uacce/uacce.h
+2026-10-25T18:00:53.4847160Z   HDRINST usr/include/misc/uacce/hisi_qm.h
+2026-10-25T18:00:53.4901292Z   HDRINST usr/include/misc/ocxl.h
+2026-10-25T18:00:53.4902309Z   HDRINST usr/include/mtd/inftl-user.h
+2026-10-25T18:00:53.4934170Z   HDRINST usr/include/mtd/mtd-user.h
+2026-10-25T18:00:53.4938252Z   HDRINST usr/include/mtd/ubi-user.h
+2026-10-25T18:00:53.5014341Z   HDRINST usr/include/mtd/nftl-user.h
+2026-10-25T18:00:53.5021089Z   HDRINST usr/include/mtd/mtd-abi.h
+2026-10-25T18:00:53.5037039Z   HDRINST usr/include/rdma/rdma_user_ioctl_cmds.h
+2026-10-25T18:00:53.5131281Z   HDRINST usr/include/rdma/mana-abi.h
+2026-10-25T18:00:53.5136341Z   HDRINST usr/include/rdma/rdma_netlink.h
+2026-10-25T18:00:53.5163499Z   HDRINST usr/include/rdma/mlx5_user_ioctl_verbs.h
+2026-10-25T18:00:53.5173646Z   HDRINST usr/include/rdma/hfi/hfi1_user.h
+2026-10-25T18:00:53.5247531Z   HDRINST usr/include/rdma/hfi/hfi1_ioctl.h
+2026-10-25T18:00:53.5275090Z   HDRINST usr/include/rdma/efa-abi.h
+2026-10-25T18:00:53.5280097Z   HDRINST usr/include/rdma/bnxt_re-abi.h
+2026-10-25T18:00:53.5313381Z   HDRINST usr/include/rdma/erdma-abi.h
+2026-10-25T18:00:53.5376954Z   HDRINST usr/include/rdma/mlx5_user_ioctl_cmds.h
+2026-10-25T18:00:53.5403555Z   HDRINST usr/include/rdma/rdma_user_rxe.h
+2026-10-25T18:00:53.5411244Z   HDRINST usr/include/rdma/irdma-abi.h
+2026-10-25T18:00:53.5444414Z   HDRINST usr/include/rdma/mthca-abi.h
+2026-10-25T18:00:53.5508132Z   HDRINST usr/include/rdma/mlx5-abi.h
+2026-10-25T18:00:53.5510968Z   HDRINST usr/include/rdma/rdma_user_cm.h
+2026-10-25T18:00:53.5517151Z   HDRINST usr/include/rdma/ib_user_sa.h
+2026-10-25T18:00:53.5574426Z   HDRINST usr/include/rdma/ib_user_ioctl_cmds.h
+2026-10-25T18:00:53.5627807Z   HDRINST usr/include/rdma/ib_user_verbs.h
+2026-10-25T18:00:53.5651843Z   HDRINST usr/include/rdma/ib_user_ioctl_verbs.h
+2026-10-25T18:00:53.5704278Z   HDRINST usr/include/rdma/rdma_user_ioctl.h
+2026-10-25T18:00:53.5714248Z   HDRINST usr/include/rdma/hns-abi.h
+2026-10-25T18:00:53.5786828Z   HDRINST usr/include/rdma/qedr-abi.h
+2026-10-25T18:00:53.5794971Z   HDRINST usr/include/rdma/rvt-abi.h
+2026-10-25T18:00:53.5809540Z   HDRINST usr/include/rdma/cxgb4-abi.h
+2026-10-25T18:00:53.5821332Z   HDRINST usr/include/rdma/mlx4-abi.h
+2026-10-25T18:00:53.5907537Z   HDRINST usr/include/rdma/siw-abi.h
+2026-10-25T18:00:53.5920177Z   HDRINST usr/include/rdma/ib_user_mad.h
+2026-10-25T18:00:53.5930625Z   HDRINST usr/include/rdma/vmw_pvrdma-abi.h
+2026-10-25T18:00:53.5944453Z   HDRINST usr/include/rdma/ocrdma-abi.h
+2026-10-25T18:00:53.6056540Z   HDRINST usr/include/scsi/scsi_bsg_fc.h
+2026-10-25T18:00:53.6059426Z   HDRINST usr/include/scsi/scsi_bsg_mpi3mr.h
+2026-10-25T18:00:53.6074311Z   HDRINST usr/include/scsi/cxlflash_ioctl.h
+2026-10-25T18:00:53.6083359Z   HDRINST usr/include/scsi/scsi_bsg_ufs.h
+2026-10-25T18:00:53.6198951Z   HDRINST usr/include/scsi/scsi_netlink.h
+2026-10-25T18:00:53.6226900Z   HDRINST usr/include/scsi/scsi_netlink_fc.h
+2026-10-25T18:00:53.6241191Z   HDRINST usr/include/scsi/fc/fc_gs.h
+2026-10-25T18:00:53.6244072Z   HDRINST usr/include/scsi/fc/fc_els.h
+2026-10-25T18:00:53.6324289Z   HDRINST usr/include/scsi/fc/fc_ns.h
+2026-10-25T18:00:53.6344050Z   HDRINST usr/include/scsi/fc/fc_fs.h
+2026-10-25T18:00:53.6368674Z   HDRINST usr/include/sound/sfnt_info.h
+2026-10-25T18:00:53.6436810Z   HDRINST usr/include/sound/hdsp.h
+2026-10-25T18:00:53.6446702Z   HDRINST usr/include/sound/hdspm.h
+2026-10-25T18:00:53.6485024Z   HDRINST usr/include/sound/asoc.h
+2026-10-25T18:00:53.6491030Z   HDRINST usr/include/sound/asequencer.h
+2026-10-25T18:00:53.6550353Z   HDRINST usr/include/sound/usb_stream.h
+2026-10-25T18:00:53.6579283Z   HDRINST usr/include/sound/emu10k1.h
+2026-10-25T18:00:53.6626154Z   HDRINST usr/include/sound/firewire.h
+2026-10-25T18:00:53.6643672Z   HDRINST usr/include/sound/asound.h
+2026-10-25T18:00:53.6663391Z   HDRINST usr/include/sound/sof/tokens.h
+2026-10-25T18:00:53.6773910Z   HDRINST usr/include/sound/sof/header.h
+2026-10-25T18:00:53.6808175Z   HDRINST usr/include/sound/sof/abi.h
+2026-10-25T18:00:53.6813080Z   HDRINST usr/include/sound/sof/fw.h
+2026-10-25T18:00:53.6868931Z   HDRINST usr/include/sound/asound_fm.h
+2026-10-25T18:00:53.6886934Z   HDRINST usr/include/sound/tlv.h
+2026-10-25T18:00:53.6906382Z   HDRINST usr/include/sound/snd_ar_tokens.h
+2026-10-25T18:00:53.6916272Z   HDRINST usr/include/sound/skl-tplg-interface.h
+2026-10-25T18:00:53.6999346Z   HDRINST usr/include/sound/intel/avs/tokens.h
+2026-10-25T18:00:53.7016723Z   HDRINST usr/include/sound/compress_offload.h
+2026-10-25T18:00:53.7058758Z   HDRINST usr/include/sound/compress_params.h
+2026-10-25T18:00:53.7059888Z   HDRINST usr/include/sound/sb16_csp.h
+2026-10-25T18:00:53.7110694Z   HDRINST usr/include/sound/snd_sst_tokens.h
+2026-10-25T18:00:53.7153313Z   HDRINST usr/include/video/edid.h
+2026-10-25T18:00:53.7174988Z   HDRINST usr/include/video/sisfb.h
+2026-10-25T18:00:53.7203780Z   HDRINST usr/include/video/uvesafb.h
+2026-10-25T18:00:53.7278002Z   HDRINST usr/include/xen/evtchn.h
+2026-10-25T18:00:53.7281192Z   HDRINST usr/include/xen/gntdev.h
+2026-10-25T18:00:53.7317655Z   HDRINST usr/include/xen/gntalloc.h
+2026-10-25T18:00:53.7333490Z   HDRINST usr/include/xen/privcmd.h
+2026-10-25T18:00:53.7383613Z   HDRINST usr/include/linux/version.h
+2026-10-25T18:00:53.7549574Z   HDRINST usr/include/asm/mman.h
+2026-10-25T18:00:53.7553736Z   HDRINST usr/include/asm/posix_types.h
+2026-10-25T18:00:53.7559873Z   HDRINST usr/include/asm/bitsperlong.h
+2026-10-25T18:00:53.7577388Z   HDRINST usr/include/asm/sigcontext.h
+2026-10-25T18:00:53.7656698Z   HDRINST usr/include/asm/fcntl.h
+2026-10-25T18:00:53.7695243Z   HDRINST usr/include/asm/setup.h
+2026-10-25T18:00:53.7699429Z   HDRINST usr/include/asm/ptrace.h
+2026-10-25T18:00:53.7751094Z   HDRINST usr/include/asm/statfs.h
+2026-10-25T18:00:53.7793457Z   HDRINST usr/include/asm/unistd.h
+2026-10-25T18:00:53.7812961Z   HDRINST usr/include/asm/sve_context.h
+2026-10-25T18:00:53.7830737Z   HDRINST usr/include/asm/perf_regs.h
+2026-10-25T18:00:53.7835456Z   HDRINST usr/include/asm/auxvec.h
+2026-10-25T18:00:53.7881935Z   HDRINST usr/include/asm/signal.h
+2026-10-25T18:00:53.7908350Z   HDRINST usr/include/asm/kvm.h
+2026-10-25T18:00:53.7943415Z   HDRINST usr/include/asm/bpf_perf_event.h
+2026-10-25T18:00:53.7949877Z   HDRINST usr/include/asm/param.h
+2026-10-25T18:00:53.7987293Z   HDRINST usr/include/asm/hwcap.h
+2026-10-25T18:00:53.8043853Z   HDRINST usr/include/asm/ucontext.h
+2026-10-25T18:00:53.8072963Z   HDRINST usr/include/asm/byteorder.h
+2026-10-25T18:00:53.8093512Z   HDRINST usr/include/asm/sembuf.h
+2026-10-25T18:00:53.8101972Z   HDRINST usr/include/asm/ipcbuf.h
+2026-10-25T18:00:53.8161946Z   HDRINST usr/include/asm/types.h
+2026-10-25T18:00:53.8186547Z   HDRINST usr/include/asm/termios.h
+2026-10-25T18:00:53.8199930Z   HDRINST usr/include/asm/termbits.h
+2026-10-25T18:00:53.8213399Z   HDRINST usr/include/asm/stat.h
+2026-10-25T18:00:53.8252510Z   HDRINST usr/include/asm/socket.h
+2026-10-25T18:00:53.8300005Z   HDRINST usr/include/asm/kvm_para.h
+2026-10-25T18:00:53.8305073Z   HDRINST usr/include/asm/errno.h
+2026-10-25T18:00:53.8331301Z   HDRINST usr/include/asm/swab.h
+2026-10-25T18:00:53.8356167Z   HDRINST usr/include/asm/ioctls.h
+2026-10-25T18:00:53.8424729Z   HDRINST usr/include/asm/ioctl.h
+2026-10-25T18:00:53.8434827Z   HDRINST usr/include/asm/resource.h
+2026-10-25T18:00:53.8435731Z   HDRINST usr/include/asm/shmbuf.h
+2026-10-25T18:00:53.8459135Z   HDRINST usr/include/asm/msgbuf.h
+2026-10-25T18:00:53.8515749Z   HDRINST usr/include/asm/poll.h
+2026-10-25T18:00:53.8536383Z   HDRINST usr/include/asm/siginfo.h
+2026-10-25T18:00:53.8549805Z   HDRINST usr/include/asm/sockios.h
+2026-10-25T18:00:53.8714120Z   LDS     scripts/module.lds
+2026-10-25T18:00:53.8878219Z   HOSTCC  usr/gen_init_cpio
+2026-10-25T18:00:53.8882064Z   CC      init/main.o
+2026-10-25T18:00:53.8959855Z   UPD     init/utsversion-tmp.h
+2026-10-25T18:00:53.9111190Z   CC      arch/arm64/kernel/probes/kprobes.o
+2026-10-25T18:00:53.9492079Z   CC      arch/arm64/kernel/pi/kaslr_early.o
+2026-10-25T18:00:54.0500796Z   GEN     usr/initramfs_data.cpio
+2026-10-25T18:00:54.0723972Z   COPY    usr/initramfs_inc_data
+2026-10-25T18:00:54.0729776Z   AS      usr/initramfs_data.o
+2026-10-25T18:00:54.1224732Z   AR      usr/built-in.a
+2026-10-25T18:00:54.1313510Z   CC      init/do_mounts.o
+2026-10-25T18:00:54.1813934Z   CC      arch/arm64/kernel/pi/lib-fdt.o
+2026-10-25T18:00:54.2973809Z   CC      arch/arm64/kernel/pi/lib-fdt_ro.o
+2026-10-25T18:00:54.5039540Z   OBJCOPY arch/arm64/kernel/pi/kaslr_early.pi.o
+2026-10-25T18:00:54.5081561Z   OBJCOPY arch/arm64/kernel/pi/lib-fdt.pi.o
+2026-10-25T18:00:54.5143870Z   OBJCOPY arch/arm64/kernel/pi/lib-fdt_ro.pi.o
+2026-10-25T18:00:54.5204255Z   AR      arch/arm64/kernel/pi/built-in.a
+2026-10-25T18:00:54.5293955Z   CC      arch/arm64/kernel/probes/decode-insn.o
+2026-10-25T18:00:54.6343793Z   CC      arch/arm64/mm/dma-mapping.o
+2026-10-25T18:00:55.2244039Z   AS      arch/arm64/kernel/probes/kprobes_trampoline.o
+2026-10-25T18:00:55.2875532Z   CC      arch/arm64/kernel/probes/simulate-insn.o
+2026-10-25T18:00:55.3754606Z   CC      arch/arm64/mm/extable.o
+2026-10-25T18:00:55.4633830Z   CC      kernel/sched/core.o
+2026-10-25T18:00:55.7843929Z   CC      arch/arm64/mm/fault.o
+2026-10-25T18:00:55.9785785Z   CC      arch/arm64/kernel/probes/uprobes.o
+2026-10-25T18:00:56.3103330Z   CC      init/do_mounts_rd.o
+2026-10-25T18:00:56.6986766Z   AR      arch/arm64/kernel/probes/built-in.a
+2026-10-25T18:00:56.7079367Z   LDS     arch/arm64/kernel/vmlinux.lds
+2026-10-25T18:00:56.7364139Z   CC      arch/arm64/kernel/debug-monitors.o
+2026-10-25T18:00:57.1353719Z   CC      init/do_mounts_initrd.o
+2026-10-25T18:00:57.3796819Z   CC      arch/arm64/mm/init.o
+2026-10-25T18:00:57.8624271Z   CC      init/initramfs.o
+2026-10-25T18:00:57.9502635Z   AS      arch/arm64/kernel/entry.o
+2026-10-25T18:00:58.0883987Z   CC      arch/arm64/kernel/irq.o
+2026-10-25T18:00:58.8166764Z   CC      arch/arm64/kernel/fpsimd.o
+2026-10-25T18:00:58.8265640Z   AS      arch/arm64/mm/cache.o
+2026-10-25T18:00:58.8963982Z   CC      arch/arm64/mm/copypage.o
+2026-10-25T18:00:59.1290226Z   CC      init/calibrate.o
+2026-10-25T18:00:59.4655973Z   CC      init/init_task.o
+2026-10-25T18:00:59.6723618Z   CC      kernel/sched/fair.o
+2026-10-25T18:00:59.9913949Z   CC      arch/arm64/mm/flush.o
+2026-10-25T18:01:00.0689372Z   CC      arch/arm64/kernel/entry-common.o
+2026-10-25T18:01:00.7183962Z   CC      init/version.o
+2026-10-25T18:01:00.9773747Z   AS      arch/arm64/kernel/entry-fpsimd.o
+2026-10-25T18:01:01.0644009Z   CC      arch/arm64/kernel/process.o
+2026-10-25T18:01:01.1422369Z   CC      arch/arm64/mm/ioremap.o
+2026-10-25T18:01:01.2264003Z   AR      init/built-in.a
+2026-10-25T18:01:01.2453853Z   CC      arch/arm64/net/bpf_jit_comp.o
+2026-10-25T18:01:02.2496456Z   CC      arch/arm64/mm/mem_encrypt.o
+2026-10-25T18:01:02.5543906Z   AR      arch/arm64/net/built-in.a
+2026-10-25T18:01:02.5599698Z   CC      arch/arm64/kernel/ptrace.o
+2026-10-25T18:01:02.5713926Z   CC      kernel/locking/mutex.o
+2026-10-25T18:01:02.8733966Z   CC      kernel/sched/build_policy.o
+2026-10-25T18:01:03.2353592Z   CC      arch/arm64/mm/mmap.o
+2026-10-25T18:01:04.1453826Z   CC      arch/arm64/kernel/setup.o
+2026-10-25T18:01:04.1513647Z   CC      kernel/locking/semaphore.o
+2026-10-25T18:01:04.2712381Z   CC      arch/arm64/mm/pgd.o
+2026-10-25T18:01:04.9330195Z   CC      arch/arm64/mm/mmu.o
+2026-10-25T18:01:04.9710907Z   CC      arch/arm64/kernel/signal.o
+2026-10-25T18:01:05.3320632Z   CC      kernel/locking/rwsem.o
+2026-10-25T18:01:05.5921061Z   CC      kernel/sched/build_utility.o
+2026-10-25T18:01:06.2984820Z   CC      arch/arm64/kernel/sys.o
+2026-10-25T18:01:06.5094181Z   CC      arch/arm64/mm/context.o
+2026-10-25T18:01:06.6311964Z   CC      kernel/locking/percpu-rwsem.o
+2026-10-25T18:01:07.0373902Z   CC      arch/arm64/kernel/stacktrace.o
+2026-10-25T18:01:07.7523716Z   AS      arch/arm64/mm/proc.o
+2026-10-25T18:01:07.7640580Z   CC      kernel/locking/spinlock.o
+2026-10-25T18:01:07.8504053Z   CC      arch/arm64/mm/pageattr.o
+2026-10-25T18:01:08.2094035Z   CC      arch/arm64/kernel/time.o
+2026-10-25T18:01:08.6337507Z   CC      kernel/locking/osq_lock.o
+2026-10-25T18:01:08.7133923Z   CC      kernel/sched/vendor_hooks.o
+2026-10-25T18:01:08.9771084Z   CC      arch/arm64/mm/fixmap.o
+2026-10-25T18:01:09.1507829Z   CC      kernel/locking/qspinlock.o
+2026-10-25T18:01:09.2819586Z   CC      arch/arm64/kernel/traps.o
+2026-10-25T18:01:09.6893663Z   CC      arch/arm64/mm/contpte.o
+2026-10-25T18:01:10.2424125Z   CC      kernel/locking/rtmutex_api.o
+2026-10-25T18:01:10.3195387Z   CC      arch/arm64/kernel/io.o
+2026-10-25T18:01:10.8373533Z   AR      kernel/sched/built-in.a
+2026-10-25T18:01:10.8540513Z   CC      certs/system_keyring.o
+2026-10-25T18:01:10.9551029Z   CC      arch/arm64/mm/mem_relinquish.o
+2026-10-25T18:01:11.0223726Z   CC      arch/arm64/kernel/vdso.o
+2026-10-25T18:01:11.3909267Z   CC      kernel/locking/qrwlock.o
+2026-10-25T18:01:11.5103809Z   HOSTCC  certs/extract-cert
+2026-10-25T18:01:11.6694353Z   COPY    certs/x509.genkey
+2026-10-25T18:01:11.6724298Z   CERT    certs/x509_certificate_list
+2026-10-25T18:01:11.6763506Z   GENKEY  certs/signing_key.pem
+2026-10-25T18:01:11.7794879Z ............+....+...+........+....+...+..+.......+...+..+...+...+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*..+.....+...+.+...+..+....+..+.......+...+..............+...+.+..+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*....+..............+......+.+.....+............+..................+...+  AS      arch/arm64/kernel/hyp-stub.o
+2026-10-25T18:01:11.8531826Z .+...+......+......+.....+......+.......+.....+......  CC      arch/arm64/kernel/psci.o
+2026-10-25T18:01:11.9884072Z +.......+.....+...+............+...............+...+.......+..+.+...........+.+..+.+.....++  CC      arch/arm64/mm/ptdump.o
+2026-10-25T18:01:12.1853940Z +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-10-25T18:01:12.3483563Z ...+........+...+.+...+...+.....+...+....+...+........+.+.........+......+...+...+........+......+.............+...+..+.+..............+...+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*...+...+.....+....+.........+..+...............+....+......+..+.+............+..+......+.+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*.+.....+......+......+...+.....................+....+..+.+...............+.........+...+.....+......+..........+  AR      kernel/locking/built-in.a
+2026-10-25T18:01:12.3650175Z ..+...+.+..  CC      kernel/power/qos.o
+2026-10-25T18:01:12.4964173Z ......+...............+.+......+.....+...+...+....+.........+..+.............+.........+.....+..  CC      arch/arm64/kernel/cpu_ops.o
+2026-10-25T18:01:12.6343932Z ........+...+..+...+.......+..+++++++++++++++++++++++++++++++++  CC      arch/arm64/mm/trans_pgd.o
+2026-10-25T18:01:12.7273710Z ++++++++++++++++++++++++++++++++
+2026-10-25T18:01:12.7533757Z -----
+2026-10-25T18:01:12.7643914Z   CERT    certs/signing_key.x509
+2026-10-25T18:01:12.7723744Z   AS      certs/system_certificates.o
+2026-10-25T18:01:12.8374054Z   AR      certs/built-in.a
+2026-10-25T18:01:12.8734024Z   CC      arch/arm64/kvm/hyp/vhe/timer-sr.o
+2026-10-25T18:01:13.2239862Z   CC      arch/arm64/kernel/return_address.o
+2026-10-25T18:01:13.4749614Z   AS      arch/arm64/mm/trans_pgd-asm.o
+2026-10-25T18:01:13.5523967Z   CC      arch/arm64/mm/mteswap.o
+2026-10-25T18:01:13.6364159Z   CC      arch/arm64/kvm/hyp/vhe/sysreg-sr.o
+2026-10-25T18:01:13.6892591Z   CC      kernel/power/main.o
+2026-10-25T18:01:14.3003012Z   CC      arch/arm64/kernel/cpuinfo.o
+2026-10-25T18:01:14.3908018Z   CC      arch/arm64/mm/kasan_init.o
+2026-10-25T18:01:14.5853851Z   CC      arch/arm64/kvm/hyp/vhe/debug-sr.o
+2026-10-25T18:01:14.9354019Z   CC      arch/arm64/kernel/cpu_errata.o
+2026-10-25T18:01:15.0753832Z   AR      arch/arm64/mm/built-in.a
+2026-10-25T18:01:15.0956511Z   CC      kernel/printk/printk.o
+2026-10-25T18:01:15.1724435Z   CC      kernel/power/process.o
+2026-10-25T18:01:15.5097402Z   CC      arch/arm64/kvm/hyp/vhe/switch.o
+2026-10-25T18:01:15.6003978Z   CC      arch/arm64/kernel/cpufeature.o
+2026-10-25T18:01:16.1134122Z   CC      kernel/power/suspend.o
+2026-10-25T18:01:16.7473745Z   CC      arch/arm64/kvm/hyp/vhe/tlb.o
+2026-10-25T18:01:16.9083509Z   CC      kernel/printk/printk_safe.o
+2026-10-25T18:01:17.4064061Z   CC      arch/arm64/kernel/alternative.o
+2026-10-25T18:01:17.6634489Z   CC      arch/arm64/kvm/hyp/vhe/../vgic-v3-sr.o
+2026-10-25T18:01:17.7273816Z   CC      kernel/power/hibernate.o
+2026-10-25T18:01:17.9524933Z   CC      kernel/printk/printk_ringbuffer.o
+2026-10-25T18:01:18.4143901Z   CC      kernel/printk/sysctl.o
+2026-10-25T18:01:18.5343809Z   CC      arch/arm64/kernel/cacheinfo.o
+2026-10-25T18:01:18.7174458Z   CC      arch/arm64/kvm/hyp/vhe/../aarch32.o
+2026-10-25T18:01:18.7310449Z   AR      kernel/printk/built-in.a
+2026-10-25T18:01:18.7453961Z   CC      arch/arm64/kernel/smp.o
+2026-10-25T18:01:19.2423930Z   CC      kernel/power/snapshot.o
+2026-10-25T18:01:19.5113710Z   CC      arch/arm64/kvm/hyp-constants.s
+2026-10-25T18:01:19.5896738Z   CC      arch/arm64/kvm/hyp/vhe/../vgic-v2-cpuif-proxy.o
+2026-10-25T18:01:20.4141857Z   CC      kernel/power/swap.o
+2026-10-25T18:01:20.4953926Z   CC      mm/kasan/common.o
+2026-10-25T18:01:20.5495402Z   AS      arch/arm64/kvm/hyp/vhe/../entry.o
+2026-10-25T18:01:20.6213895Z   AS      arch/arm64/kvm/hyp/vhe/../fpsimd.o
+2026-10-25T18:01:20.6214612Z   CC      arch/arm64/kernel/smp_spin_table.o
+2026-10-25T18:01:20.6971480Z   AS      arch/arm64/kvm/hyp/vhe/../hyp-entry.o
+2026-10-25T18:01:20.7824012Z   CC      arch/arm64/kvm/hyp/vhe/../exception.o
+2026-10-25T18:01:21.3205840Z   CC      arch/arm64/kernel/topology.o
+2026-10-25T18:01:21.4974097Z   CC      kernel/power/user.o
+2026-10-25T18:01:21.8396708Z   CC      mm/kasan/report.o
+2026-10-25T18:01:21.8416785Z   AR      arch/arm64/kvm/hyp/vhe/built-in.a
+2026-10-25T18:01:21.8642265Z   LDS     arch/arm64/kvm/hyp/nvhe/hyp.lds
+2026-10-25T18:01:21.8904028Z   CC      arch/arm64/kvm/hyp/nvhe/timer-sr.nvhe.o
+2026-10-25T18:01:21.9703910Z   AS      arch/arm64/kernel/smccc-call.o
+2026-10-25T18:01:22.3073465Z   CC      kernel/power/wakelock.o
+2026-10-25T18:01:22.3403920Z   CC      arch/arm64/kernel/syscall.o
+2026-10-25T18:01:22.7036872Z   CC      mm/kasan/hw_tags.o
+2026-10-25T18:01:22.9053947Z   CC      arch/arm64/kvm/hyp/nvhe/sysreg-sr.nvhe.o
+2026-10-25T18:01:23.1123759Z   CC      arch/arm64/kernel/proton-pack.o
+2026-10-25T18:01:23.1279814Z   CC      kernel/power/poweroff.o
+2026-10-25T18:01:23.4234001Z   CC      kernel/power/wakeup_reason.o
+2026-10-25T18:01:23.9011899Z   CC      arch/arm64/kvm/hyp/nvhe/debug-sr.nvhe.o
+2026-10-25T18:01:24.0084130Z   CC      mm/kasan/report_hw_tags.o
+2026-10-25T18:01:24.0247454Z   CC      arch/arm64/kernel/idreg-override.o
+2026-10-25T18:01:24.7083864Z   CC      kernel/power/energy_model.o
+2026-10-25T18:01:24.7288901Z   CC      mm/kasan/tags.o
+2026-10-25T18:01:24.7313608Z   CC      arch/arm64/kernel/idle.o
+2026-10-25T18:01:24.9454041Z   CC      arch/arm64/kvm/hyp/nvhe/switch.nvhe.o
+2026-10-25T18:01:25.2474073Z   CC      arch/arm64/kernel/patching.o
+2026-10-25T18:01:25.5148239Z   CC      mm/kasan/report_tags.o
+2026-10-25T18:01:25.8344112Z   AR      kernel/power/built-in.a
+2026-10-25T18:01:25.8544294Z   CC      kernel/irq/irqdesc.o
+2026-10-25T18:01:25.9608039Z   CC      arch/arm64/kernel/sys32.o
+2026-10-25T18:01:26.2664025Z   AR      mm/kasan/built-in.a
+2026-10-25T18:01:26.2859638Z   CC      mm/damon/core.o
+2026-10-25T18:01:26.6813580Z   CC      arch/arm64/kernel/signal32.o
+2026-10-25T18:01:27.0280417Z   CC      kernel/irq/handle.o
+2026-10-25T18:01:27.3543956Z   CC      arch/arm64/kvm/hyp/nvhe/tlb.nvhe.o
+2026-10-25T18:01:27.4264000Z   CC      mm/damon/ops-common.o
+2026-10-25T18:01:27.6202634Z   CC      arch/arm64/kernel/sys_compat.o
+2026-10-25T18:01:28.1456222Z   CC      kernel/irq/manage.o
+2026-10-25T18:01:28.3401362Z   AS      arch/arm64/kvm/hyp/nvhe/hyp-init.nvhe.o
+2026-10-25T18:01:28.3500894Z   AS      arch/arm64/kernel/sigreturn32.o
+2026-10-25T18:01:28.4000331Z   AS      arch/arm64/kernel/kuser32.o
+2026-10-25T18:01:28.4205533Z   AS      arch/arm64/kvm/hyp/nvhe/host.nvhe.o
+2026-10-25T18:01:28.4538031Z   CC      arch/arm64/kernel/module.o
+2026-10-25T18:01:28.4907007Z   CC      arch/arm64/kvm/hyp/nvhe/hyp-main.nvhe.o
+2026-10-25T18:01:28.5353724Z   CC      mm/damon/vaddr.o
+2026-10-25T18:01:29.3264021Z   CC      arch/arm64/kernel/module-plts.o
+2026-10-25T18:01:29.4402403Z   CC      mm/damon/sysfs-common.o
+2026-10-25T18:01:29.5194982Z   CC      kernel/irq/spurious.o
+2026-10-25T18:01:30.0411575Z   CC      arch/arm64/kernel/perf_regs.o
+2026-10-25T18:01:30.1588215Z   CC      mm/damon/sysfs-schemes.o
+2026-10-25T18:01:30.1661712Z   CC      arch/arm64/kvm/hyp/nvhe/hyp-smp.nvhe.o
+2026-10-25T18:01:30.1883779Z   CC      kernel/irq/resend.o
+2026-10-25T18:01:30.7810625Z   CC      arch/arm64/kernel/perf_callchain.o
+2026-10-25T18:01:30.8463981Z   CC      kernel/irq/chip.o
+2026-10-25T18:01:31.1019439Z   CC      arch/arm64/kvm/hyp/nvhe/psci-relay.nvhe.o
+2026-10-25T18:01:31.1084482Z   CC      mm/damon/sysfs.o
+2026-10-25T18:01:31.5091201Z   CC      arch/arm64/kernel/hw_breakpoint.o
+2026-10-25T18:01:32.0072221Z   AR      mm/damon/built-in.a
+2026-10-25T18:01:32.0200717Z   CC      mm/filemap.o
+2026-10-25T18:01:32.1265684Z   CC      arch/arm64/kvm/hyp/nvhe/alloc.nvhe.o
+2026-10-25T18:01:32.1276898Z   CC      kernel/irq/dummychip.o
+2026-10-25T18:01:32.3470408Z   AS      arch/arm64/kernel/sleep.o
+2026-10-25T18:01:32.4157488Z   CC      arch/arm64/kernel/suspend.o
+2026-10-25T18:01:33.1422196Z   CC      arch/arm64/kernel/cpuidle.o
+2026-10-25T18:01:33.1963706Z   CC      kernel/irq/devres.o
+2026-10-25T18:01:33.2213947Z   CC      arch/arm64/kvm/hyp/nvhe/early_alloc.nvhe.o
+2026-10-25T18:01:33.7114496Z   CC      arch/arm64/kernel/jump_label.o
+2026-10-25T18:01:33.9177703Z   CC      arch/arm64/kernel/efi.o
+2026-10-25T18:01:34.1454440Z   CC      arch/arm64/kvm/hyp/nvhe/page_alloc.nvhe.o
+2026-10-25T18:01:34.1903777Z   CC      kernel/irq/generic-chip.o
+2026-10-25T18:01:34.8443989Z   CC      mm/mempool.o
+2026-10-25T18:01:35.0401114Z   AS      arch/arm64/kernel/efi-rt-wrapper.o
+2026-10-25T18:01:35.1083780Z   CC      arch/arm64/kernel/pci.o
+2026-10-25T18:01:35.1403797Z   AS      arch/arm64/kvm/hyp/nvhe/cache.nvhe.o
+2026-10-25T18:01:35.2053919Z   CC      arch/arm64/kvm/hyp/nvhe/setup.nvhe.o
+2026-10-25T18:01:35.3460885Z   CC      kernel/irq/autoprobe.o
+2026-10-25T18:01:35.8187519Z   CC      arch/arm64/kernel/armv8_deprecated.o
+2026-10-25T18:01:36.2231973Z   CC      arch/arm64/kvm/hyp/nvhe/mm.nvhe.o
+2026-10-25T18:01:36.3683981Z   CC      mm/oom_kill.o
+2026-10-25T18:01:36.3686027Z   CC      kernel/irq/irqdomain.o
+2026-10-25T18:01:36.6610971Z   CC      arch/arm64/kernel/paravirt.o
+2026-10-25T18:01:37.2508546Z   CC      arch/arm64/kvm/hyp/nvhe/mem_protect.nvhe.o
+2026-10-25T18:01:37.2613750Z   CC      arch/arm64/kernel/kaslr.o
+2026-10-25T18:01:37.4251240Z   CC      arch/arm64/kernel/hibernate.o
+2026-10-25T18:01:37.6713967Z   CC      kernel/irq/proc.o
+2026-10-25T18:01:38.2864358Z   CC      kernel/irq/cpuhotplug.o
+2026-10-25T18:01:38.6214061Z   CC      arch/arm64/kvm/hyp/nvhe/sys_regs.nvhe.o
+2026-10-25T18:01:38.7243764Z   CC      mm/fadvise.o
+2026-10-25T18:01:38.9039417Z   CC      kernel/irq/pm.o
+2026-10-25T18:01:38.9279515Z   AS      arch/arm64/kernel/hibernate-asm.o
+2026-10-25T18:01:38.9977970Z   CC      arch/arm64/kernel/elfcore.o
+2026-10-25T18:01:39.6494059Z   CC      arch/arm64/kernel/pointer_auth.o
+2026-10-25T18:01:39.7133961Z   CC      kernel/irq/msi.o
+2026-10-25T18:01:39.7939123Z   CC      arch/arm64/kvm/hyp/nvhe/pkvm.nvhe.o
+2026-10-25T18:01:40.1496372Z   CC      arch/arm64/kernel/mte.o
+2026-10-25T18:01:40.5773102Z   CC      mm/maccess.o
+2026-10-25T18:01:41.0735720Z   CC      kernel/irq/ipi.o
+2026-10-25T18:01:41.4529332Z   CC      arch/arm64/kvm/hyp/nvhe/stacktrace.nvhe.o
+2026-10-25T18:01:41.5060540Z   AS      arch/arm64/kernel/vdso-wrap.o
+2026-10-25T18:01:41.5674021Z   AS      arch/arm64/kernel/vdso32-wrap.o
+2026-10-25T18:01:41.6553026Z   CC      arch/arm64/kernel/patch-scs.o
+2026-10-25T18:01:41.7973864Z   CC      mm/page-writeback.o
+2026-10-25T18:01:41.9139644Z   CC      kernel/irq/affinity.o
+2026-10-25T18:01:42.1951222Z   CC      arch/arm64/kvm/hyp/nvhe/ffa.nvhe.o
+2026-10-25T18:01:42.3562333Z   AS      arch/arm64/kernel/head.o
+2026-10-25T18:01:42.4484064Z   AR      arch/arm64/kernel/built-in.a
+2026-10-25T18:01:42.4904090Z   AR      fs/notify/dnotify/built-in.a
+2026-10-25T18:01:42.5053807Z   CC      fs/notify/inotify/inotify_fsnotify.o
+2026-10-25T18:01:42.5364102Z   AR      kernel/irq/built-in.a
+2026-10-25T18:01:42.5553773Z   CC      kernel/rcu/update.o
+2026-10-25T18:01:43.0583926Z   CC      fs/notify/inotify/inotify_user.o
+2026-10-25T18:01:43.3073976Z   CC      arch/arm64/kvm/hyp/nvhe/serial.nvhe.o
+2026-10-25T18:01:43.9770869Z   AR      fs/notify/inotify/built-in.a
+2026-10-25T18:01:43.9931169Z   AR      fs/notify/fanotify/built-in.a
+2026-10-25T18:01:44.0024495Z   CC      fs/notify/fsnotify.o
+2026-10-25T18:01:44.0524010Z   CC      mm/folio-compat.o
+2026-10-25T18:01:44.1412015Z   CC      arch/arm64/kvm/hyp/nvhe/alloc_mgt.nvhe.o
+2026-10-25T18:01:44.8523784Z   CC      kernel/rcu/sync.o
+2026-10-25T18:01:44.9059425Z   CC      arch/arm64/kvm/hyp/nvhe/../vgic-v3-sr.nvhe.o
+2026-10-25T18:01:45.1954040Z   CC      kernel/rcu/srcutree.o
+2026-10-25T18:01:45.2316362Z   CC      fs/notify/notification.o
+2026-10-25T18:01:45.6774426Z   CC      mm/readahead.o
+2026-10-25T18:01:45.9170708Z   CC      arch/arm64/kvm/hyp/nvhe/../aarch32.nvhe.o
+2026-10-25T18:01:46.3579653Z   CC      fs/notify/group.o
+2026-10-25T18:01:46.4673204Z   CC      kernel/rcu/tree.o
+2026-10-25T18:01:46.7636115Z   CC      arch/arm64/kvm/hyp/nvhe/../vgic-v2-cpuif-proxy.nvhe.o
+2026-10-25T18:01:47.5684279Z   CC      mm/swap.o
+2026-10-25T18:01:47.6443984Z   CC      fs/notify/mark.o
+2026-10-25T18:01:47.6984131Z   AS      arch/arm64/kvm/hyp/nvhe/../entry.nvhe.o
+2026-10-25T18:01:47.7744023Z   AS      arch/arm64/kvm/hyp/nvhe/../fpsimd.nvhe.o
+2026-10-25T18:01:47.8493905Z   AS      arch/arm64/kvm/hyp/nvhe/../hyp-entry.nvhe.o
+2026-10-25T18:01:47.9255570Z   CC      arch/arm64/kvm/hyp/nvhe/../exception.nvhe.o
+2026-10-25T18:01:48.9229178Z   CC      fs/notify/fdinfo.o
+2026-10-25T18:01:48.9814015Z   CC      arch/arm64/kvm/hyp/nvhe/../pgtable.nvhe.o
+2026-10-25T18:01:49.3904235Z ../fs/notify/fdinfo.c:16:10: fatal error: 'linux/susfs_def.h' file not found
+2026-10-25T18:01:49.3933839Z    16 | #include <linux/susfs_def.h>
+2026-10-25T18:01:49.3963472Z       |          ^~~~~~~~~~~~~~~~~~~
+2026-10-25T18:01:49.5443854Z 1 error generated.
+2026-10-25T18:01:49.5501179Z make[5]: *** [../scripts/Makefile.build:243: fs/notify/fdinfo.o] Error 1
+2026-10-25T18:01:49.5502330Z make[4]: *** [../scripts/Makefile.build:480: fs/notify] Error 2
+2026-10-25T18:01:49.5516419Z make[3]: *** [../scripts/Makefile.build:480: fs] Error 2
+2026-10-25T18:01:49.5517072Z   CC      kernel/rcu/rcu_segcblist.o
+2026-10-25T18:01:49.5524000Z make[3]: *** Waiting for unfinished jobs....
+2026-10-25T18:01:49.5934018Z   CC      mm/truncate.o
+2026-10-25T18:01:49.8763952Z   UPD     arch/arm64/kvm/hyp_constants.h
+2026-10-25T18:01:49.8823707Z   CC      arch/arm64/kvm/hyp/pgtable.o
+2026-10-25T18:01:50.0394023Z   CC      arch/arm64/kvm/hyp/nvhe/iommu/iommu.nvhe.o
+2026-10-25T18:01:50.1925944Z   AR      kernel/rcu/built-in.a
+2026-10-25T18:01:50.2118108Z   AR      kernel/livepatch/built-in.a
+2026-10-25T18:01:50.2333081Z   CC      kernel/dma/mapping.o
+2026-10-25T18:01:50.9227795Z   CC      kernel/dma/direct.o
+2026-10-25T18:01:51.1322474Z   CC      arch/arm64/kvm/hyp/nvhe/list_debug.nvhe.o
+2026-10-25T18:01:51.1974031Z   CC      arch/arm64/kvm/hyp/nvhe/clock.nvhe.o
+2026-10-25T18:01:51.4126081Z   CC      mm/vmscan.o
+2026-10-25T18:01:51.5152254Z   CC      arch/arm64/gunyah/gunyah_hypercall.o
+2026-10-25T18:01:51.9892746Z   CC      arch/arm64/kvm/hyp/nvhe/events.nvhe.o
+2026-10-25T18:01:52.1484413Z   CC      kernel/dma/ops_helpers.o
+2026-10-25T18:01:52.5340914Z   AR      arch/arm64/gunyah/built-in.a
+2026-10-25T18:01:52.5451776Z   CC      arch/arm64/kvm/../../../virt/kvm/kvm_main.o
+2026-10-25T18:01:52.7673983Z   CC      kernel/dma/dummy.o
+2026-10-25T18:01:52.9284042Z   CC      arch/arm64/kvm/hyp/nvhe/trace.nvhe.o
+2026-10-25T18:01:53.4347710Z   CC      kernel/dma/contiguous.o
+2026-10-25T18:01:53.8853972Z   CC      arch/arm64/kvm/hyp/nvhe/modules.nvhe.o
+2026-10-25T18:01:54.5513626Z   CC      kernel/dma/coherent.o
+2026-10-25T18:01:54.8093807Z   AS      arch/arm64/kvm/hyp/nvhe/../../../lib/clear_page.nvhe.o
+2026-10-25T18:01:54.8704061Z   AS      arch/arm64/kvm/hyp/nvhe/../../../lib/copy_page.nvhe.o
+2026-10-25T18:01:54.9457689Z   AS      arch/arm64/kvm/hyp/nvhe/../../../lib/memcpy.nvhe.o
+2026-10-25T18:01:55.0204053Z   AS      arch/arm64/kvm/hyp/nvhe/../../../lib/memset.nvhe.o
+2026-10-25T18:01:55.0964110Z   CC      arch/arm64/kvm/hyp/nvhe/power/hvc.nvhe.o
+2026-10-25T18:01:55.2043514Z   CC      kernel/dma/swiotlb.o
+2026-10-25T18:01:55.3703699Z   CC      kernel/entry/kvm.o
+2026-10-25T18:01:55.4933927Z   CC      mm/shmem.o
+2026-10-25T18:01:56.0229918Z   LD      arch/arm64/kvm/hyp/nvhe/kvm_nvhe.tmp.o
+2026-10-25T18:01:56.3174157Z   CC      kernel/dma/pool.o
+2026-10-25T18:01:56.8484558Z   AR      kernel/entry/built-in.a
+2026-10-25T18:01:56.8693943Z   CC      arch/arm64/crypto/sha1-ce-glue.o
+2026-10-25T18:01:57.3253765Z   CC      kernel/dma/remap.o
+2026-10-25T18:01:57.6723905Z   AS      arch/arm64/crypto/sha1-ce-core.o
+2026-10-25T18:01:57.8133931Z   CC      arch/arm64/crypto/sha2-ce-glue.o
+2026-10-25T18:01:58.1433969Z   AR      kernel/dma/built-in.a
+2026-10-25T18:01:58.1574001Z   CC      mm/util.o
+2026-10-25T18:01:58.1753843Z   CC      kernel/module/main.o
+2026-10-25T18:01:58.5644013Z   AS      arch/arm64/crypto/sha2-ce-core.o
+2026-10-25T18:01:58.6714168Z   CC      arch/arm64/crypto/sha512-ce-glue.o
+2026-10-25T18:01:58.7053957Z   HYPREL  arch/arm64/kvm/hyp/nvhe/hyp-reloc.S
+2026-10-25T18:01:58.7083813Z   AS      arch/arm64/kvm/hyp/nvhe/hyp-reloc.o
+2026-10-25T18:01:58.7604000Z   LD      arch/arm64/kvm/hyp/nvhe/kvm_nvhe.rel.o
+2026-10-25T18:01:58.8293938Z   HYPCOPY arch/arm64/kvm/hyp/nvhe/kvm_nvhe.o
+2026-10-25T18:01:58.8533931Z   AR      arch/arm64/kvm/hyp/nvhe/built-in.a
+2026-10-25T18:01:58.8623708Z   AR      arch/arm64/kvm/hyp/built-in.a
+2026-10-25T18:01:58.8773854Z   CC      arch/arm64/kvm/../../../virt/kvm/eventfd.o
+2026-10-25T18:01:59.1044863Z ../kernel/module/main.c:3027:5: error: call to undeclared function 'aarch64_insn_patch_text_nosync'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+2026-10-25T18:01:59.1054669Z  3027 |                                 aarch64_insn_patch_text_nosync((void *)&text[i+3], 0xd503201f); /* nop b.ne 5574 */
+2026-10-25T18:01:59.1083444Z       |                                 ^
+2026-10-25T18:01:59.1124538Z ../kernel/module/main.c:3032:5: error: call to undeclared function 'aarch64_insn_patch_text_nosync'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+2026-10-25T18:01:59.1153873Z  3032 |                                 aarch64_insn_patch_text_nosync((void *)&text[i+2], 0xd503201f); /* nop b.ne 8ce4 */
+2026-10-25T18:01:59.1193646Z       |                                 ^
+2026-10-25T18:01:59.1214479Z ../kernel/module/main.c:3037:5: error: call to undeclared function 'aarch64_insn_patch_text_nosync'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+2026-10-25T18:01:59.1244006Z  3037 |                                 aarch64_insn_patch_text_nosync((void *)&text[i+1], 0xd503201f); /* nop b.hi 909c */
+2026-10-25T18:01:59.1245114Z       |                                 ^
+2026-10-25T18:01:59.1274561Z ../kernel/module/main.c:3047:5: error: call to undeclared function 'aarch64_insn_patch_text_nosync'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+2026-10-25T18:01:59.1303773Z  3047 |                                 aarch64_insn_patch_text_nosync((void *)&text[i+3], 0x2a0803e0); /* mov w0, w8 */
+2026-10-25T18:01:59.1333614Z       |                                 ^
+2026-10-25T18:01:59.1334665Z 4 errors generated.
+2026-10-25T18:01:59.1363874Z make[5]: *** [../scripts/Makefile.build:243: kernel/module/main.o] Error 1
+2026-10-25T18:01:59.1393603Z make[4]: *** [../scripts/Makefile.build:480: kernel/module] Error 2
+2026-10-25T18:01:59.1423734Z make[3]: *** [../scripts/Makefile.build:480: kernel] Error 2
+2026-10-25T18:01:59.1468997Z   CC [M]  arch/arm64/geniezone/../../../drivers/virt/geniezone/gzvm_main.o
+2026-10-25T18:01:59.2424027Z   AS      arch/arm64/crypto/sha512-ce-core.o
+2026-10-25T18:01:59.3180518Z   CC      arch/arm64/crypto/ghash-ce-glue.o
+2026-10-25T18:01:59.8504175Z   CC [M]  arch/arm64/geniezone/../../../drivers/virt/geniezone/gzvm_vm.o
+2026-10-25T18:02:00.0899708Z   CC      mm/mmzone.o
+2026-10-25T18:02:00.0986869Z   AS      arch/arm64/crypto/ghash-ce-core.o
+2026-10-25T18:02:00.1771259Z   CC      arch/arm64/crypto/polyval-ce-glue.o
+2026-10-25T18:02:00.4805236Z   CC      arch/arm64/kvm/../../../virt/kvm/binary_stats.o
+2026-10-25T18:02:00.6114142Z   CC [M]  arch/arm64/geniezone/../../../drivers/virt/geniezone/gzvm_vcpu.o
+2026-10-25T18:02:00.7683504Z   AS      arch/arm64/crypto/polyval-ce-core.o
+2026-10-25T18:02:00.8352357Z   AS      arch/arm64/crypto/aes-ce-core.o
+2026-10-25T18:02:00.9046093Z   CC      arch/arm64/crypto/aes-ce-glue.o
+2026-10-25T18:02:01.3094083Z   CC      arch/arm64/kvm/../../../virt/kvm/vfio.o
+2026-10-25T18:02:01.3534220Z   CC [M]  arch/arm64/geniezone/../../../drivers/virt/geniezone/gzvm_irqfd.o
+2026-10-25T18:02:01.3814011Z   CC      mm/vmstat.o
+2026-10-25T18:02:01.8333819Z   CC      arch/arm64/crypto/aes-glue-ce.o
+2026-10-25T18:02:02.0991849Z   CC [M]  arch/arm64/geniezone/../../../drivers/virt/geniezone/gzvm_ioeventfd.o
+2026-10-25T18:02:02.1844179Z   CC      arch/arm64/kvm/../../../virt/kvm/coalesced_mmio.o
+2026-10-25T18:02:02.6624079Z   AS      arch/arm64/crypto/aes-ce.o
+2026-10-25T18:02:02.7574695Z   CC      arch/arm64/crypto/sha256-glue.o
+2026-10-25T18:02:02.8645398Z   CC [M]  arch/arm64/geniezone/../../../drivers/virt/geniezone/gzvm_mmu.o
+2026-10-25T18:02:03.0422526Z   CC      arch/arm64/kvm/../../../virt/kvm/irqchip.o
+2026-10-25T18:02:03.3223836Z   CC      mm/backing-dev.o
+2026-10-25T18:02:03.5665984Z   CC [M]  arch/arm64/geniezone/../../../drivers/virt/geniezone/gzvm_exception.o
+2026-10-25T18:02:03.6334047Z   PERLASM arch/arm64/crypto/sha256-core.S
+2026-10-25T18:02:03.6686319Z   CC      arch/arm64/crypto/sha512-glue.o
+2026-10-25T18:02:03.9354062Z   CC      arch/arm64/kvm/../../../virt/kvm/dirty_ring.o
+2026-10-25T18:02:04.2307305Z   CC [M]  arch/arm64/geniezone/vm.o
+2026-10-25T18:02:04.6034879Z   PERLASM arch/arm64/crypto/sha512-core.S
+2026-10-25T18:02:04.6163875Z   AS      arch/arm64/crypto/chacha-neon-core.o
+2026-10-25T18:02:04.6922289Z   CC      arch/arm64/crypto/chacha-neon-glue.o
+2026-10-25T18:02:04.7546773Z   CC      arch/arm64/kvm/arm.o
+2026-10-25T18:02:05.1108827Z   CC [M]  arch/arm64/geniezone/vcpu.o
+2026-10-25T18:02:05.4823669Z   CC      mm/mm_init.o
+2026-10-25T18:02:05.6307411Z   PERLASM arch/arm64/crypto/poly1305-core.S
+2026-10-25T18:02:05.6421529Z   CC      arch/arm64/crypto/poly1305-glue.o
+2026-10-25T18:02:05.6938524Z   CC [M]  arch/arm64/geniezone/vgic.o
+2026-10-25T18:02:06.3765670Z   CC [M]  arch/arm64/geniezone/hvc.o
+2026-10-25T18:02:06.5873974Z   AS      arch/arm64/crypto/sha256-core.o
+2026-10-25T18:02:06.6588985Z   AS      arch/arm64/crypto/sha512-core.o
+2026-10-25T18:02:06.7241317Z   AS      arch/arm64/crypto/poly1305-core.o
+2026-10-25T18:02:06.7404763Z   CC      arch/arm64/kvm/mmu.o
+2026-10-25T18:02:06.7824710Z   AR      arch/arm64/crypto/built-in.a
+2026-10-25T18:02:06.7896707Z   CC      arch/arm64/kvm/mmio.o
+2026-10-25T18:02:06.9554922Z   LD [M]  arch/arm64/geniezone/gzvm.o
+2026-10-25T18:02:07.4143875Z   CC      mm/percpu.o
+2026-10-25T18:02:07.4693923Z   CC      mm/slab_common.o
+2026-10-25T18:02:07.8771883Z   CC      arch/arm64/kvm/psci.o
+2026-10-25T18:02:08.8464682Z   CC      mm/compaction.o
+2026-10-25T18:02:09.4788982Z   CC      arch/arm64/kvm/hypercalls.o
+2026-10-25T18:02:09.7811821Z   CC      mm/show_mem.o
+2026-10-25T18:02:09.9337069Z   CC      arch/arm64/kvm/pvtime.o
+2026-10-25T18:02:10.6108921Z   CC      arch/arm64/kvm/inject_fault.o
+2026-10-25T18:02:10.9549616Z   CC      arch/arm64/kvm/va_layout.o
+2026-10-25T18:02:11.4914937Z   CC      mm/shmem_quota.o
+2026-10-25T18:02:11.6054014Z   CC      arch/arm64/kvm/handle_exit.o
+2026-10-25T18:02:11.9134830Z   CC      mm/interval_tree.o
+2026-10-25T18:02:12.3633953Z   CC      arch/arm64/kvm/guest.o
+2026-10-25T18:02:12.9063731Z   CC      arch/arm64/kvm/debug.o
+2026-10-25T18:02:13.2643687Z   CC      arch/arm64/kvm/reset.o
+2026-10-25T18:02:13.4314024Z   CC      mm/list_lru.o
+2026-10-25T18:02:13.6018904Z   CC      arch/arm64/kvm/sys_regs.o
+2026-10-25T18:02:14.3383819Z   CC      mm/workingset.o
+2026-10-25T18:02:14.4007037Z   CC      mm/debug.o
+2026-10-25T18:02:15.4474244Z   CC      arch/arm64/kvm/stacktrace.o
+2026-10-25T18:02:15.6913822Z   CC      mm/gup.o
+2026-10-25T18:02:16.2513742Z   CC      arch/arm64/kvm/vgic-sys-reg-v3.o
+2026-10-25T18:02:16.4213705Z   CC      mm/mmap_lock.o
+2026-10-25T18:02:16.5625682Z   CC      arch/arm64/kvm/fpsimd.o
+2026-10-25T18:02:17.6433765Z   CC      mm/pgsize_migration.o
+2026-10-25T18:02:17.9323206Z   CC      arch/arm64/kvm/pkvm.o
+2026-10-25T18:02:18.0560198Z   CC      arch/arm64/kvm/arch_timer.o
+2026-10-25T18:02:18.1363939Z   CC      arch/arm64/kvm/trng.o
+2026-10-25T18:02:18.2860303Z   CC      mm/page_size_compat.o
+2026-10-25T18:02:19.1811363Z   CC      arch/arm64/kvm/vmid.o
+2026-10-25T18:02:19.3259549Z   CC      mm/highmem.o
+2026-10-25T18:02:19.6362441Z   CC      arch/arm64/kvm/emulate-nested.o
+2026-10-25T18:02:20.0544661Z   CC      mm/memory.o
+2026-10-25T18:02:20.0639710Z   CC      arch/arm64/kvm/nested.o
+2026-10-25T18:02:20.1283724Z   CC      mm/mincore.o
+2026-10-25T18:02:20.9143902Z   CC      arch/arm64/kvm/vgic/vgic.o
+2026-10-25T18:02:21.0104136Z   CC      mm/mlock.o
+2026-10-25T18:02:21.0265626Z   CC      arch/arm64/kvm/vgic/vgic-init.o
+2026-10-25T18:02:22.0036760Z   CC      mm/mmap.o
+2026-10-25T18:02:22.0066250Z   CC      arch/arm64/kvm/vgic/vgic-irqfd.o
+2026-10-25T18:02:22.9889090Z   CC      arch/arm64/kvm/vgic/vgic-v2.o
+2026-10-25T18:02:23.1691279Z   CC      mm/mmu_gather.o
+2026-10-25T18:02:23.6063839Z   CC      arch/arm64/kvm/vgic/vgic-v3.o
+2026-10-25T18:02:23.9344135Z   CC      mm/mprotect.o
+2026-10-25T18:02:24.3590910Z   CC      arch/arm64/kvm/vgic/vgic-v4.o
+2026-10-25T18:02:24.3738715Z   CC      mm/mremap.o
+2026-10-25T18:02:24.6264009Z   CC      arch/arm64/kvm/vgic/vgic-mmio.o
+2026-10-25T18:02:25.3491887Z   CC      mm/msync.o
+2026-10-25T18:02:25.3984095Z   CC      arch/arm64/kvm/vgic/vgic-mmio-v2.o
+2026-10-25T18:02:25.6524328Z   CC      mm/page_vma_mapped.o
+2026-10-25T18:02:25.7124107Z   CC      arch/arm64/kvm/vgic/vgic-mmio-v3.o
+2026-10-25T18:02:26.1974052Z   CC      mm/pagewalk.o
+2026-10-25T18:02:26.3584024Z   CC      arch/arm64/kvm/vgic/vgic-kvm-device.o
+2026-10-25T18:02:26.7653927Z   CC      mm/pgtable-generic.o
+2026-10-25T18:02:26.7975115Z   CC      arch/arm64/kvm/vgic/vgic-its.o
+2026-10-25T18:02:27.3440076Z   CC      mm/rmap.o
+2026-10-25T18:02:27.5553947Z   CC      arch/arm64/kvm/vgic/vgic-debug.o
+2026-10-25T18:02:28.1198700Z   CC      arch/arm64/kvm/iommu.o
+2026-10-25T18:02:28.4951166Z   CC      mm/vmalloc.o
+2026-10-25T18:02:28.5603795Z   CC      arch/arm64/kvm/pmu-emul.o
+2026-10-25T18:02:29.6272932Z   CC      arch/arm64/kvm/pmu.o
+2026-10-25T18:02:29.7454136Z   CC      mm/process_vm_access.o
+2026-10-25T18:02:29.9543815Z   CC      arch/arm64/kvm/ptdump.o
+2026-10-25T18:02:30.4415146Z   CC      mm/mseal.o
+2026-10-25T18:02:30.5427680Z   CC      arch/arm64/kvm/hyp_events.o
+2026-10-25T18:02:30.8393758Z   CC      mm/page_alloc.o
+2026-10-25T18:02:31.0701113Z   CC      arch/arm64/kvm/hyp_trace.o
+2026-10-25T18:02:31.3663956Z   CC      mm/shuffle.o
+2026-10-25T18:02:31.7746642Z   CC      mm/init-mm.o
+2026-10-25T18:02:32.0712478Z   AR      arch/arm64/kvm/built-in.a
+2026-10-25T18:02:32.0853959Z   AR      arch/arm64/built-in.a
+2026-10-25T18:02:32.1145136Z   CC      mm/memblock.o
+2026-10-25T18:02:32.5861799Z   CC      mm/memory_hotplug.o
+2026-10-25T18:02:32.5961215Z   CC      mm/madvise.o
+2026-10-25T18:02:34.0476531Z   CC      mm/page_io.o
+2026-10-25T18:02:34.3064170Z   CC      mm/swap_state.o
+2026-10-25T18:02:34.4511704Z   CC      mm/swapfile.o
+2026-10-25T18:02:34.9192422Z   CC      mm/swap_slots.o
+2026-10-25T18:02:35.2848562Z   CC      mm/dmapool.o
+2026-10-25T18:02:36.0573987Z   CC      mm/sparse.o
+2026-10-25T18:02:36.1193943Z   CC      mm/sparse-vmemmap.o
+2026-10-25T18:02:36.3373758Z   CC      mm/mmu_notifier.o
+2026-10-25T18:02:36.9121972Z   CC      mm/slub.o
+2026-10-25T18:02:37.0023943Z   CC      mm/migrate.o
+2026-10-25T18:02:37.5063844Z   CC      mm/huge_memory.o
+2026-10-25T18:02:37.7234097Z   CC      mm/khugepaged.o
+2026-10-25T18:02:39.1432388Z   CC      mm/page_counter.o
+2026-10-25T18:02:39.5025210Z   CC      mm/memcontrol.o
+2026-10-25T18:02:39.6294259Z   CC      mm/vmpressure.o
+2026-10-25T18:02:39.7758530Z   CC      mm/swap_cgroup.o
+2026-10-25T18:02:40.2763936Z   CC      mm/page_owner.o
+2026-10-25T18:02:40.4801061Z   CC      mm/cleancache.o
+2026-10-25T18:02:40.5883909Z   CC      mm/page_pinner.o
+2026-10-25T18:02:41.5343770Z   CC      mm/page_isolation.o
+2026-10-25T18:02:42.0618334Z   CC      mm/early_ioremap.o
+2026-10-25T18:02:42.2344019Z   CC      mm/cma.o
+2026-10-25T18:02:42.7685565Z   CC      mm/balloon_compaction.o
+2026-10-25T18:02:43.0374308Z   CC      mm/page_ext.o
+2026-10-25T18:02:43.1758806Z   CC      mm/cma_debug.o
+2026-10-25T18:02:43.7343869Z   CC      mm/secretmem.o
+2026-10-25T18:02:44.0897531Z   CC      mm/userfaultfd.o
+2026-10-25T18:02:44.1533764Z   CC      mm/usercopy.o
+2026-10-25T18:02:44.1570711Z   CC      mm/memfd.o
+2026-10-25T18:02:44.8784046Z   CC      mm/ptdump.o
+2026-10-25T18:02:45.0953867Z   CC      mm/page_reporting.o
+2026-10-25T18:02:45.4504019Z   CC      mm/ioremap.o
+2026-10-25T18:02:45.4894612Z   CC [M]  mm/zsmalloc.o
+2026-10-25T18:02:46.5043362Z   AR      mm/built-in.a
+2026-10-25T18:02:46.9343967Z make[2]: *** [/home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/Makefile:2032: .] Error 2
+2026-10-25T18:02:46.9351829Z make[1]: *** [/home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/Makefile:252: __sub-make] Error 2
+2026-10-25T18:02:46.9353979Z make[1]: Leaving directory '/home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/out'
+2026-10-25T18:02:46.9354791Z make: *** [Makefile:252: __sub-make] Error 2
+2026-10-25T18:02:46.9374224Z ##[error]Process completed with exit code 2.
+2026-10-25T18:02:46.9524525Z Post job cleanup.
+2026-10-25T18:02:47.0430753Z [command]/usr/bin/git version
+2026-10-25T18:02:47.0481468Z git version 2.55.0
+2026-10-25T18:02:47.0528257Z Temporarily overriding HOME='/home/runner/work/_temp/7e3d31f9-a148-48c9-a701-ab38998d0b59' before making global git config changes
+2026-10-25T18:02:47.0529766Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-25T18:02:47.0535656Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition
+2026-10-25T18:02:47.0582418Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-25T18:02:47.0626979Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-25T18:02:47.0898544Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-25T18:02:47.0926823Z http.https://github.com/.extraheader
+2026-10-25T18:02:47.0939784Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-25T18:02:47.1003881Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-25T18:02:47.1280454Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-25T18:02:47.1328252Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-25T18:02:47.1731315Z Cleaning up orphan processes
+2026-10-25T18:02:47.2199688Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
