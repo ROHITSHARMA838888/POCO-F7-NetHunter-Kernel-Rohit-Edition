@@ -56,6 +56,9 @@ jobs:
           echo "[-] Disabling dangerous GPU and Live Patch exploits..."
           sed -i 's/CONFIG_KGSL_EXPLOIT=y/# CONFIG_KGSL_EXPLOIT is not set/g' arch/arm64/configs/konoha_defconfig || true
 
+          # Fix build.sh to use official KernelSU-Next 'next' branch instead of broken 'dev' branch
+          sed -i 's/BRANCH="dev"; ROOT="ksu-next"/BRANCH="next"; ROOT="ksu-next"/g' build.sh
+
       - name: Apply Kali NetHunter Packet Injection & Wireless Configs
         run: |
           cd $GITHUB_WORKSPACE/kernel-source
