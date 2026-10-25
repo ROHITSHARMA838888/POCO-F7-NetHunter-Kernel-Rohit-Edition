@@ -1,0 +1,73 @@
+﻿2026-10-25T18:52:02.3530122Z ##[group]Run actions/checkout@v4
+2026-10-25T18:52:02.3530795Z with:
+2026-10-25T18:52:02.3531294Z   repository: ROHITSHARMA838888/POCO-F7-NetHunter-Kernel-Rohit-Edition
+2026-10-25T18:52:02.3534875Z   token: ***
+2026-10-25T18:52:02.3535228Z   ssh-strict: true
+2026-10-25T18:52:02.3535578Z   ssh-user: git
+2026-10-25T18:52:02.3535929Z   persist-credentials: true
+2026-10-25T18:52:02.3536313Z   clean: true
+2026-10-25T18:52:02.3536666Z   sparse-checkout-cone-mode: true
+2026-10-25T18:52:02.3537076Z   fetch-depth: 1
+2026-10-25T18:52:02.3537414Z   fetch-tags: false
+2026-10-25T18:52:02.3537759Z   show-progress: true
+2026-10-25T18:52:02.3538107Z   lfs: false
+2026-10-25T18:52:02.3538430Z   submodules: false
+2026-10-25T18:52:02.3538779Z   set-safe-directory: true
+2026-10-25T18:52:02.3539170Z   allow-unsafe-pr-checkout: false
+2026-10-25T18:52:02.3539717Z ##[endgroup]
+2026-10-25T18:52:02.4331306Z Syncing repository: ROHITSHARMA838888/POCO-F7-NetHunter-Kernel-Rohit-Edition
+2026-10-25T18:52:02.4334308Z ##[group]Getting Git version info
+2026-10-25T18:52:02.4335804Z Working directory is '/home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition'
+2026-10-25T18:52:02.4337625Z [command]/usr/bin/git version
+2026-10-25T18:52:02.4412759Z git version 2.55.0
+2026-10-25T18:52:02.4427075Z ##[endgroup]
+2026-10-25T18:52:02.4440104Z Temporarily overriding HOME='/home/runner/work/_temp/c0c7db8a-5e53-4c72-9361-439a85f0c01f' before making global git config changes
+2026-10-25T18:52:02.4442305Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-25T18:52:02.4446449Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition
+2026-10-25T18:52:02.4496476Z Deleting the contents of '/home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition'
+2026-10-25T18:52:02.4500299Z ##[group]Initializing the repository
+2026-10-25T18:52:02.4505282Z [command]/usr/bin/git init /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition
+2026-10-25T18:52:02.4763199Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-25T18:52:02.4764726Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-25T18:52:02.4767039Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-25T18:52:02.4768008Z hint: call:
+2026-10-25T18:52:02.4768530Z hint:
+2026-10-25T18:52:02.4769235Z hint: 	git config --global init.defaultBranch <name>
+2026-10-25T18:52:02.4770031Z hint:
+2026-10-25T18:52:02.4770772Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-25T18:52:02.4772096Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-25T18:52:02.4773062Z hint:
+2026-10-25T18:52:02.4773596Z hint: 	git branch -m <name>
+2026-10-25T18:52:02.4774213Z hint:
+2026-10-25T18:52:02.4775067Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-25T18:52:02.4776912Z Initialized empty Git repository in /home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/.git/
+2026-10-25T18:52:02.4780216Z [command]/usr/bin/git remote add origin https://github.com/ROHITSHARMA838888/POCO-F7-NetHunter-Kernel-Rohit-Edition
+2026-10-25T18:52:02.4829558Z ##[endgroup]
+2026-10-25T18:52:02.4830628Z ##[group]Disabling automatic garbage collection
+2026-10-25T18:52:02.4832932Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-25T18:52:02.4865840Z ##[endgroup]
+2026-10-25T18:52:02.4866836Z ##[group]Setting up auth
+2026-10-25T18:52:02.4871941Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-25T18:52:02.4904067Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-25T18:52:02.5219506Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-25T18:52:02.5251564Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-25T18:52:02.5445286Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-25T18:52:02.5478719Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-25T18:52:02.5681850Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-25T18:52:02.5722500Z ##[endgroup]
+2026-10-25T18:52:02.5723511Z ##[group]Fetching the repository
+2026-10-25T18:52:02.5731628Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +dd6864edd36d2ddb34c9c4fadb2c4641b5f7d8d7:refs/remotes/origin/main
+2026-10-25T18:52:02.8381806Z From https://github.com/ROHITSHARMA838888/POCO-F7-NetHunter-Kernel-Rohit-Edition
+2026-10-25T18:52:02.8382803Z  * [new ref]         dd6864edd36d2ddb34c9c4fadb2c4641b5f7d8d7 -> origin/main
+2026-10-25T18:52:02.8385261Z ##[endgroup]
+2026-10-25T18:52:02.8386016Z ##[group]Determining the checkout info
+2026-10-25T18:52:02.8387388Z ##[endgroup]
+2026-10-25T18:52:02.8392454Z [command]/usr/bin/git sparse-checkout disable
+2026-10-25T18:52:02.8450405Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-25T18:52:02.8479574Z ##[group]Checking out the ref
+2026-10-25T18:52:02.8483370Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-25T18:52:02.8620963Z Switched to a new branch 'main'
+2026-10-25T18:52:02.8624910Z branch 'main' set up to track 'origin/main'.
+2026-10-25T18:52:02.8631007Z ##[endgroup]
+2026-10-25T18:52:02.8671868Z [command]/usr/bin/git log -1 --format=%H
+2026-10-25T18:52:02.8695313Z dd6864edd36d2ddb34c9c4fadb2c4641b5f7d8d7

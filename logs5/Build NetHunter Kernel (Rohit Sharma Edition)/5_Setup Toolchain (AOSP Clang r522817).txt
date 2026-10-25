@@ -1,0 +1,10 @@
+﻿2026-10-25T18:53:57.1759949Z ##[group]Run mkdir -p $GITHUB_WORKSPACE/toolchain
+2026-10-25T18:53:57.1760289Z [36;1mmkdir -p $GITHUB_WORKSPACE/toolchain[0m
+2026-10-25T18:53:57.1760535Z [36;1mcd $GITHUB_WORKSPACE/toolchain[0m
+2026-10-25T18:53:57.1761011Z [36;1mwget -q https://android.googlesource.com/platform/prebuilts/clang/host/linux-x86/+archive/refs/heads/main/clang-r522817.tar.gz[0m
+2026-10-25T18:53:57.1761696Z [36;1mtar -zxf clang-r522817.tar.gz[0m
+2026-10-25T18:53:57.1761960Z [36;1mrm -f clang-r522817.tar.gz[0m
+2026-10-25T18:53:57.1762183Z [36;1mmkdir -p $GITHUB_WORKSPACE/toolchains[0m
+2026-10-25T18:53:57.1762500Z [36;1mln -sfn $GITHUB_WORKSPACE/toolchain $GITHUB_WORKSPACE/toolchains/clang[0m
+2026-10-25T18:53:57.1825092Z shell: /usr/bin/bash -e {0}
+2026-10-25T18:53:57.1825310Z ##[endgroup]

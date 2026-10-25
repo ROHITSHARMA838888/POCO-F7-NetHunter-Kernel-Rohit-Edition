@@ -1,0 +1,29 @@
+﻿2026-10-25T18:59:46.7341000Z ##[group]Run cd $GITHUB_WORKSPACE/kernel-source
+2026-10-25T18:59:46.7341330Z [36;1mcd $GITHUB_WORKSPACE/kernel-source[0m
+2026-10-25T18:59:46.7341716Z [36;1mexport PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"[0m
+2026-10-25T18:59:46.7342015Z [36;1mexport CLANG_PATH="$GITHUB_WORKSPACE/toolchain"[0m
+2026-10-25T18:59:46.7342290Z [36;1mexport CLANG_DIR="$GITHUB_WORKSPACE/toolchain"[0m
+2026-10-25T18:59:46.7342528Z [36;1m[0m
+2026-10-25T18:59:46.7342685Z [36;1mchmod +x build.sh[0m
+2026-10-25T18:59:46.7342899Z [36;1mchmod +x ksu_susfs_fixup.sh 2>/dev/null || true[0m
+2026-10-25T18:59:46.7343137Z [36;1m[0m
+2026-10-25T18:59:46.7343284Z [36;1m./build.sh \[0m
+2026-10-25T18:59:46.7343451Z [36;1m  hz=250 \[0m
+2026-10-25T18:59:46.7343622Z [36;1m  variant=susfs \[0m
+2026-10-25T18:59:46.7343801Z [36;1m  root=ksu-next \[0m
+2026-10-25T18:59:46.7343984Z [36;1m  hardened=off \[0m
+2026-10-25T18:59:46.7344199Z [36;1m  bypasscharging=off \[0m
+2026-10-25T18:59:46.7344399Z [36;1m  droidspaces=off \[0m
+2026-10-25T18:59:46.7344619Z [36;1m  lto=thin \[0m
+2026-10-25T18:59:46.7344789Z [36;1m  kgsl_exploit=off \[0m
+2026-10-25T18:59:46.7344977Z [36;1m  wifi_exploit=off \[0m
+2026-10-25T18:59:46.7345167Z [36;1m  data_exploit=off \[0m
+2026-10-25T18:59:46.7345382Z [36;1m  kernel_name="-NetHunter-Rohit-Edition"[0m
+2026-10-25T18:59:46.7402690Z shell: /usr/bin/bash -e {0}
+2026-10-25T18:59:46.7402908Z ##[endgroup]
+2026-10-25T18:59:46.7500388Z [+] ccache detected, local builds will be accelerated
+2026-10-25T18:59:46.7501894Z Applying Custom Kernel Name and Spoof Uname...
+2026-10-25T18:59:46.7593573Z [+] Cloning KernelSU-Next...
+2026-10-25T18:59:46.7603056Z Cloning into '/home/runner/work/POCO-F7-NetHunter-Kernel-Rohit-Edition/POCO-F7-NetHunter-Kernel-Rohit-Edition/kernel-source/.root_modules/KernelSU-Next'...
+2026-10-25T18:59:46.8567128Z fatal: Remote branch next not found in upstream origin
+2026-10-25T18:59:47.3370490Z ##[error]Process completed with exit code 128.
