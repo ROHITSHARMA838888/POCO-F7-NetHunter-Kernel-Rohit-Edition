@@ -36,10 +36,10 @@ jobs:
           mkdir -p $GITHUB_WORKSPACE/toolchains
           ln -sfn $GITHUB_WORKSPACE/toolchain $GITHUB_WORKSPACE/toolchains/clang
 
-      - name: Clone Clean Kernel Source (konoha-kernel-gki)
+      - name: Clone NetHunter Kernel Source (konoha-kernel-gki)
         run: |
           cd $GITHUB_WORKSPACE
-          git clone --depth=1 https://github.com/onyx-oss/konoha-kernel-gki.git kernel-source
+          git clone --depth=1 -b feature/nethunter https://github.com/onyx-oss/konoha-kernel-gki.git kernel-source
 
       - name: Sanitize Dangerous Hooks & Exploits
         run: |
@@ -53,65 +53,6 @@ jobs:
           chmod +x Baseband-guard/setup.sh
           sed -i 's|.*Baseband-guard.*setup.sh.*||g' build.sh || true
 
-          echo "[-] Disabling dangerous GPU and Live Patch exploits..."
-          sed -i 's/CONFIG_KGSL_EXPLOIT=y/# CONFIG_KGSL_EXPLOIT is not set/g' arch/arm64/configs/konoha_defconfig || true
-
-          # Precise fix for KernelSU-Next sucompat conflicting types with SUSFS
-          cat << 'PYEOF' > patch_sucompat.py
-          with open("ksu_susfs_fixup.sh", "r") as f:
-              content = f.read()
-
-          # Replace sucompat.h injection to declare matching long signature for sucompat
-          content = content.replace(
-              "int ksu_handle_execveat_sucompat(int *fd",
-              "long ksu_handle_execveat_sucompat(const char __user **filename_user, int orig_nr, struct pt_regs *regs);\nint _disabled_execveat(int *fd"
-          )
-          with open("ksu_susfs_fixup.sh", "w") as f:
-              f.write(content)
-          PYEOF
-          python3 patch_sucompat.py
-
-      - name: Apply Kali NetHunter Packet Injection & Wireless Configs
-        run: |
-          cd $GITHUB_WORKSPACE/kernel-source
-          echo "[-] Enabling NetHunter USB HID & Wireless injection in konoha_defconfig..."
-          
-          cat << 'EOF' >> arch/arm64/configs/konoha_defconfig
-          # Kali NetHunter - Rohit Sharma Edition Configurations
-          CONFIG_CFG80211=m
-          CONFIG_MAC80211=m
-          CONFIG_MAC80211_RC_MINSTREL=y
-          CONFIG_MAC80211_RC_DEFAULT_MINSTREL=y
-          CONFIG_WLAN_VENDOR_REALTEK=y
-          CONFIG_RTL8XXXU=m
-          CONFIG_RTL8XXXU_UNTESTED=y
-          CONFIG_WLAN_VENDOR_ATH=y
-          CONFIG_ATH9K_HW=m
-          CONFIG_ATH9K_COMMON=m
-          CONFIG_ATH9K_HTC=m
-          CONFIG_ATH9K_HTC_DEBUGFS=y
-          CONFIG_WLAN_VENDOR_RALINK=y
-          CONFIG_RT2X00=m
-          CONFIG_RT2800USB=m
-          CONFIG_RT2800USB_RT3573=y
-          CONFIG_RT2800USB_RT53XX=y
-          CONFIG_RT2800USB_RT55XX=y
-          CONFIG_RT2800USB_UNKNOWN=y
-          CONFIG_USB_CONFIGFS_F_HID=y
-          CONFIG_USB_F_HID=y
-          EOF
-
-      - name: Add Out-Of-Tree RTL8821AU Driver (Archer T2U Plus)
-        run: |
-          cd $GITHUB_WORKSPACE/kernel-source
-          echo "[-] Cloning official morrownr/8821au-20210708 for Archer T2U Plus..."
-          git clone --depth=1 https://github.com/morrownr/8821au-20210708.git drivers/net/wireless/realtek/rtl8821au
-          if [ -d "drivers/net/wireless/realtek/rtl8821au" ]; then
-            echo "obj-\$(CONFIG_RTL8821AU) += rtl8821au/" >> drivers/net/wireless/realtek/Makefile
-            echo 'source "drivers/net/wireless/realtek/rtl8821au/Kconfig"' >> drivers/net/wireless/realtek/Kconfig
-            echo "CONFIG_RTL8821AU=m" >> arch/arm64/configs/konoha_defconfig
-          fi
-
       - name: Compile NetHunter Kernel via Native build.sh
         run: |
           cd $GITHUB_WORKSPACE/kernel-source
@@ -120,12 +61,13 @@ jobs:
           export CLANG_DIR="$GITHUB_WORKSPACE/toolchain"
 
           chmod +x build.sh
-          chmod +x ksu_susfs_fixup.sh 2>/dev/null || true
+          chmod +x nethunter_patch.sh 2>/dev/null || true
 
           ./build.sh \
             hz=250 \
-            variant=susfs \
+            variant=root \
             root=ksu-next \
+            nethunter=on \
             hardened=off \
             bypasscharging=off \
             droidspaces=off \
@@ -135,15 +77,39 @@ jobs:
             data_exploit=off \
             kernel_name="-NetHunter-Rohit-Edition"
 
+      - name: Build Out-Of-Tree RTL8821AU Driver (Archer T2U Plus)
+        run: |
+          cd $GITHUB_WORKSPACE
+          echo "[-] Cloning morrownr/8821au-20210708 for Archer T2U Plus..."
+          git clone --depth=1 https://github.com/morrownr/8821au-20210708.git rtl8821au || true
+          if [ -d "rtl8821au" ]; then
+            export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
+            make -C $GITHUB_WORKSPACE/kernel-source \
+              O=$GITHUB_WORKSPACE/kernel-source/out \
+              M=$GITHUB_WORKSPACE/rtl8821au \
+              ARCH=arm64 \
+              CC=clang \
+              LD=ld.lld \
+              AR=llvm-ar \
+              NM=llvm-nm \
+              OBJCOPY=llvm-objcopy \
+              OBJDUMP=llvm-objdump \
+              STRIP=llvm-strip \
+              LLVM=1 \
+              LLVM_IAS=1 \
+              USER_EXTRA_CFLAGS="-Wno-error" \
+              modules -j$(nproc) || true
+          fi
+
       - name: Package AnyKernel3 - Rohit Sharma NetHunter Edition
         run: |
           cd $GITHUB_WORKSPACE
           BUILT_ZIP="${ZIP_PATH:-$(find $GITHUB_WORKSPACE/kernel-source -maxdepth 1 -name '*.zip' | head -n 1)}"
+          echo "Built ZIP: $BUILT_ZIP"
           if [ -z "$BUILT_ZIP" ] || [ ! -f "$BUILT_ZIP" ]; then
             echo "[-] Error: Built kernel zip not found!"
             exit 1
           fi
-          echo "Built ZIP: $BUILT_ZIP"
 
           mkdir -p repack
           cd repack
@@ -152,68 +118,81 @@ jobs:
           # Harvest built wireless modules
           mkdir -p modules
           find "$GITHUB_WORKSPACE/kernel-source/out" -name "*.ko" -exec cp -v {} modules/ \; 2>/dev/null || true
+          find "$GITHUB_WORKSPACE/rtl8821au" -name "*.ko" -exec cp -v {} modules/ \; 2>/dev/null || true
           $GITHUB_WORKSPACE/toolchain/bin/llvm-strip --strip-debug modules/*.ko 2>/dev/null || true
 
-          # Download and bundle required WiFi Firmware (Correct URLs verified)
+          # Download and bundle required WiFi Firmware
           mkdir -p firmware/rtlwifi
-          wget -q -O firmware/rtlwifi/rtl8188eufw.bin https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/rtlwifi/rtl8188eufw.bin
-          wget -q -O firmware/htc_9271.fw https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/htc_9271.fw
+          wget -q -O firmware/rtlwifi/rtl8188eufw.bin https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/rtlwifi/rtl8188eufw.bin || true
+          wget -q -O firmware/htc_9271.fw https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/htc_9271.fw || true
 
-          # Generate clean anykernel.sh with zero leading indentation for file_getprop compatibility
-          cat << 'EOF' > anykernel.sh
-### AnyKernel3 - Rohit Sharma NetHunter Edition
-properties() { '
-kernel.string=Kali NetHunter Kernel - Rohit Sharma Edition (POCO F7 / Onyx)
-do.devicecheck=0
-do.modules=0
-do.systemless=0
-do.cleanup=1
-do.cleanuponabort=0
-'; }
+          # Generate clean anykernel.sh for POCO F7
+          python3 -c '
+          content = """### AnyKernel3 - Rohit Sharma NetHunter Edition
+          properties() { \'
+          kernel.string=Kali NetHunter Kernel - Rohit Sharma Edition (POCO F7 / Onyx)
+          do.devicecheck=0
+          do.modules=0
+          do.systemless=0
+          do.cleanup=1
+          do.cleanuponabort=0
+          \'; }
 
-# Boot shell variables
-block=boot;
-is_slot_device=auto;
-ramdisk_compression=auto;
+          # Boot shell variables
+          block=boot;
+          is_slot_device=auto;
+          ramdisk_compression=auto;
+          patch_vbmeta_flag=auto;
+          no_magisk_check=1;
 
-# Shell Attributes
-. tools/ak3-core.sh;
+          # Shell Attributes
+          . tools/ak3-core.sh;
 
-ui_print " ";
-ui_print "===========================================";
-ui_print "  KALI NETHUNTER KERNEL - ROHIT SHARMA     ";
-ui_print "  Device: POCO F7 / Onyx (SM8735)          ";
-ui_print "  Features: Packet Injection + HID + WiFi  ";
-ui_print "  Universal GKI: Android 15 / 16 / 17      ";
-ui_print "===========================================";
-ui_print " ";
+          ui_print " ";
+          ui_print "===========================================";
+          ui_print "  KALI NETHUNTER KERNEL - ROHIT SHARMA     ";
+          ui_print "  Device: POCO F7 / Onyx (SM8735)          ";
+          ui_print "  Features: Packet Injection + HID + WiFi  ";
+          ui_print "  Universal GKI: Android 15 / 16 / 17      ";
+          ui_print "===========================================";
+          ui_print " ";
 
-# Split and flash boot
-split_boot;
-flash_boot;
+          # GKI Boot Install (POCO F7 has init_boot for ramdisk, boot for kernel)
+          if [ -L "/dev/block/bootdevice/by-name/init_boot_a" -o -L "/dev/block/by-name/init_boot_a" -o -e "/dev/block/by-name/init_boot_a" -o -e "/dev/block/by-name/init_boot" ]; then
+              split_boot;
+              flash_boot;
+          else
+              dump_boot;
+              write_boot;
+          fi
 
-# Mount /vendor to install drivers and firmware
-mount /vendor 2>/dev/null || mount -o rw /vendor 2>/dev/null || true
-mount -o rw,remount /vendor 2>/dev/null || true
+          # Deploy NetHunter WiFi Drivers & Firmwares
+          ui_print "- Deploying NetHunter WiFi drivers and firmwares...";
+          mkdir -p /data/adb/modules/nethunter_wifi/system/lib/modules 2>/dev/null || true
+          mkdir -p /data/adb/modules/nethunter_wifi/system/etc/firmware/rtlwifi 2>/dev/null || true
+          mkdir -p /sdcard/NetHunter-Drivers/modules 2>/dev/null || true
+          mkdir -p /sdcard/NetHunter-Drivers/firmware/rtlwifi 2>/dev/null || true
 
-if [ -d "$home/modules" ]; then
-  ui_print "- Installing NetHunter WiFi drivers to /vendor/lib/modules...";
-  mkdir -p /vendor/lib/modules 2>/dev/null || true
-  cp -rf $home/modules/* /vendor/lib/modules/ 2>/dev/null || true
-fi
+          if [ -d "$home/modules" ]; then
+            cp -rf $home/modules/* /data/adb/modules/nethunter_wifi/system/lib/modules/ 2>/dev/null || true
+            cp -rf $home/modules/* /sdcard/NetHunter-Drivers/modules/ 2>/dev/null || true
+          fi
 
-if [ -d "$home/firmware" ]; then
-  ui_print "- Installing wireless firmware to /vendor/firmware...";
-  mkdir -p /vendor/firmware/rtlwifi 2>/dev/null || true
-  cp -rf $home/firmware/* /vendor/firmware/ 2>/dev/null || true
-fi
+          if [ -d "$home/firmware" ]; then
+            cp -rf $home/firmware/rtlwifi/* /data/adb/modules/nethunter_wifi/system/etc/firmware/rtlwifi/ 2>/dev/null || true
+            cp -rf $home/firmware/* /data/adb/modules/nethunter_wifi/system/etc/firmware/ 2>/dev/null || true
+            cp -rf $home/firmware/* /sdcard/NetHunter-Drivers/firmware/ 2>/dev/null || true
+          fi
 
-umount /vendor 2>/dev/null || true
-
-ui_print " ";
-ui_print "-> NetHunter Kernel Successfully Installed!";
-ui_print "-> Flash Complete by Rohit Sharma!";
-EOF
+          ui_print " ";
+          ui_print "-> NetHunter Kernel Successfully Installed!";
+          ui_print "-> Flash Complete by Rohit Sharma!";
+          """
+          # Strip leading indentation from each line
+          clean_lines = [line.strip() for line in content.splitlines()]
+          with open("anykernel.sh", "w") as f:
+              f.write("\n".join(clean_lines) + "\n")
+          '
 
           FINAL_ZIP="NetHunter-Kernel-POCO-F7-Onyx-Rohit-Edition.zip"
           zip -r9 "$FINAL_ZIP" * -x "*.zip"
