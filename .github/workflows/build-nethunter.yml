@@ -46,7 +46,6 @@ jobs:
           sed -i '/baseband_guard/d' security/Makefile || true
 
           echo "[-] Neutralizing dangerous GPU / Live Patch exploits..."
-          # Prevent kgsl exploit SurfaceFlinger crashes
           sed -i 's/CONFIG_KGSL_EXPLOIT=y/# CONFIG_KGSL_EXPLOIT is not set/g' arch/arm64/configs/konoha_defconfig || true
 
       - name: Apply Kali NetHunter Packet Injection & Wireless Configs
@@ -109,10 +108,11 @@ jobs:
           export LLVM_IAS=1
           export CLANG_TRIPLE="aarch64-linux-gnu-"
           export CROSS_COMPILE="aarch64-linux-gnu-"
+          export KERNEL_KCFLAGS="-w -Wno-error"
 
           mkdir -p out
-          make O=out CC=clang LLVM=1 LLVM_IAS=1 konoha_defconfig
-          make -j$(nproc --all) O=out CC=clang LLVM=1 LLVM_IAS=1 Image modules
+          make O=out CC=clang LLVM=1 LLVM_IAS=1 KCFLAGS="$KERNEL_KCFLAGS" konoha_defconfig
+          make -j$(nproc --all) O=out CC=clang LLVM=1 LLVM_IAS=1 KCFLAGS="$KERNEL_KCFLAGS" Image modules
 
       - name: Package AnyKernel3 - Rohit Sharma NetHunter Edition
         run: |

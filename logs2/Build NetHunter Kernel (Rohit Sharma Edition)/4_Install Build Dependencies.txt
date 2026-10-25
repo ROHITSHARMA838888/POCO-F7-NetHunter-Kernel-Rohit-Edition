@@ -1,0 +1,146 @@
+﻿2026-10-25T17:43:46.6893797Z ##[group]Run sudo apt-get update
+2026-10-25T17:43:46.6894458Z [36;1msudo apt-get update[0m
+2026-10-25T17:43:46.6895110Z [36;1msudo apt-get install -y build-essential bc bison flex libssl-dev libelf-dev libncurses-dev git ccache curl wget zip python3 clang lld llvm[0m
+2026-10-25T17:43:46.6960691Z shell: /usr/bin/bash -e {0}
+2026-10-25T17:43:46.6960984Z ##[endgroup]
+2026-10-25T17:43:46.7697276Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-25T17:43:46.8012259Z Hit:2 http://azure.archive.ubuntu.com/ubuntu noble InRelease
+2026-10-25T17:43:46.8019586Z Get:6 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-10-25T17:43:46.8029338Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-10-25T17:43:46.8077004Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-10-25T17:43:46.8099185Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-10-25T17:43:46.9324725Z Get:7 https://packages.microsoft.com/ubuntu/24.04/prod noble/main arm64 Packages [598 kB]
+2026-10-25T17:43:46.9504249Z Get:8 https://packages.microsoft.com/ubuntu/24.04/prod noble/main armhf Packages [12.4 kB]
+2026-10-25T17:43:46.9534864Z Get:9 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [660 kB]
+2026-10-25T17:43:46.9952104Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1400 kB]
+2026-10-25T17:43:47.0079889Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [310 kB]
+2026-10-25T17:43:47.0095755Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1706 kB]
+2026-10-25T17:43:47.0175805Z Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [342 kB]
+2026-10-25T17:43:47.0236962Z Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1805 kB]
+2026-10-25T17:43:47.0365253Z Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [411 kB]
+2026-10-25T17:43:47.1025130Z Get:16 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1146 kB]
+2026-10-25T17:43:47.1132261Z Get:17 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [231 kB]
+2026-10-25T17:43:47.1148564Z Get:18 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1222 kB]
+2026-10-25T17:43:47.1203762Z Get:19 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [246 kB]
+2026-10-25T17:43:47.1634892Z Get:20 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1713 kB]
+2026-10-25T17:43:47.1708572Z Get:21 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [392 kB]
+2026-10-25T17:43:50.3249588Z Fetched 12.6 MB in 1s (9852 kB/s)
+2026-10-25T17:43:51.2818615Z Reading package lists...
+2026-10-25T17:43:51.3123472Z Reading package lists...
+2026-10-25T17:43:51.5057851Z Building dependency tree...
+2026-10-25T17:43:51.5066215Z Reading state information...
+2026-10-25T17:43:51.6466052Z bc is already the newest version (1.07.1-3ubuntu4).
+2026-10-25T17:43:51.6466712Z bc set to manually installed.
+2026-10-25T17:43:51.6467186Z bison is already the newest version (2:3.8.2+dfsg-1ubuntu0.24.04.1).
+2026-10-25T17:43:51.6468128Z flex is already the newest version (2.6.4-8.2build1).
+2026-10-25T17:43:51.6468998Z libssl-dev is already the newest version (3.0.13-0ubuntu3.16).
+2026-10-25T17:43:51.6469988Z libncurses-dev is already the newest version (6.4+20240113-1ubuntu2.2).
+2026-10-25T17:43:51.6471303Z libncurses-dev set to manually installed.
+2026-10-25T17:43:51.6471932Z git is already the newest version (1:2.55.0-0ppa1~ubuntu24.04.2).
+2026-10-25T17:43:51.6472551Z git set to manually installed.
+2026-10-25T17:43:51.6473062Z wget is already the newest version (1.21.4-1ubuntu4.5).
+2026-10-25T17:43:51.6473681Z zip is already the newest version (3.0-13ubuntu0.2).
+2026-10-25T17:43:51.6474624Z python3 is already the newest version (3.12.3-0ubuntu2.1).
+2026-10-25T17:43:51.6475395Z The following additional packages will be installed:
+2026-10-25T17:43:51.6476015Z   libcurl3t64-gnutls libcurl4t64 libhiredis1.1.0 llvm-runtime
+2026-10-25T17:43:51.6477788Z Suggested packages:
+2026-10-25T17:43:51.6478252Z   distcc | icecc
+2026-10-25T17:43:51.6661631Z The following NEW packages will be installed:
+2026-10-25T17:43:51.6667528Z   build-essential ccache clang libelf-dev libhiredis1.1.0 lld llvm
+2026-10-25T17:43:51.6670050Z   llvm-runtime
+2026-10-25T17:43:51.6674462Z The following packages will be upgraded:
+2026-10-25T17:43:51.6681324Z   curl libcurl3t64-gnutls libcurl4t64
+2026-10-25T17:43:51.6852460Z 3 upgraded, 8 newly installed, 0 to remove and 97 not upgraded.
+2026-10-25T17:43:51.6853211Z Need to get 1635 kB of archives.
+2026-10-25T17:43:51.6854016Z After this operation, 2332 kB of additional disk space will be used.
+2026-10-25T17:43:51.6854800Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-10-25T17:43:51.7198050Z Get:2 http://azure.archive.ubuntu.com/ubuntu noble/main amd64 build-essential amd64 12.10ubuntu1 [4928 B]
+2026-10-25T17:43:51.7389874Z Get:3 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 libhiredis1.1.0 amd64 1.2.0-6ubuntu3 [41.4 kB]
+2026-10-25T17:43:51.7580868Z Get:4 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 ccache amd64 4.9.1-1 [592 kB]
+2026-10-25T17:43:51.7853243Z Get:5 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 clang amd64 1:18.0-59~exp2 [5846 B]
+2026-10-25T17:43:51.8041356Z Get:6 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 curl amd64 8.5.0-2ubuntu10.16 [226 kB]
+2026-10-25T17:43:51.8255032Z Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl4t64 amd64 8.5.0-2ubuntu10.16 [344 kB]
+2026-10-25T17:43:51.8491233Z Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl3t64-gnutls amd64 8.5.0-2ubuntu10.16 [337 kB]
+2026-10-25T17:43:51.8725440Z Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libelf-dev amd64 0.190-1.1ubuntu0.1 [68.5 kB]
+2026-10-25T17:43:51.8920968Z Get:10 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 lld amd64 1:18.0-59~exp2 [5494 B]
+2026-10-25T17:43:51.9107811Z Get:11 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 llvm-runtime amd64 1:18.0-59~exp2 [5496 B]
+2026-10-25T17:43:51.9293333Z Get:12 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 llvm amd64 1:18.0-59~exp2 [4146 B]
+2026-10-25T17:43:52.1701880Z Fetched 1635 kB in 0s (6419 kB/s)
+2026-10-25T17:43:52.1907200Z Selecting previously unselected package build-essential.
+2026-10-25T17:43:52.2191556Z (Reading database ... 
+2026-10-25T17:43:52.2192297Z (Reading database ... 5%
+2026-10-25T17:43:52.2192821Z (Reading database ... 10%
+2026-10-25T17:43:52.2193283Z (Reading database ... 15%
+2026-10-25T17:43:52.2193735Z (Reading database ... 20%
+2026-10-25T17:43:52.2194623Z (Reading database ... 25%
+2026-10-25T17:43:52.2195117Z (Reading database ... 30%
+2026-10-25T17:43:52.2195583Z (Reading database ... 35%
+2026-10-25T17:43:52.2196066Z (Reading database ... 40%
+2026-10-25T17:43:52.2196524Z (Reading database ... 45%
+2026-10-25T17:43:52.2197026Z (Reading database ... 50%
+2026-10-25T17:43:52.2236342Z (Reading database ... 55%
+2026-10-25T17:43:52.3456778Z (Reading database ... 60%
+2026-10-25T17:43:52.5524756Z (Reading database ... 65%
+2026-10-25T17:43:52.7589587Z (Reading database ... 70%
+2026-10-25T17:43:52.9475141Z (Reading database ... 75%
+2026-10-25T17:43:53.1028114Z (Reading database ... 80%
+2026-10-25T17:43:53.2532397Z (Reading database ... 85%
+2026-10-25T17:43:53.4296831Z (Reading database ... 90%
+2026-10-25T17:43:53.6036473Z (Reading database ... 95%
+2026-10-25T17:43:53.6036959Z (Reading database ... 100%
+2026-10-25T17:43:53.6037450Z (Reading database ... 203540 files and directories currently installed.)
+2026-10-25T17:43:53.6078082Z Preparing to unpack .../00-build-essential_12.10ubuntu1_amd64.deb ...
+2026-10-25T17:43:53.6116115Z Unpacking build-essential (12.10ubuntu1) ...
+2026-10-25T17:43:53.6318261Z Selecting previously unselected package libhiredis1.1.0:amd64.
+2026-10-25T17:43:53.6441923Z Preparing to unpack .../01-libhiredis1.1.0_1.2.0-6ubuntu3_amd64.deb ...
+2026-10-25T17:43:53.6458587Z Unpacking libhiredis1.1.0:amd64 (1.2.0-6ubuntu3) ...
+2026-10-25T17:43:53.6659286Z Selecting previously unselected package ccache.
+2026-10-25T17:43:53.6782316Z Preparing to unpack .../02-ccache_4.9.1-1_amd64.deb ...
+2026-10-25T17:43:53.6789581Z Unpacking ccache (4.9.1-1) ...
+2026-10-25T17:43:53.7285662Z Selecting previously unselected package clang.
+2026-10-25T17:43:53.7408895Z Preparing to unpack .../03-clang_1%3a18.0-59~exp2_amd64.deb ...
+2026-10-25T17:43:53.7415837Z Unpacking clang (1:18.0-59~exp2) ...
+2026-10-25T17:43:53.7729469Z Preparing to unpack .../04-curl_8.5.0-2ubuntu10.16_amd64.deb ...
+2026-10-25T17:43:53.7746967Z Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+2026-10-25T17:43:53.8112474Z Preparing to unpack .../05-libcurl4t64_8.5.0-2ubuntu10.16_amd64.deb ...
+2026-10-25T17:43:53.8133048Z Unpacking libcurl4t64:amd64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+2026-10-25T17:43:53.8502334Z Preparing to unpack .../06-libcurl3t64-gnutls_8.5.0-2ubuntu10.16_amd64.deb ...
+2026-10-25T17:43:53.8558027Z Unpacking libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+2026-10-25T17:43:53.8823186Z Selecting previously unselected package libelf-dev:amd64.
+2026-10-25T17:43:53.8949247Z Preparing to unpack .../07-libelf-dev_0.190-1.1ubuntu0.1_amd64.deb ...
+2026-10-25T17:43:53.8955635Z Unpacking libelf-dev:amd64 (0.190-1.1ubuntu0.1) ...
+2026-10-25T17:43:53.9296517Z Selecting previously unselected package lld:amd64.
+2026-10-25T17:43:53.9421439Z Preparing to unpack .../08-lld_1%3a18.0-59~exp2_amd64.deb ...
+2026-10-25T17:43:53.9428003Z Unpacking lld:amd64 (1:18.0-59~exp2) ...
+2026-10-25T17:43:53.9618119Z Selecting previously unselected package llvm-runtime:amd64.
+2026-10-25T17:43:53.9740594Z Preparing to unpack .../09-llvm-runtime_1%3a18.0-59~exp2_amd64.deb ...
+2026-10-25T17:43:53.9747444Z Unpacking llvm-runtime:amd64 (1:18.0-59~exp2) ...
+2026-10-25T17:43:53.9934317Z Selecting previously unselected package llvm.
+2026-10-25T17:43:54.0057583Z Preparing to unpack .../10-llvm_1%3a18.0-59~exp2_amd64.deb ...
+2026-10-25T17:43:54.0084738Z Unpacking llvm (1:18.0-59~exp2) ...
+2026-10-25T17:43:54.0682254Z Setting up libcurl4t64:amd64 (8.5.0-2ubuntu10.16) ...
+2026-10-25T17:43:54.0701959Z Setting up lld:amd64 (1:18.0-59~exp2) ...
+2026-10-25T17:43:54.0719131Z Setting up libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.16) ...
+2026-10-25T17:43:54.0737523Z Setting up clang (1:18.0-59~exp2) ...
+2026-10-25T17:43:54.0936219Z Setting up llvm-runtime:amd64 (1:18.0-59~exp2) ...
+2026-10-25T17:43:54.0954269Z Setting up libelf-dev:amd64 (0.190-1.1ubuntu0.1) ...
+2026-10-25T17:43:54.0973114Z Setting up llvm (1:18.0-59~exp2) ...
+2026-10-25T17:43:54.0991066Z Setting up build-essential (12.10ubuntu1) ...
+2026-10-25T17:43:54.1008975Z Setting up curl (8.5.0-2ubuntu10.16) ...
+2026-10-25T17:43:54.1026962Z Setting up libhiredis1.1.0:amd64 (1.2.0-6ubuntu3) ...
+2026-10-25T17:43:54.1043646Z Setting up ccache (4.9.1-1) ...
+2026-10-25T17:43:54.1064291Z Updating symlinks in /usr/lib/ccache ...
+2026-10-25T17:43:54.1217607Z Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+2026-10-25T17:43:54.1531254Z Processing triggers for man-db (2.12.0-4build2) ...
+2026-10-25T17:43:54.1551300Z Not building database; man-db/auto-update is not 'true'.
+2026-10-25T17:43:54.7541725Z 
+2026-10-25T17:43:54.7542344Z Running kernel seems to be up-to-date.
+2026-10-25T17:43:54.7543019Z 
+2026-10-25T17:43:54.7543163Z Restarting services...
+2026-10-25T17:43:54.7713578Z  systemctl restart packagekit.service php8.3-fpm.service
+2026-10-25T17:43:54.8722227Z 
+2026-10-25T17:43:54.8724096Z No containers need to be restarted.
+2026-10-25T17:43:54.8724540Z 
+2026-10-25T17:43:54.8724760Z No user sessions are running outdated binaries.
+2026-10-25T17:43:54.8725147Z 
+2026-10-25T17:43:54.8725488Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
