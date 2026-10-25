@@ -56,8 +56,20 @@ jobs:
           echo "[-] Disabling dangerous GPU and Live Patch exploits..."
           sed -i 's/CONFIG_KGSL_EXPLOIT=y/# CONFIG_KGSL_EXPLOIT is not set/g' arch/arm64/configs/konoha_defconfig || true
 
-          # Fix ksu_susfs_fixup.sh conflicting types bug for KernelSU-Next
-          sed -i 's/int ksu_handle_execveat_sucompat(int \*fd/long ksu_handle_execveat_sucompat(const char __user \*\*filename_user, int orig_nr, struct pt_regs \*regs);\nint _disabled_ksu_handle_execveat_sucompat(int \*fd/g' ksu_susfs_fixup.sh
+          # Precise fix for KernelSU-Next sucompat conflicting types with SUSFS
+          cat << 'PYEOF' > patch_sucompat.py
+          with open("ksu_susfs_fixup.sh", "r") as f:
+              content = f.read()
+
+          # Replace sucompat.h injection to declare matching long signature for sucompat
+          content = content.replace(
+              "int ksu_handle_execveat_sucompat(int *fd",
+              "long ksu_handle_execveat_sucompat(const char __user **filename_user, int orig_nr, struct pt_regs *regs);\nint _disabled_execveat(int *fd"
+          )
+          with open("ksu_susfs_fixup.sh", "w") as f:
+              f.write(content)
+          PYEOF
+          python3 patch_sucompat.py
 
       - name: Apply Kali NetHunter Packet Injection & Wireless Configs
         run: |
@@ -127,6 +139,10 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           BUILT_ZIP="${ZIP_PATH:-$(find $GITHUB_WORKSPACE/kernel-source -maxdepth 1 -name '*.zip' | head -n 1)}"
+          if [ -z "$BUILT_ZIP" ] || [ ! -f "$BUILT_ZIP" ]; then
+            echo "[-] Error: Built kernel zip not found!"
+            exit 1
+          fi
           echo "Built ZIP: $BUILT_ZIP"
 
           mkdir -p repack
@@ -138,55 +154,66 @@ jobs:
           find "$GITHUB_WORKSPACE/kernel-source/out" -name "*.ko" -exec cp -v {} modules/ \; 2>/dev/null || true
           $GITHUB_WORKSPACE/toolchain/bin/llvm-strip --strip-debug modules/*.ko 2>/dev/null || true
 
-          # Download and bundle required WiFi Firmware
+          # Download and bundle required WiFi Firmware (Correct URLs verified)
           mkdir -p firmware/rtlwifi
-          mkdir -p firmware/ath9k_htc
-          wget -q -O firmware/rtlwifi/rtl8188eufw.bin https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/rtlwifi/rtl8188eufw.bin || true
-          wget -q -O firmware/htc_9271.fw https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/ath9k_htc/htc_9271.fw || true
+          wget -q -O firmware/rtlwifi/rtl8188eufw.bin https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/rtlwifi/rtl8188eufw.bin
+          wget -q -O firmware/htc_9271.fw https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/htc_9271.fw
 
-          # Customize Rohit Sharma NetHunter Banner
+          # Generate clean anykernel.sh with zero leading indentation for file_getprop compatibility
           cat << 'EOF' > anykernel.sh
-          properties() { '
-          kernel.string=Kali NetHunter Kernel - Rohit Sharma Edition (POCO F7 / Onyx)
-          do.devicecheck=0
-          do.modules=1
-          do.systemless=1
-          do.cleanup=1
-          do.cleanuponabort=0
-          '; }
+### AnyKernel3 - Rohit Sharma NetHunter Edition
+properties() { '
+kernel.string=Kali NetHunter Kernel - Rohit Sharma Edition (POCO F7 / Onyx)
+do.devicecheck=0
+do.modules=0
+do.systemless=0
+do.cleanup=1
+do.cleanuponabort=0
+'; }
 
-          # Shell Attributes
-          . tools/ak3-core.sh;
+# Boot shell variables
+block=boot;
+is_slot_device=auto;
+ramdisk_compression=auto;
 
-          ui_print " ";
-          ui_print "===========================================";
-          ui_print "  KALI NETHUNTER KERNEL - ROHIT SHARMA     ";
-          ui_print "  Device: POCO F7 / Onyx (SM8735)          ";
-          ui_print "  Features: Packet Injection + HID + WiFi  ";
-          ui_print "  Universal GKI: Android 15 / 16 / 17      ";
-          ui_print "===========================================";
-          ui_print " ";
+# Shell Attributes
+. tools/ak3-core.sh;
 
-          # Dump and flash boot
-          split_boot;
-          flash_boot;
+ui_print " ";
+ui_print "===========================================";
+ui_print "  KALI NETHUNTER KERNEL - ROHIT SHARMA     ";
+ui_print "  Device: POCO F7 / Onyx (SM8735)          ";
+ui_print "  Features: Packet Injection + HID + WiFi  ";
+ui_print "  Universal GKI: Android 15 / 16 / 17      ";
+ui_print "===========================================";
+ui_print " ";
 
-          # Install WiFi Modules & Firmwares cleanly
-          if [ -d "$home/modules" ]; then
-            ui_print "- Installing NetHunter WiFi drivers...";
-            cp -rf $home/modules/* /vendor/lib/modules/ 2>/dev/null || true
-          fi
+# Split and flash boot
+split_boot;
+flash_boot;
 
-          if [ -d "$home/firmware" ]; then
-            ui_print "- Installing wireless firmwares...";
-            mkdir -p /vendor/firmware/rtlwifi /odm/firmware 2>/dev/null || true
-            cp -rf $home/firmware/* /vendor/firmware/ 2>/dev/null || true
-          fi
+# Mount /vendor to install drivers and firmware
+mount /vendor 2>/dev/null || mount -o rw /vendor 2>/dev/null || true
+mount -o rw,remount /vendor 2>/dev/null || true
 
-          ui_print " ";
-          ui_print "-> NetHunter Kernel Successfully Installed!";
-          ui_print "-> Flash Complete by Rohit Sharma!";
-          EOF
+if [ -d "$home/modules" ]; then
+  ui_print "- Installing NetHunter WiFi drivers to /vendor/lib/modules...";
+  mkdir -p /vendor/lib/modules 2>/dev/null || true
+  cp -rf $home/modules/* /vendor/lib/modules/ 2>/dev/null || true
+fi
+
+if [ -d "$home/firmware" ]; then
+  ui_print "- Installing wireless firmware to /vendor/firmware...";
+  mkdir -p /vendor/firmware/rtlwifi 2>/dev/null || true
+  cp -rf $home/firmware/* /vendor/firmware/ 2>/dev/null || true
+fi
+
+umount /vendor 2>/dev/null || true
+
+ui_print " ";
+ui_print "-> NetHunter Kernel Successfully Installed!";
+ui_print "-> Flash Complete by Rohit Sharma!";
+EOF
 
           FINAL_ZIP="NetHunter-Kernel-POCO-F7-Onyx-Rohit-Edition.zip"
           zip -r9 "$FINAL_ZIP" * -x "*.zip"
