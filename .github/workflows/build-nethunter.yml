@@ -84,16 +84,46 @@ jobs:
             data_exploit=off \
             kernel_name="-NetHunter-Rohit-Edition"
 
+      - name: Build RTL8188EUS Driver (TP-Link TL-WN722N v2/v3 - 2357:010c)
+        run: |
+          cd $GITHUB_WORKSPACE
+          echo "[-] Cloning gglluukk/rtl8188eus for TP-Link TL-WN722N v2/v3 (2357:010c)..."
+          git clone --depth=1 https://github.com/gglluukk/rtl8188eus.git rtl8188eus || true
+          if [ -d "rtl8188eus" ]; then
+            cd rtl8188eus
+            sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' Makefile || true
+            sed -i 's/CONFIG_PLATFORM_ARM64_RPI = n/CONFIG_PLATFORM_ARM64_RPI = y/g' Makefile || true
+            export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
+            make -C $GITHUB_WORKSPACE/kernel-source \
+              O=$GITHUB_WORKSPACE/kernel-source/out \
+              M=$PWD \
+              ARCH=arm64 \
+              CC=clang \
+              LD=ld.lld \
+              AR=llvm-ar \
+              NM=llvm-nm \
+              OBJCOPY=llvm-objcopy \
+              OBJDUMP=llvm-objdump \
+              STRIP=llvm-strip \
+              LLVM=1 \
+              LLVM_IAS=1 \
+              USER_EXTRA_CFLAGS="-Wno-error" \
+              modules -j$(nproc) || true
+          fi
+
       - name: Build Out-Of-Tree RTL8821AU Driver (Archer T2U Plus)
         run: |
           cd $GITHUB_WORKSPACE
           echo "[-] Cloning morrownr/8821au-20210708 for Archer T2U Plus..."
           git clone --depth=1 https://github.com/morrownr/8821au-20210708.git rtl8821au || true
           if [ -d "rtl8821au" ]; then
+            cd rtl8821au
+            sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' Makefile || true
+            sed -i 's/CONFIG_PLATFORM_ARM64_RPI = n/CONFIG_PLATFORM_ARM64_RPI = y/g' Makefile || true
             export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
             make -C $GITHUB_WORKSPACE/kernel-source \
               O=$GITHUB_WORKSPACE/kernel-source/out \
-              M=$GITHUB_WORKSPACE/rtl8821au \
+              M=$PWD \
               ARCH=arm64 \
               CC=clang \
               LD=ld.lld \
@@ -122,9 +152,13 @@ jobs:
           cd repack
           unzip -q "$BUILT_ZIP"
 
-          # Harvest external dongle wireless modules (Zero system overlays)
+          # Harvest external dongle wireless modules
           mkdir -p modules
+          find "$GITHUB_WORKSPACE/rtl8188eus" -name "*.ko" -exec cp -v {} modules/ \; 2>/dev/null || true
           find "$GITHUB_WORKSPACE/rtl8821au" -name "*.ko" -exec cp -v {} modules/ \; 2>/dev/null || true
+          echo "[-] Harvested external modules:"
+          ls -la modules/ || true
+
           $GITHUB_WORKSPACE/toolchain/bin/llvm-strip --strip-debug modules/*.ko 2>/dev/null || true
 
           # Download and bundle required WiFi Firmware for external dongles
