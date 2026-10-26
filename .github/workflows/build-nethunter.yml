@@ -93,6 +93,10 @@ jobs:
           sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' Makefile || true
           sed -i 's/CONFIG_PLATFORM_ARM64_RPI = n/CONFIG_PLATFORM_ARM64_RPI = y/g' Makefile || true
           sed -i 's/obj-\$(CONFIG_RTL8188EU)/obj-m/g' Makefile || true
+          sed -i 's/-Wno-restrict//g' Makefile || true
+          sed -i 's/-Wno-vla-larger-than//g' Makefile || true
+          sed -i 's/-Werror//g' Makefile || true
+          sed -i '1s/^/ccflags-y += -Wno-unknown-warning-option -Wno-error\n/' Makefile || true
           export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
           make -C $GITHUB_WORKSPACE/kernel-source \
             O=$GITHUB_WORKSPACE/kernel-source/out \
@@ -108,7 +112,8 @@ jobs:
             LLVM=1 \
             LLVM_IAS=1 \
             CONFIG_RTL8188EU=m \
-            USER_EXTRA_CFLAGS="-Wno-error" \
+            USER_EXTRA_CFLAGS="-Wno-error -Wno-unknown-warning-option" \
+            KCFLAGS="-Wno-error -Wno-unknown-warning-option" \
             modules -j$(nproc)
           
           if [ -f "8188eu.ko" ]; then
@@ -129,6 +134,10 @@ jobs:
             sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' Makefile || true
             sed -i 's/CONFIG_PLATFORM_ARM64_RPI = n/CONFIG_PLATFORM_ARM64_RPI = y/g' Makefile || true
             sed -i 's/obj-\$(CONFIG_RTL8821AU)/obj-m/g' Makefile || true
+            sed -i 's/-Wno-restrict//g' Makefile || true
+            sed -i 's/-Wno-vla-larger-than//g' Makefile || true
+            sed -i 's/-Werror//g' Makefile || true
+            sed -i '1s/^/ccflags-y += -Wno-unknown-warning-option -Wno-error\n/' Makefile || true
             export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
             make -C $GITHUB_WORKSPACE/kernel-source \
               O=$GITHUB_WORKSPACE/kernel-source/out \
@@ -144,7 +153,8 @@ jobs:
               LLVM=1 \
               LLVM_IAS=1 \
               CONFIG_RTL8821AU=m \
-              USER_EXTRA_CFLAGS="-Wno-error" \
+              USER_EXTRA_CFLAGS="-Wno-error -Wno-unknown-warning-option" \
+              KCFLAGS="-Wno-error -Wno-unknown-warning-option" \
               modules -j$(nproc) || true
           fi
 
