@@ -88,27 +88,35 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           echo "[-] Cloning gglluukk/rtl8188eus for TP-Link TL-WN722N v2/v3 (2357:010c)..."
-          git clone --depth=1 https://github.com/gglluukk/rtl8188eus.git rtl8188eus || true
-          if [ -d "rtl8188eus" ]; then
-            cd rtl8188eus
-            sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' Makefile || true
-            sed -i 's/CONFIG_PLATFORM_ARM64_RPI = n/CONFIG_PLATFORM_ARM64_RPI = y/g' Makefile || true
-            export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
-            make -C $GITHUB_WORKSPACE/kernel-source \
-              O=$GITHUB_WORKSPACE/kernel-source/out \
-              M=$PWD \
-              ARCH=arm64 \
-              CC=clang \
-              LD=ld.lld \
-              AR=llvm-ar \
-              NM=llvm-nm \
-              OBJCOPY=llvm-objcopy \
-              OBJDUMP=llvm-objdump \
-              STRIP=llvm-strip \
-              LLVM=1 \
-              LLVM_IAS=1 \
-              USER_EXTRA_CFLAGS="-Wno-error" \
-              modules -j$(nproc) || true
+          git clone --depth=1 https://github.com/gglluukk/rtl8188eus.git rtl8188eus
+          cd rtl8188eus
+          sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' Makefile || true
+          sed -i 's/CONFIG_PLATFORM_ARM64_RPI = n/CONFIG_PLATFORM_ARM64_RPI = y/g' Makefile || true
+          sed -i 's/obj-\$(CONFIG_RTL8188EU)/obj-m/g' Makefile || true
+          export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
+          make -C $GITHUB_WORKSPACE/kernel-source \
+            O=$GITHUB_WORKSPACE/kernel-source/out \
+            M=$PWD \
+            ARCH=arm64 \
+            CC=clang \
+            LD=ld.lld \
+            AR=llvm-ar \
+            NM=llvm-nm \
+            OBJCOPY=llvm-objcopy \
+            OBJDUMP=llvm-objdump \
+            STRIP=llvm-strip \
+            LLVM=1 \
+            LLVM_IAS=1 \
+            CONFIG_RTL8188EU=m \
+            USER_EXTRA_CFLAGS="-Wno-error" \
+            modules -j$(nproc)
+          
+          if [ -f "8188eu.ko" ]; then
+            echo "[+] SUCCESS: 8188eu.ko was built successfully!"
+            ls -la 8188eu.ko
+          else
+            echo "[-] ERROR: 8188eu.ko was not produced!"
+            exit 1
           fi
 
       - name: Build Out-Of-Tree RTL8821AU Driver (Archer T2U Plus)
@@ -120,6 +128,7 @@ jobs:
             cd rtl8821au
             sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' Makefile || true
             sed -i 's/CONFIG_PLATFORM_ARM64_RPI = n/CONFIG_PLATFORM_ARM64_RPI = y/g' Makefile || true
+            sed -i 's/obj-\$(CONFIG_RTL8821AU)/obj-m/g' Makefile || true
             export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
             make -C $GITHUB_WORKSPACE/kernel-source \
               O=$GITHUB_WORKSPACE/kernel-source/out \
@@ -134,6 +143,7 @@ jobs:
               STRIP=llvm-strip \
               LLVM=1 \
               LLVM_IAS=1 \
+              CONFIG_RTL8821AU=m \
               USER_EXTRA_CFLAGS="-Wno-error" \
               modules -j$(nproc) || true
           fi
@@ -154,10 +164,15 @@ jobs:
 
           # Harvest external dongle wireless modules
           mkdir -p modules
-          find "$GITHUB_WORKSPACE/rtl8188eus" -name "*.ko" -exec cp -v {} modules/ \; 2>/dev/null || true
+          find "$GITHUB_WORKSPACE/rtl8188eus" -name "*.ko" -exec cp -v {} modules/ \;
           find "$GITHUB_WORKSPACE/rtl8821au" -name "*.ko" -exec cp -v {} modules/ \; 2>/dev/null || true
           echo "[-] Harvested external modules:"
-          ls -la modules/ || true
+          ls -la modules/
+
+          if [ ! -f "modules/8188eu.ko" ]; then
+            echo "[-] CRITICAL AUDIT FAILURE: modules/8188eu.ko is missing!"
+            exit 1
+          fi
 
           $GITHUB_WORKSPACE/toolchain/bin/llvm-strip --strip-debug modules/*.ko 2>/dev/null || true
 
