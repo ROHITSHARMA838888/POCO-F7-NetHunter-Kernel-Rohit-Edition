@@ -36,12 +36,13 @@ jobs:
           mkdir -p $GITHUB_WORKSPACE/toolchains
           ln -sfn $GITHUB_WORKSPACE/toolchain $GITHUB_WORKSPACE/toolchains/clang
 
-      - name: Clone NetHunter Kernel Source (konoha-kernel-gki)
+      - name: Clone Clean Official Kernel Source (konoha-kernel-gki main branch)
         run: |
           cd $GITHUB_WORKSPACE
-          git clone --depth=1 -b feature/nethunter https://github.com/onyx-oss/konoha-kernel-gki.git kernel-source
+          echo "[-] Cloning official clean konoha-kernel-gki main branch (POCO F7 / Onyx)..."
+          git clone --depth=1 -b main https://github.com/onyx-oss/konoha-kernel-gki.git kernel-source
 
-      - name: Sanitize Dangerous Hooks & Exploits
+      - name: Sanitize Dangerous Hooks & Configure KernelSU-Next
         run: |
           cd $GITHUB_WORKSPACE/kernel-source
           echo "[-] Neutralizing Baseband-guard hook completely..."
@@ -53,6 +54,16 @@ jobs:
           chmod +x Baseband-guard/setup.sh
           sed -i 's|.*Baseband-guard.*setup.sh.*||g' build.sh || true
 
+          # Use official KernelSU-Next 'next' branch for zero SUSFS type conflicts
+          sed -i 's/BRANCH="dev"; ROOT="ksu-next"/BRANCH="next"; ROOT="ksu-next"/g' build.sh
+
+          # Ensure USB HID (BadUSB) is explicitly set in defconfig
+          echo "[-] Ensuring NetHunter USB HID BadUSB is active..."
+          sed -i 's/.*CONFIG_USB_F_HID.*/CONFIG_USB_F_HID=y/' arch/arm64/configs/konoha_defconfig || true
+          sed -i 's/.*CONFIG_USB_CONFIGFS_F_HID.*/CONFIG_USB_CONFIGFS_F_HID=y/' arch/arm64/configs/konoha_defconfig || true
+          grep -q "CONFIG_USB_F_HID=y" arch/arm64/configs/konoha_defconfig || echo "CONFIG_USB_F_HID=y" >> arch/arm64/configs/konoha_defconfig
+          grep -q "CONFIG_USB_CONFIGFS_F_HID=y" arch/arm64/configs/konoha_defconfig || echo "CONFIG_USB_CONFIGFS_F_HID=y" >> arch/arm64/configs/konoha_defconfig
+
       - name: Compile NetHunter Kernel via Native build.sh
         run: |
           cd $GITHUB_WORKSPACE/kernel-source
@@ -61,13 +72,12 @@ jobs:
           export CLANG_DIR="$GITHUB_WORKSPACE/toolchain"
 
           chmod +x build.sh
-          chmod +x nethunter_patch.sh 2>/dev/null || true
+          chmod +x ksu_susfs_fixup.sh 2>/dev/null || true
 
           ./build.sh \
             hz=250 \
             variant=root \
             root=ksu-next \
-            nethunter=on \
             hardened=off \
             bypasscharging=off \
             droidspaces=off \
@@ -115,13 +125,12 @@ jobs:
           cd repack
           unzip -q "$BUILT_ZIP"
 
-          # Harvest built wireless modules
+          # Harvest external dongle wireless modules (Zero system overlays)
           mkdir -p modules
-          find "$GITHUB_WORKSPACE/kernel-source/out" -name "*.ko" -exec cp -v {} modules/ \; 2>/dev/null || true
           find "$GITHUB_WORKSPACE/rtl8821au" -name "*.ko" -exec cp -v {} modules/ \; 2>/dev/null || true
           $GITHUB_WORKSPACE/toolchain/bin/llvm-strip --strip-debug modules/*.ko 2>/dev/null || true
 
-          # Download and bundle required WiFi Firmware
+          # Download and bundle required WiFi Firmware for external dongles
           mkdir -p firmware/rtlwifi
           wget -q -O firmware/rtlwifi/rtl8188eufw.bin https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/rtlwifi/rtl8188eufw.bin || true
           wget -q -O firmware/htc_9271.fw https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/htc_9271.fw || true
