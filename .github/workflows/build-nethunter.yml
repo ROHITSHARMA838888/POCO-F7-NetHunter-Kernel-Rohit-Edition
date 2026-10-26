@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build NetHunter Kernel (Rohit Sharma Edition)
+    name: Build NetHunter Kernel & Standalone WiFi Module
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -42,7 +42,7 @@ jobs:
           echo "[-] Cloning official clean konoha-kernel-gki main branch (POCO F7 / Onyx)..."
           git clone --depth=1 -b main https://github.com/onyx-oss/konoha-kernel-gki.git kernel-source
 
-      - name: Sanitize Dangerous Hooks & Configure KernelSU-Next
+      - name: Sanitize Dangerous Hooks & Configure NetHunter Features
         run: |
           cd $GITHUB_WORKSPACE/kernel-source
           echo "[-] Neutralizing Baseband-guard hook completely..."
@@ -61,13 +61,15 @@ jobs:
           grep -q "CONFIG_USB_F_HID=y" arch/arm64/configs/konoha_defconfig || echo "CONFIG_USB_F_HID=y" >> arch/arm64/configs/konoha_defconfig
           grep -q "CONFIG_USB_CONFIGFS_F_HID=y" arch/arm64/configs/konoha_defconfig || echo "CONFIG_USB_CONFIGFS_F_HID=y" >> arch/arm64/configs/konoha_defconfig
 
-          # Enable cfg80211, mac80211, and in-tree rtl8xxxu (natively supports 2357:010c)
+          # Enable cfg80211, mac80211, packet socket, and wireless extensions
           cat << 'EOF' >> arch/arm64/configs/konoha_defconfig
           CONFIG_CFG80211=m
           CONFIG_MAC80211=m
           CONFIG_WLAN_VENDOR_REALTEK=y
-          CONFIG_RTL8XXXU=m
-          CONFIG_RTL8XXXU_UNTESTED=y
+          CONFIG_WIRELESS_EXT=y
+          CONFIG_WEXT_PRIV=y
+          CONFIG_PACKET=y
+          CONFIG_NET_CLS_ACT=y
           EOF
 
       - name: Compile NetHunter Kernel via Native build.sh
@@ -93,11 +95,53 @@ jobs:
             data_exploit=off \
             kernel_name="-NetHunter-Rohit-Edition"
 
+      - name: Build RTL8821AU Driver (TP-Link Archer T2U Plus - 2357:0120)
+        run: |
+          cd $GITHUB_WORKSPACE
+          echo "[-] Cloning morrownr/8821au-20210708 for TP-Link Archer T2U Plus (2357:0120)..."
+          git clone --depth=1 https://github.com/morrownr/8821au-20210708.git rtl8821au
+          cd rtl8821au
+          sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' Makefile || true
+          sed -i 's/CONFIG_PLATFORM_ARM64_RPI = n/CONFIG_PLATFORM_ARM64_RPI = y/g' Makefile || true
+          sed -i 's/-Wno-restrict//g' Makefile || true
+          sed -i 's/-Wno-vla-larger-than//g' Makefile || true
+          sed -i 's/-Werror//g' Makefile || true
+          sed -i '1s/^/ccflags-y += -Wno-unknown-warning-option -Wno-error\n/' Makefile || true
+          echo 'MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);' >> os_dep/osdep_service.c
+
+          export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
+          make -C $GITHUB_WORKSPACE/kernel-source \
+            O=$GITHUB_WORKSPACE/kernel-source/out \
+            M=$PWD \
+            ARCH=arm64 \
+            CC=clang \
+            LD=ld.lld \
+            AR=llvm-ar \
+            NM=llvm-nm \
+            OBJCOPY=llvm-objcopy \
+            OBJDUMP=llvm-objdump \
+            STRIP=llvm-strip \
+            LLVM=1 \
+            LLVM_IAS=1 \
+            CONFIG_RTL8821AU=m \
+            USER_EXTRA_CFLAGS="-Wno-error -Wno-unknown-warning-option" \
+            KCFLAGS="-Wno-error -Wno-unknown-warning-option" \
+            KBUILD_MODPOST_WARN=1 \
+            modules -j$(nproc)
+          
+          if [ -f "8821au.ko" ]; then
+            echo "[+] SUCCESS: 8821au.ko was built successfully!"
+            ls -la 8821au.ko
+          else
+            echo "[-] ERROR: 8821au.ko was not produced!"
+            exit 1
+          fi
+
       - name: Build RTL8188EUS Driver (TP-Link TL-WN722N v2/v3 - 2357:010c)
         run: |
           cd $GITHUB_WORKSPACE
-          echo "[-] Cloning gglluukk/rtl8188eus for TP-Link TL-WN722N v2/v3 (2357:010c)..."
-          git clone --depth=1 https://github.com/gglluukk/rtl8188eus.git rtl8188eus
+          echo "[-] Cloning aircrack-ng/rtl8188eus for TP-Link TL-WN722N v2/v3 (2357:010c)..."
+          git clone --depth=1 https://github.com/aircrack-ng/rtl8188eus.git rtl8188eus
           cd rtl8188eus
           sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' Makefile || true
           sed -i 's/CONFIG_PLATFORM_ARM64_RPI = n/CONFIG_PLATFORM_ARM64_RPI = y/g' Makefile || true
@@ -106,8 +150,6 @@ jobs:
           sed -i 's/-Wno-vla-larger-than//g' Makefile || true
           sed -i 's/-Werror//g' Makefile || true
           sed -i '1s/^/ccflags-y += -Wno-unknown-warning-option -Wno-error\n/' Makefile || true
-          
-          # Fix Linux 6.6 VFS namespace import
           echo 'MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);' >> os_dep/osdep_service.c
 
           export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
@@ -138,7 +180,48 @@ jobs:
             exit 1
           fi
 
-      - name: Package AnyKernel3 - Rohit Sharma NetHunter Edition
+      - name: Build RTL8812AU Driver (AC1200 / Alfa)
+        run: |
+          cd $GITHUB_WORKSPACE
+          echo "[-] Cloning morrownr/8812au-20210820 for AC1200 Dual-Band..."
+          git clone --depth=1 https://github.com/morrownr/8812au-20210820.git rtl8812au
+          cd rtl8812au
+          sed -i 's/CONFIG_PLATFORM_I386_PC = y/CONFIG_PLATFORM_I386_PC = n/g' Makefile || true
+          sed -i 's/CONFIG_PLATFORM_ARM64_RPI = n/CONFIG_PLATFORM_ARM64_RPI = y/g' Makefile || true
+          sed -i 's/-Wno-restrict//g' Makefile || true
+          sed -i 's/-Wno-vla-larger-than//g' Makefile || true
+          sed -i 's/-Werror//g' Makefile || true
+          sed -i '1s/^/ccflags-y += -Wno-unknown-warning-option -Wno-error\n/' Makefile || true
+          echo 'MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);' >> os_dep/osdep_service.c
+
+          export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
+          make -C $GITHUB_WORKSPACE/kernel-source \
+            O=$GITHUB_WORKSPACE/kernel-source/out \
+            M=$PWD \
+            ARCH=arm64 \
+            CC=clang \
+            LD=ld.lld \
+            AR=llvm-ar \
+            NM=llvm-nm \
+            OBJCOPY=llvm-objcopy \
+            OBJDUMP=llvm-objdump \
+            STRIP=llvm-strip \
+            LLVM=1 \
+            LLVM_IAS=1 \
+            CONFIG_RTL8812AU=m \
+            USER_EXTRA_CFLAGS="-Wno-error -Wno-unknown-warning-option" \
+            KCFLAGS="-Wno-error -Wno-unknown-warning-option" \
+            KBUILD_MODPOST_WARN=1 \
+            modules -j$(nproc)
+          
+          if [ -f "8812au.ko" ]; then
+            echo "[+] SUCCESS: 8812au.ko was built successfully!"
+            ls -la 8812au.ko
+          else
+            echo "[!] Notice: 8812au.ko not produced, skipping."
+          fi
+
+      - name: Package Clean NetHunter AnyKernel3
         run: |
           cd $GITHUB_WORKSPACE
           BUILT_ZIP="${ZIP_PATH:-$(find $GITHUB_WORKSPACE/kernel-source -maxdepth 1 -name '*.zip' | head -n 1)}"
@@ -152,34 +235,49 @@ jobs:
           cd repack
           unzip -q "$BUILT_ZIP"
 
-          # Harvest external dongle wireless modules (8188eu.ko + in-tree rtl8xxxu.ko)
-          mkdir -p modules
-          find "$GITHUB_WORKSPACE/rtl8188eus" -name "8188eu.ko" -exec cp -v {} modules/ \;
-          find "$GITHUB_WORKSPACE/kernel-source/out" -name "rtl8xxxu.ko" -exec cp -v {} modules/ \; 2>/dev/null || true
-          echo "[-] Harvested external modules:"
-          ls -la modules/
+          # Remove any leftover modules from kernel ZIP so boot image stays 100% clean
+          rm -rf modules/* 2>/dev/null || true
 
-          if [ ! -f "modules/8188eu.ko" ]; then
-            echo "[-] CRITICAL AUDIT FAILURE: modules/8188eu.ko is missing!"
-            exit 1
-          fi
-
-          $GITHUB_WORKSPACE/toolchain/bin/llvm-strip --strip-debug modules/*.ko 2>/dev/null || true
-
-          # Download and bundle required WiFi Firmware for Realtek 8188
-          mkdir -p firmware/rtlwifi
-          wget -q -O firmware/rtlwifi/rtl8188eufw.bin https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/rtlwifi/rtl8188eufw.bin || true
-
-          # Generate clean anykernel.sh for POCO F7 via standalone Python script
+          # Generate clean anykernel.sh for POCO F7
           python3 $GITHUB_WORKSPACE/scripts/generate_anykernel.py anykernel.sh
 
-          FINAL_ZIP="NetHunter-Kernel-POCO-F7-Onyx-Rohit-Edition.zip"
-          zip -r9 "$FINAL_ZIP" * -x "*.zip"
-          mv "$FINAL_ZIP" $GITHUB_WORKSPACE/
+          FINAL_KERNEL_ZIP="NetHunter-Kernel-POCO-F7-Onyx.zip"
+          zip -r9 "$FINAL_KERNEL_ZIP" * -x "*.zip"
+          mv "$FINAL_KERNEL_ZIP" $GITHUB_WORKSPACE/
 
-      - name: Upload Flashable NetHunter Kernel Release
+      - name: Package Standalone NetHunter Wireless Drivers Module
+        run: |
+          cd $GITHUB_WORKSPACE
+          mkdir -p dist_modules
+          mkdir -p dist_firmware/rtlwifi
+
+          # Collect built modules
+          find "$GITHUB_WORKSPACE/rtl8821au" -name "8821au.ko" -exec cp -v {} dist_modules/ \; 2>/dev/null || true
+          find "$GITHUB_WORKSPACE/rtl8188eus" -name "8188eu.ko" -exec cp -v {} dist_modules/ \; 2>/dev/null || true
+          find "$GITHUB_WORKSPACE/rtl8812au" -name "8812au.ko" -exec cp -v {} dist_modules/ \; 2>/dev/null || true
+
+          # Strip debug symbols to keep module ultra-compact & fast
+          $GITHUB_WORKSPACE/toolchain/bin/llvm-strip --strip-debug dist_modules/*.ko 2>/dev/null || true
+
+          # Download official firmware
+          wget -q -O dist_firmware/rtlwifi/rtl8188eufw.bin https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/plain/rtlwifi/rtl8188eufw.bin || true
+
+          # Generate standalone module ZIP
+          python3 $GITHUB_WORKSPACE/scripts/generate_module.py \
+            "$GITHUB_WORKSPACE/NetHunter-Wireless-Drivers-Module.zip" \
+            "$GITHUB_WORKSPACE/dist_modules" \
+            "$GITHUB_WORKSPACE/dist_firmware"
+
+      - name: Upload Clean NetHunter Kernel
         uses: actions/upload-artifact@v4
         with:
-          name: NetHunter-Kernel-POCO-F7-Onyx-Rohit-Edition
-          path: ${{ github.workspace }}/NetHunter-Kernel-POCO-F7-Onyx-Rohit-Edition.zip
+          name: NetHunter-Kernel-POCO-F7-Onyx
+          path: ${{ github.workspace }}/NetHunter-Kernel-POCO-F7-Onyx.zip
+          retention-days: 14
+
+      - name: Upload Standalone NetHunter WiFi Drivers Module
+        uses: actions/upload-artifact@v4
+        with:
+          name: NetHunter-Wireless-Drivers-Module
+          path: ${{ github.workspace }}/NetHunter-Wireless-Drivers-Module.zip
           retention-days: 14
