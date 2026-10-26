@@ -2,7 +2,6 @@
 import sys
 import os
 import zipfile
-import stat
 
 def create_wifi_module(output_zip, modules_dir, firmware_dir):
     print(f"[*] Packaging NetHunter Wireless Drivers Module into {output_zip}...")
@@ -12,8 +11,8 @@ def create_wifi_module(output_zip, modules_dir, firmware_dir):
     # 1. module.prop
     module_prop = """id=nethunter_wireless_drivers
 name=Kali NetHunter WiFi Drivers (Archer T2U Plus + WN722N)
-version=2.0
-versionCode=20
+version=2.1
+versionCode=21
 author=Rohit Sharma
 description=Plug-and-play wireless drivers for TP-Link Archer T2U Plus (8821au) and TP-Link TL-WN722N v2/v3 (8188eu) with packet injection and live logging.
 """
@@ -35,7 +34,7 @@ ui_print() {
 }
 
 ui_print "**********************************************"
-ui_print "   Kali NetHunter WiFi Drivers Module        "
+ui_print "   Kali NetHunter WiFi Drivers Module v2.1   "
 ui_print "   By Rohit Sharma (POCO F7 / Onyx)          "
 ui_print "   Supports: Archer T2U Plus & WN722N        "
 ui_print "**********************************************"
@@ -72,14 +71,17 @@ echo "============================================================"
 echo "    Kali NetHunter WiFi Status Monitor - Rohit Sharma       "
 echo "============================================================"
 echo ""
-echo "[+] Connected USB WiFi Adapters:"
+echo "[+] Connected USB Devices (lsusb):"
 lsusb 2>/dev/null || echo "lsusb tool not available"
 echo ""
 echo "[+] Loaded Realtek Wireless Drivers (lsmod):"
-lsmod 2>/dev/null | grep -E "8821au|8188eu|8812au|cfg80211|mac80211" || echo "[-] No external WiFi drivers loaded yet."
+lsmod 2>/dev/null | grep -E "8821au|8188eu|8812au|rtl8xxxu|cfg80211|mac80211" || echo "[-] No external WiFi drivers loaded yet."
 echo ""
-echo "[+] Wireless Network Interfaces (iwconfig):"
-iwconfig 2>/dev/null | grep -E "wlan[0-9]|IEEE" || ip link show | grep wlan
+echo "[+] Network Interfaces (ip link):"
+ip link show | grep -E "wlan[0-9]|link/ether" || ifconfig -a
+echo ""
+echo "[+] Wireless Extensions (iwconfig):"
+iwconfig 2>/dev/null | grep -E "wlan[0-9]|IEEE|Mode" || echo "[-] Legacy WEXT not active; use 'iw dev' or 'ip link'."
 echo ""
 echo "[+] Recent Activity Log (/sdcard/nethunter_wifi_debug.log):"
 if [ -f /sdcard/nethunter_wifi_debug.log ]; then
@@ -108,7 +110,7 @@ log_msg() {
 
 # Initialize Log File
 echo "============================================================" > "$LOGFILE"
-echo "Kali NetHunter Wireless Daemon (Rohit Sharma Edition)" >> "$LOGFILE"
+echo "Kali NetHunter Wireless Daemon v2.1 (Rohit Sharma Edition)" >> "$LOGFILE"
 echo "Boot Date: $(date)" >> "$LOGFILE"
 echo "Kernel: $(uname -r) ($(uname -m))" >> "$LOGFILE"
 echo "Device: POCO F7 / Onyx (SM8735)" >> "$LOGFILE"
@@ -139,8 +141,9 @@ while true; do
       if [ $RET -eq 0 ]; then
         log_msg "[SUCCESS] 8821au.ko loaded cleanly!"
         sleep 1
+        ip link set wlan1 up 2>/dev/null || ifconfig wlan1 up 2>/dev/null || true
         IFACE=$(ip link 2>/dev/null | grep -o 'wlan[0-9]*' | tail -n 1)
-        log_msg "[READY] Wireless interface created: $IFACE. Ready for Monitor Mode in Kali Chroot!"
+        log_msg "[READY] Wireless interface created: $IFACE. UP and ready for Monitor Mode in Kali Chroot!"
       else
         log_msg "[ERROR] Failed to insmod 8821au.ko (Exit code: $RET)."
       fi
@@ -160,8 +163,9 @@ while true; do
       if [ $RET -eq 0 ]; then
         log_msg "[SUCCESS] 8188eu.ko loaded cleanly!"
         sleep 1
+        ip link set wlan1 up 2>/dev/null || ifconfig wlan1 up 2>/dev/null || true
         IFACE=$(ip link 2>/dev/null | grep -o 'wlan[0-9]*' | tail -n 1)
-        log_msg "[READY] Wireless interface created: $IFACE. Ready for Monitor Mode in Kali Chroot!"
+        log_msg "[READY] Wireless interface created: $IFACE. UP and ready for Monitor Mode in Kali Chroot!"
       else
         log_msg "[ERROR] Failed to insmod 8188eu.ko (Exit code: $RET)."
       fi

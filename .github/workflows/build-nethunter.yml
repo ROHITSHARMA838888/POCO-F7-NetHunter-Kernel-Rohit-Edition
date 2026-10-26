@@ -66,6 +66,8 @@ jobs:
           CONFIG_CFG80211=m
           CONFIG_MAC80211=m
           CONFIG_WLAN_VENDOR_REALTEK=y
+          CONFIG_RTL8XXXU=m
+          CONFIG_RTL8XXXU_UNTESTED=y
           CONFIG_WIRELESS_EXT=y
           CONFIG_WEXT_PRIV=y
           CONFIG_PACKET=y
@@ -106,7 +108,7 @@ jobs:
           sed -i 's/-Wno-restrict//g' Makefile || true
           sed -i 's/-Wno-vla-larger-than//g' Makefile || true
           sed -i 's/-Werror//g' Makefile || true
-          sed -i '1s/^/ccflags-y += -Wno-unknown-warning-option -Wno-error\n/' Makefile || true
+          sed -i '1s/^/ccflags-y += -Wno-unknown-warning-option -Wno-error -DCONFIG_WIRELESS_EXT\n/' Makefile || true
           echo 'MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);' >> os_dep/osdep_service.c
 
           export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
@@ -124,8 +126,8 @@ jobs:
             LLVM=1 \
             LLVM_IAS=1 \
             CONFIG_RTL8821AU=m \
-            USER_EXTRA_CFLAGS="-Wno-error -Wno-unknown-warning-option" \
-            KCFLAGS="-Wno-error -Wno-unknown-warning-option" \
+            USER_EXTRA_CFLAGS="-Wno-error -Wno-unknown-warning-option -DCONFIG_WIRELESS_EXT" \
+            KCFLAGS="-Wno-error -Wno-unknown-warning-option -DCONFIG_WIRELESS_EXT" \
             KBUILD_MODPOST_WARN=1 \
             modules -j$(nproc)
           
@@ -149,7 +151,12 @@ jobs:
           sed -i 's/-Wno-restrict//g' Makefile || true
           sed -i 's/-Wno-vla-larger-than//g' Makefile || true
           sed -i 's/-Werror//g' Makefile || true
-          sed -i '1s/^/ccflags-y += -Wno-unknown-warning-option -Wno-error\n/' Makefile || true
+          sed -i '1s/^/ccflags-y += -Wno-unknown-warning-option -Wno-error -DCONFIG_WIRELESS_EXT\n/' Makefile || true
+          
+          # Fix kernel panic on regulatory struct mismatch with Qualcomm cfg80211
+          sed -i 's/wiphy_apply_custom_regulatory(wiphy, regd);/\/\/ wiphy_apply_custom_regulatory(wiphy, regd);/g' os_dep/linux/wifi_regd.c || true
+
+          # Fix Linux 6.6 VFS namespace import
           echo 'MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);' >> os_dep/osdep_service.c
 
           export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
@@ -167,8 +174,8 @@ jobs:
             LLVM=1 \
             LLVM_IAS=1 \
             CONFIG_RTL8188EU=m \
-            USER_EXTRA_CFLAGS="-Wno-error -Wno-unknown-warning-option" \
-            KCFLAGS="-Wno-error -Wno-unknown-warning-option" \
+            USER_EXTRA_CFLAGS="-Wno-error -Wno-unknown-warning-option -DCONFIG_WIRELESS_EXT" \
+            KCFLAGS="-Wno-error -Wno-unknown-warning-option -DCONFIG_WIRELESS_EXT" \
             KBUILD_MODPOST_WARN=1 \
             modules -j$(nproc)
           
@@ -191,7 +198,7 @@ jobs:
           sed -i 's/-Wno-restrict//g' Makefile || true
           sed -i 's/-Wno-vla-larger-than//g' Makefile || true
           sed -i 's/-Werror//g' Makefile || true
-          sed -i '1s/^/ccflags-y += -Wno-unknown-warning-option -Wno-error\n/' Makefile || true
+          sed -i '1s/^/ccflags-y += -Wno-unknown-warning-option -Wno-error -DCONFIG_WIRELESS_EXT\n/' Makefile || true
           echo 'MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);' >> os_dep/osdep_service.c
 
           export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
@@ -209,8 +216,8 @@ jobs:
             LLVM=1 \
             LLVM_IAS=1 \
             CONFIG_RTL8812AU=m \
-            USER_EXTRA_CFLAGS="-Wno-error -Wno-unknown-warning-option" \
-            KCFLAGS="-Wno-error -Wno-unknown-warning-option" \
+            USER_EXTRA_CFLAGS="-Wno-error -Wno-unknown-warning-option -DCONFIG_WIRELESS_EXT" \
+            KCFLAGS="-Wno-error -Wno-unknown-warning-option -DCONFIG_WIRELESS_EXT" \
             KBUILD_MODPOST_WARN=1 \
             modules -j$(nproc)
           
@@ -255,6 +262,7 @@ jobs:
           find "$GITHUB_WORKSPACE/rtl8821au" -name "8821au.ko" -exec cp -v {} dist_modules/ \; 2>/dev/null || true
           find "$GITHUB_WORKSPACE/rtl8188eus" -name "8188eu.ko" -exec cp -v {} dist_modules/ \; 2>/dev/null || true
           find "$GITHUB_WORKSPACE/rtl8812au" -name "8812au.ko" -exec cp -v {} dist_modules/ \; 2>/dev/null || true
+          find "$GITHUB_WORKSPACE/kernel-source/out" -name "rtl8xxxu.ko" -exec cp -v {} dist_modules/ \; 2>/dev/null || true
 
           # Strip debug symbols to keep module ultra-compact & fast
           $GITHUB_WORKSPACE/toolchain/bin/llvm-strip --strip-debug dist_modules/*.ko 2>/dev/null || true
