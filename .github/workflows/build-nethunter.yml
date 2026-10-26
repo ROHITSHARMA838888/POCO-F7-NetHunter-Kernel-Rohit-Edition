@@ -54,9 +54,6 @@ jobs:
           chmod +x Baseband-guard/setup.sh
           sed -i 's|.*Baseband-guard.*setup.sh.*||g' build.sh || true
 
-          # Use official KernelSU-Next 'next' branch for zero SUSFS type conflicts
-          sed -i 's/BRANCH="dev"; ROOT="ksu-next"/BRANCH="next"; ROOT="ksu-next"/g' build.sh
-
           # Ensure USB HID (BadUSB) is explicitly set in defconfig
           echo "[-] Ensuring NetHunter USB HID BadUSB is active..."
           sed -i 's/.*CONFIG_USB_F_HID.*/CONFIG_USB_F_HID=y/' arch/arm64/configs/konoha_defconfig || true
