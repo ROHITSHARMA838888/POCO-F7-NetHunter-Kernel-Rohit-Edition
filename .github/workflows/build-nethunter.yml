@@ -64,12 +64,15 @@ jobs:
           grep -q "CONFIG_USB_AUTOSUSPEND_DELAY=-1" arch/arm64/configs/konoha_defconfig || echo "CONFIG_USB_AUTOSUSPEND_DELAY=-1" >> arch/arm64/configs/konoha_defconfig
 
           # Enable cfg80211, mac80211, packet socket, and wireless extensions
+          # Explicitly DISABLE broken in-tree rtl8xxxu to prevent collision with out-of-tree 8188eu
+          sed -i 's/CONFIG_RTL8XXXU=.*/# CONFIG_RTL8XXXU is not set/' arch/arm64/configs/konoha_defconfig || true
+          sed -i 's/CONFIG_RTL8XXXU_UNTESTED=.*/# CONFIG_RTL8XXXU_UNTESTED is not set/' arch/arm64/configs/konoha_defconfig || true
           cat << 'EOF' >> arch/arm64/configs/konoha_defconfig
           CONFIG_CFG80211=m
           CONFIG_MAC80211=m
           CONFIG_WLAN_VENDOR_REALTEK=y
-          CONFIG_RTL8XXXU=m
-          CONFIG_RTL8XXXU_UNTESTED=y
+          # CONFIG_RTL8XXXU is not set
+          # CONFIG_RTL8XXXU_UNTESTED is not set
           CONFIG_WIRELESS_EXT=y
           CONFIG_WEXT_PRIV=y
           CONFIG_PACKET=y
@@ -263,11 +266,10 @@ jobs:
           mkdir -p dist_modules
           mkdir -p dist_firmware/rtlwifi
 
-          # Collect built modules
+          # Collect built modules (8821au, 8188eu, 8812au)
           find "$GITHUB_WORKSPACE/rtl8821au" -name "8821au.ko" -exec cp -v {} dist_modules/ \; 2>/dev/null || true
           find "$GITHUB_WORKSPACE/rtl8188eus" -name "8188eu.ko" -exec cp -v {} dist_modules/ \; 2>/dev/null || true
           find "$GITHUB_WORKSPACE/rtl8812au" -name "8812au.ko" -exec cp -v {} dist_modules/ \; 2>/dev/null || true
-          find "$GITHUB_WORKSPACE/kernel-source/out" -name "rtl8xxxu.ko" -exec cp -v {} dist_modules/ \; 2>/dev/null || true
 
           # Strip debug symbols to keep module ultra-compact & fast
           $GITHUB_WORKSPACE/toolchain/bin/llvm-strip --strip-debug dist_modules/*.ko 2>/dev/null || true
