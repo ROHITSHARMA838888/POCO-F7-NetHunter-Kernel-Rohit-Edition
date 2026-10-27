@@ -54,12 +54,14 @@ jobs:
           chmod +x Baseband-guard/setup.sh
           sed -i 's|.*Baseband-guard.*setup.sh.*||g' build.sh || true
 
-          # Ensure USB HID (BadUSB) & Wireless Subsystem are explicitly set in defconfig
-          echo "[-] Ensuring NetHunter USB HID BadUSB and Wireless configs are active..."
+          # Ensure USB HID (BadUSB), Autosuspend Disable, & Wireless Subsystem are explicitly set in defconfig
+          echo "[-] Ensuring NetHunter USB HID BadUSB, permanent autosuspend fix, and Wireless configs..."
           sed -i 's/.*CONFIG_USB_F_HID.*/CONFIG_USB_F_HID=y/' arch/arm64/configs/konoha_defconfig || true
           sed -i 's/.*CONFIG_USB_CONFIGFS_F_HID.*/CONFIG_USB_CONFIGFS_F_HID=y/' arch/arm64/configs/konoha_defconfig || true
+          sed -i 's/.*CONFIG_USB_AUTOSUSPEND_DELAY.*/CONFIG_USB_AUTOSUSPEND_DELAY=-1/' arch/arm64/configs/konoha_defconfig || true
           grep -q "CONFIG_USB_F_HID=y" arch/arm64/configs/konoha_defconfig || echo "CONFIG_USB_F_HID=y" >> arch/arm64/configs/konoha_defconfig
           grep -q "CONFIG_USB_CONFIGFS_F_HID=y" arch/arm64/configs/konoha_defconfig || echo "CONFIG_USB_CONFIGFS_F_HID=y" >> arch/arm64/configs/konoha_defconfig
+          grep -q "CONFIG_USB_AUTOSUSPEND_DELAY=-1" arch/arm64/configs/konoha_defconfig || echo "CONFIG_USB_AUTOSUSPEND_DELAY=-1" >> arch/arm64/configs/konoha_defconfig
 
           # Enable cfg80211, mac80211, packet socket, and wireless extensions
           cat << 'EOF' >> arch/arm64/configs/konoha_defconfig
@@ -111,6 +113,9 @@ jobs:
           sed -i '1s/^/ccflags-y += -Wno-unknown-warning-option -Wno-error -DCONFIG_WIRELESS_EXT\n/' Makefile || true
           echo 'MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);' >> os_dep/osdep_service.c
 
+          # Apply permanent USB autosuspend disable patch
+          python3 $GITHUB_WORKSPACE/scripts/patch_drivers.py 8821au .
+
           export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
           make -C $GITHUB_WORKSPACE/kernel-source \
             O=$GITHUB_WORKSPACE/kernel-source/out \
@@ -152,12 +157,12 @@ jobs:
           sed -i 's/-Wno-vla-larger-than//g' Makefile || true
           sed -i 's/-Werror//g' Makefile || true
           sed -i '1s/^/ccflags-y += -Wno-unknown-warning-option -Wno-error -DCONFIG_WIRELESS_EXT\n/' Makefile || true
-          
-          # Fix kernel panic on regulatory struct mismatch with Qualcomm cfg80211
-          sed -i 's/wiphy_apply_custom_regulatory(wiphy, regd);/\/\/ wiphy_apply_custom_regulatory(wiphy, regd);/g' os_dep/linux/wifi_regd.c || true
 
           # Fix Linux 6.6 VFS namespace import
           echo 'MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);' >> os_dep/osdep_service.c
+
+          # Apply permanent zero-crash regulatory and autosuspend patches
+          python3 $GITHUB_WORKSPACE/scripts/patch_drivers.py 8188eu .
 
           export PATH="$GITHUB_WORKSPACE/toolchain/bin:$PATH"
           make -C $GITHUB_WORKSPACE/kernel-source \
@@ -245,7 +250,7 @@ jobs:
           # Remove any leftover modules from kernel ZIP so boot image stays 100% clean
           rm -rf modules/* 2>/dev/null || true
 
-          # Generate clean anykernel.sh for POCO F7
+          # Generate clean anykernel.sh for POCO F7 with cmdline autosuspend fix
           python3 $GITHUB_WORKSPACE/scripts/generate_anykernel.py anykernel.sh
 
           FINAL_KERNEL_ZIP="NetHunter-Kernel-POCO-F7-Onyx.zip"

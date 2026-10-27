@@ -28,6 +28,7 @@ ui_print "  KALI NETHUNTER KERNEL - ROHIT SHARMA     ";
 ui_print "  Device: POCO F7 / Onyx (SM8735)          ";
 ui_print "  Features: BadUSB HID + NetHunter WiFi    ";
 ui_print "  Root: KernelSU-Next Integration          ";
+ui_print "  USB: Permanent Autosuspend Fix Applied   ";
 ui_print "  100% Stock Telephony/VoLTE/Hotspot Safe  ";
 ui_print "===========================================";
 ui_print " ";
@@ -41,9 +42,11 @@ rm -rf /data/adb/modules/nethunter_rtl8188 2>/dev/null || true
 ui_print "- Flashing GKI NetHunter Kernel into Boot partition...";
 if [ -L "/dev/block/bootdevice/by-name/init_boot_a" -o -L "/dev/block/by-name/init_boot_a" -o -e "/dev/block/by-name/init_boot_a" -o -e "/dev/block/by-name/init_boot" ]; then
     split_boot;
+    patch_cmdline "usbcore.autosuspend" "usbcore.autosuspend=-1";
     flash_boot;
 else
     dump_boot;
+    patch_cmdline "usbcore.autosuspend" "usbcore.autosuspend=-1";
     write_boot;
 fi
 
