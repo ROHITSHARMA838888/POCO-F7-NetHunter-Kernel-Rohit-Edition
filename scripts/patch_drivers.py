@@ -19,7 +19,8 @@ def patch_8821au(driver_dir):
                 f.write(content)
             print("[+] Successfully added usb_disable_autosuspend to RTL8821AU usb_intf.c")
 
-    # 2. Fix wiphy_register WARN_ON and WoWLAN sanity checks in ioctl_cfg80211.c
+    # 2. Fix wiphy_register WARN_ON: Set wiphy->wowlan = NULL
+    # External USB dongles don't do WoWLAN, and leaving wowlan_stub triggers cfg80211 WARN_ON(!suspend)
     cfg_path = os.path.join(driver_dir, "os_dep", "linux", "ioctl_cfg80211.c")
     if os.path.exists(cfg_path):
         with open(cfg_path, "r", encoding="utf-8", errors="ignore") as f:
@@ -27,29 +28,10 @@ def patch_8821au(driver_dir):
         
         # Replace wowlan assignment with NULL so wiphy_register does not check or fail on WoWLAN ops
         content = re.sub(r'wiphy->wowlan\s*=\s*&?wowlan_stub;', 'wiphy->wowlan = NULL;', content)
-        
-        # Ensure suspend/resume are hooked in rtw_cfg80211_ops unconditionally
-        old_ops = """#if defined(CONFIG_PNO_SUPPORT) && (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 0, 0))
-	.sched_scan_start = cfg80211_rtw_sched_scan_start,
-	.sched_scan_stop = cfg80211_rtw_sched_scan_stop,
-	.suspend = cfg80211_rtw_suspend,
-	.resume = cfg80211_rtw_resume,
-#endif /* CONFIG_PNO_SUPPORT */"""
-        new_ops = """#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 0, 0))
-	.suspend = cfg80211_rtw_suspend,
-	.resume = cfg80211_rtw_resume,
-#if defined(CONFIG_PNO_SUPPORT)
-	.sched_scan_start = cfg80211_rtw_sched_scan_start,
-	.sched_scan_stop = cfg80211_rtw_sched_scan_stop,
-#endif
-#endif"""
-        if old_ops in content:
-            content = content.replace(old_ops, new_ops)
-            print("[+] Fixed rtw_cfg80211_ops suspend/resume hooks in RTL8821AU")
 
         with open(cfg_path, "w", encoding="utf-8") as f:
             f.write(content)
-        print("[+] Successfully patched RTL8821AU ioctl_cfg80211.c (WoWLAN NULL + suspend/resume ops)")
+        print("[+] Successfully patched RTL8821AU ioctl_cfg80211.c (wiphy->wowlan = NULL)")
 
 def patch_8188eu(driver_dir):
     print(f"[*] Patching RTL8188EUS in {driver_dir}...")
@@ -92,35 +74,17 @@ def patch_8188eu(driver_dir):
                 f.write(content)
             print("[+] Successfully added usb_disable_autosuspend to RTL8188EUS usb_intf.c")
 
-    # 3. Patch ioctl_cfg80211.c for WoWLAN and suspend/resume
+    # 3. Patch ioctl_cfg80211.c: Set wiphy->wowlan = NULL
     cfg_path = os.path.join(driver_dir, "os_dep", "linux", "ioctl_cfg80211.c")
     if os.path.exists(cfg_path):
         with open(cfg_path, "r", encoding="utf-8", errors="ignore") as f:
             content = f.read()
         
         content = re.sub(r'wiphy->wowlan\s*=\s*&?wowlan_stub;', 'wiphy->wowlan = NULL;', content)
-        
-        old_ops = """#if defined(CONFIG_PNO_SUPPORT) && (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 0, 0))
-	.sched_scan_start = cfg80211_rtw_sched_scan_start,
-	.sched_scan_stop = cfg80211_rtw_sched_scan_stop,
-	.suspend = cfg80211_rtw_suspend,
-	.resume = cfg80211_rtw_resume,
-#endif /* CONFIG_PNO_SUPPORT */"""
-        new_ops = """#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 0, 0))
-	.suspend = cfg80211_rtw_suspend,
-	.resume = cfg80211_rtw_resume,
-#if defined(CONFIG_PNO_SUPPORT)
-	.sched_scan_start = cfg80211_rtw_sched_scan_start,
-	.sched_scan_stop = cfg80211_rtw_sched_scan_stop,
-#endif
-#endif"""
-        if old_ops in content:
-            content = content.replace(old_ops, new_ops)
-            print("[+] Fixed rtw_cfg80211_ops suspend/resume hooks in RTL8188EUS")
 
         with open(cfg_path, "w", encoding="utf-8") as f:
             f.write(content)
-        print("[+] Successfully patched RTL8188EUS ioctl_cfg80211.c (WoWLAN NULL + suspend/resume ops)")
+        print("[+] Successfully patched RTL8188EUS ioctl_cfg80211.c (wiphy->wowlan = NULL)")
 
 if __name__ == "__main__":
     driver_type = sys.argv[1] if len(sys.argv) > 1 else ""
